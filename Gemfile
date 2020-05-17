@@ -63,3 +63,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # 以下追加したgem
 gem "devise"
+gem "bootstrap","~>4.4.1"
+gem "jquery-rails"
