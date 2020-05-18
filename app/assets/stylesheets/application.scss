@@ -15,7 +15,11 @@
  */
 @import "bootstrap";
 
-.navvar-brand{
+body{
+	background-color:#fbe9b7; /*サイト全体の背景色*/
+}
+
+.navbar-brand{
 	font-family: "Chalkduster",
 	"Segoe Script",
 	"Ink Free",
@@ -26,4 +30,9 @@
 	font-family: "Hiragino Sans",
     "Yu Gothic",
     "Meiryo";
+}
+
+.btn-nav:hover {
+  background-color:#50232d;
+  border-color: #492029;
 }
