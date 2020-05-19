@@ -17,6 +17,8 @@
 
 body{
 	background-color:#fbe9b7; /*サイト全体の背景色*/
+	font-family: "Hiragino Sans CNS",
+	"Yu Gothic";
 }
 
 .navbar-brand{
@@ -27,7 +29,7 @@ body{
 }
 
 .nav-item{
-	font-family: "Hiragino Sans",
+	font-family: "Hiragino Sans CNS",
     "Yu Gothic",
     "Meiryo";
 }
