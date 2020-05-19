@@ -1,19 +1,23 @@
-<table class="genres">
-	<thead class="genres_head">
-		<th>ジャンル検索</th>
-	</thead>
-	<tbody class="genres_body">
-		<tr>
-			<span src="cake.png"></span><%= link_to "ケーキ" %>
-		</tr>
-		<tr>
-			<span src="cookie.png"></span><%= link_to "焼き菓子" %>
-		</tr>
-		<tr>
-			<span src="pudding.png"></span><%= link_to "プリン" %>
-		</tr>
-		<tr>
-			<span src="candy.png"></span><%= link_to "キャンディ" %>
-		</tr>
-	</tbody>
-</table>
+<div class="container">
+	<div class="row">
+	<table class="table table-borderless genres col-3 mt-3" >
+		<thead class="genres_head">
+			<th style="text-align: center;">～ジャンル検索～</th>
+		</thead>
+		<tbody class="genres_body">
+			<tr>
+				<td style="text-align: center;"><%= image_tag "cake.png", style:"width:30px; height:30px;" %><%= link_to " ケーキ" %></td>
+			</tr>
+			<tr>
+				<td style="text-align: center;"><%= image_tag "cookie.png", style:"width:30px; height:30px;" %><%= link_to " 焼き菓子" %></td>
+			</tr>
+			<tr>
+				<td style="text-align: center;"><%= image_tag "pudding.png", style:"width:30px; height:30px;" %><%= link_to " プリン" %></td>
+			</tr>
+			<tr>
+				<td style="text-align: center;"><%= image_tag "candy.png", style:"width:30px; height:30px;" %><%= link_to " キャンディ" %></td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+</div>

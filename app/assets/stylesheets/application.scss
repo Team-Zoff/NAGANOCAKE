@@ -35,6 +35,23 @@ body{
 }
 
 .btn-nav:hover {
-  background-color:#50232d;
-  border-color: #492029;
+ 	background-color:#50232d;
+ 	border-color: #492029;
 }
+
+.genres{
+	background-color:#fbe4e7;
+	border: 10px solid #fbe4e7;
+	border-radius: 8px;
+	border-spacing: 0;
+	border-collapse: separate;
+	padding: 0;
+}
+
+.genres_head{
+	color:#5c2534;
+}
+.genres_body a{
+	color:#5c2534;
+}
+
