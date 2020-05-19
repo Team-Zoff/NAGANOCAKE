@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :admins do
   	get 'homes/top'
+  	get 'orders/index'
   end
 
   devise_for :admins, controllers: {
