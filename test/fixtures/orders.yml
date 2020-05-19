@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  confirmed_purchase_price: 1
+  order_status: 1
+  shipping_free: 1
+  address: MyString
+  postal_code: MyString
+  method_of_payment: 1
+  member_id: 1
+  address_name: MyString
+
+two:
+  confirmed_purchase_price: 1
+  order_status: 1
+  shipping_free: 1
+  address: MyString
+  postal_code: MyString
+  method_of_payment: 1
+  member_id: 1
+  address_name: MyString
