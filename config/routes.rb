@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   namespace :admins do
   	get 'homes/top'
+    resouce :products, only:[:new,:create]
   end
 
   devise_for :admins, controllers: {
