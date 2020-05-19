@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+
+.navbar-brand{
+	font-family: "Chalkduster",
+	"Segoe Script",
+	"Ink Free",
+	"Arial";
+}
+
+.nav-item{
+	font-family: "Hiragino Sans",
+    "Yu Gothic",
+    "Meiryo";
+}
