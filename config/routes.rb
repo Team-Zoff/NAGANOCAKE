@@ -5,6 +5,10 @@ Rails.application.routes.draw do
    registrations: 'members/registrations'
   }
 
+  namespace :members do
+    resources :products
+  end
+
   namespace :admins do
   	get 'homes/top'
     resources :products, only:[:new,:create]
@@ -19,9 +23,6 @@ Rails.application.routes.draw do
   	sessions: 'admins/sessions'
   }
 
-  namespace :members do
-    resources :products
-  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
