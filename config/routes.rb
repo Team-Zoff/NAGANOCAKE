@@ -4,18 +4,20 @@ Rails.application.routes.draw do
    sessions: 'members/sessions',
    registrations: 'members/registrations'
   }
-  
+
   namespace :members do
     resources :products
   end
 
   namespace :admins do
   	get 'homes/top'
+    resources :products, only:[:new,:create]
   	get 'orders/index'
   	get 'orders/show'
   	get 'members/show'
   	get 'members/edit'
     get 'members/index'
+
   end
 
   devise_for :admins, controllers: {
