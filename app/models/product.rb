@@ -1,5 +1,7 @@
 class Product < ApplicationRecord
 	belongs_to :genre
+	has_many :cart_items, dependent: :destroy
+	has_many :order_details, dependent: :destroy
 
 	validates :genre_id, presence: true
     validates :product_name, presence: true
