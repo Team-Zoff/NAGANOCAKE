@@ -32,3 +32,6 @@
 
 #MACユーザー用
 .DS_Store
+
+#schema.rbのコンフリクト回避
+/db/schema.rb
