@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2020_05_20_073337) do
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
-
+  
   create_table "genres", force: :cascade do |t|
     t.string "name"
     t.integer "valid_invalid"
@@ -74,11 +74,20 @@ ActiveRecord::Schema.define(version: 2020_05_20_073337) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "products", force: :cascade do |t|
+    t.integer "genre_id"
+    t.string "product_name"
+    t.text "description"
+    t.string "product_image_id"
+    t.integer "price_excluding_tax"
+    t.integer "sale_status"
+    
   create_table "shipping_addresses", force: :cascade do |t|
     t.integer "member_id"
     t.string "address_name"
     t.string "postal_code"
     t.string "address"
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

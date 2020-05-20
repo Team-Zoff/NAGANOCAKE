@@ -3,8 +3,8 @@
 <% end %>
 
 <%- if controller_name != 'sessions' %>
-  <p>すでに登録済みの方</p>
-  <span><%= link_to "こちら", new_session_path(resource_name) %>　からログインしてください。</span><br />
+  <span>すでに登録済みの方</span><br>
+  <span><%= link_to "こちら", new_session_path(resource_name) %>からログインしてください。</span><br />
 <% end %>
 
 
