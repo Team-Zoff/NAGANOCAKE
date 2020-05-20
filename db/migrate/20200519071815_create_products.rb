@@ -5,7 +5,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.string :product_name
       t.text :description
       t.string :product_image_id
-      t.integer :price_exculuding_tax
+      t.integer :price_excluding_tax
       t.integer :sale_status
 
       t.timestamps
