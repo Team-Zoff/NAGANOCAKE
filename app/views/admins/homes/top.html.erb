@@ -1,15 +1,19 @@
-<div class="continer-fluid">
-   <div class="row form-group m-md-5">
-     <div class="col-2 text-center">
-	   <div class="text-light bg-info">管理者画面</div>
-     </div>
+<div class="continer" style="margin:5vw 50px 0;">
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-2 text-center">
+	       <h5 class="text-light bg-info">管理者画面</h5>
+      </div>
     </div>
-
-    <div class="row form-group">
-      <div class="col-4 text-center">
+    <div class="row" style="margin-top:50px;">
+      <div class="col-5 text-right">
         <h5>本日の注文件数
-     	<ins><%= link_to @number_of_orders, admins_orders_index_path %></ins>
-        件</h5>
-     </div>
+ 	      <ins><%= link_to @number_of_orders, admins_orders_index_path, class:"text-secondary" %></ins> 件
+       </h5>
+      </div>
     </div>
 </div>
+
+<!-- justify-content-center  中央ぞろえ-->
+<!-- align-items-center 垂直方向の中央揃え-->
+<!-- style="margin:10vw 50px 0;"  -->

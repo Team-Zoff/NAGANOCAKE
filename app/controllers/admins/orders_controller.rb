@@ -14,5 +14,6 @@ class Admins::OrdersController < ApplicationController
 		 end
 	end
 	def show
+		#@order_member = Order.find(params[:id])
 	end
 end
