@@ -4,9 +4,9 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :shipping_addresses  dependent: :destroy
-  has_many :cart_items  dependent: :destroy
-  has_many :orders  dependent: :destroy
+  has_many :shipping_addresses, dependent: :destroy
+  has_many :cart_items, dependent: :destroy
+  has_many :orders, dependent: :destroy
 
   enum deleted_status:{"退会": 0,"有効":1}
   	validates :last_name, presence: true
