@@ -22,6 +22,12 @@
         <li class="nav-item mr-3">
             <%= link_to "ログイン","ログインページのリンク",class: "btn text-light", style: "background-color: #5c4834; "%>
         </li>
+        <li class="nav-item mr-3">
+          <%= link_to "会員一覧",　admins_members_index_path, class: "btn text-light", style: "background-color: #5c4834; "%>
+        </li>
+        <li class="nav-item mr-3">
+          <%= link_to "注文履歴一覧", admins_orders_index_path, class: "btn text-light", style: "background-color: #5c4834; "%>
+        </li>
         <li class="nav-item dropdown">
           <div class="dropdown-menu" aria-labelledby="dropdown">
             <%= link_to "商品一覧","商品一覧ページのリンク" %>

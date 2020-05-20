@@ -9,6 +9,11 @@ Rails.application.routes.draw do
 
   namespace :admins do
   	get 'homes/top'
+  	get 'orders/index'
+  	get 'orders/show'
+  	get 'members/show'
+  	get 'members/edit'
+    get 'members/index'
   end
 
   devise_for :admins, controllers: {
