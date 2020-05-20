@@ -4,10 +4,10 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :shipping_addresses,  dependent: :destroy
-  has_many :cart_items,  dependent: :destroy
-  has_many :orders,  dependent: :destroy
-
+  has_many :shipping_addresses,dependent: :destroy
+  has_many :cart_items,dependent: :destroy
+  has_many :orders,dependent: :destroy
+  
   enum deleted_status:{"退会": 0,"有効":1}
   	validates :last_name, presence: true
   	validates :first_name, presence: true
@@ -24,13 +24,13 @@ class Member < ApplicationRecord
                          }
 
     validates :postal_code, presence: true, numericality: { only_integer: true},
-                  format: { 
+                  format: {
                            with: /\A\d{7}\z/,
                            message: "を正しく入力して下さい"
                           }
 
-  	validates :telephone, presence: true, numericality: { only_integer: true}, 
-                  format: { 
+  	validates :telephone, presence: true, numericality: { only_integer: true},
+                  format: {
                            with:/\A\d{10,11}\z/,
                            message: "を正しく入力してください"
                           }
