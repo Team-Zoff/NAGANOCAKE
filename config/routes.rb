@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   	get 'members/show'
   	get 'members/edit'
     get 'members/index'
-
   end
 
   devise_for :admins, controllers: {
