@@ -4,8 +4,10 @@ Rails.application.routes.draw do
    sessions: 'members/sessions',
    registrations: 'members/registrations'
   }
-
-
+  
+  namespace :members do
+    resources :products
+  end
 
   namespace :admins do
   	get 'homes/top'
@@ -20,9 +22,6 @@ Rails.application.routes.draw do
   	sessions: 'admins/sessions'
   }
 
-  namespace :members do
-    resources :products
-  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
