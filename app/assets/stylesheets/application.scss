@@ -13,3 +13,45 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+
+body{
+	background-color:#fbe9b7; /*サイト全体の背景色*/
+	font-family: "Hiragino Sans CNS",
+	"Yu Gothic";
+}
+
+.navbar-brand{
+	font-family: "Chalkduster",
+	"Segoe Script",
+	"Ink Free",
+	"Arial";
+}
+
+.nav-item{
+	font-family: "Hiragino Sans CNS",
+    "Yu Gothic",
+    "Meiryo";
+}
+
+.btn-nav:hover {
+ 	background-color:#50232d;
+ 	border-color: #492029;
+}
+
+.genres{
+	background-color:#fbe4e7;
+	border: 10px solid #fbe4e7;
+	border-radius: 8px;
+	border-spacing: 0;
+	border-collapse: separate;
+	padding: 0;
+}
+
+.genres_head{
+	color:#5c2534;
+}
+.genres_body a{
+	color:#5c2534;
+}
+
