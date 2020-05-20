@@ -10,10 +10,6 @@ protected
         devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
 
-  def after_sign_in_path_for(resource)
-    user_path(resource)
-  end
-
   # ログイン後のリダイレクト先
   def after_sign_in_path_for(resource_or_scope)
     if resource_or_scope.is_a?(Admin)
