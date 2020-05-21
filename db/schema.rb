@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 2020_05_20_073337) do
     t.string "product_image_id"
     t.integer "price_excluding_tax"
     t.integer "sale_status"
+  end
     
   create_table "shipping_addresses", force: :cascade do |t|
     t.integer "member_id"
