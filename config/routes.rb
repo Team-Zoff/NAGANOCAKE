@@ -50,11 +50,7 @@ Rails.application.routes.draw do
     get '/members/sign_up' => 'members/registrations#new', as: 'new_member_registration'
     post '/members/sign_up' => 'members/registrations#create', as: 'member_registration'
     get '/members/' => 'members/passwords#edit', as: 'edit_member_password'
-    patch '/members/' => 'members/passwords#update', as: 'member_password'
-  end
-
-  namespace :users do
-    resources :posts
+    patch '/members/passwords' => 'members/passwords#update', as: 'member_password'
   end
 
 
