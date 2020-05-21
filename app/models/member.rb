@@ -24,13 +24,13 @@ class Member < ApplicationRecord
                          }
 
     validates :postal_code, presence: true, numericality: { only_integer: true},
-                  format: { 
+                  format: {
                            with: /\A\d{7}\z/,
                            message: "を正しく入力して下さい"
                           }
 
-  	validates :telephone, presence: true, numericality: { only_integer: true}, 
-                  format: { 
+  	validates :telephone, presence: true, numericality: { only_integer: true},
+                  format: {
                            with:/\A\d{10,11}\z/,
                            message: "を正しく入力してください"
                           }
