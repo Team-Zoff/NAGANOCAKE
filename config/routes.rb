@@ -1,30 +1,9 @@
 Rails.application.routes.draw do
 
-
-  get 'cart_items/index'
-  get 'cart_items/destroy'
-  get 'cart_items/destroy_all'
-  get 'cart_items/update'
-  get 'cart_items/create'
-  get 'cart_items/update'
-  get 'homes/top'
-  get 'homes/about'
-  get 'shipping_addresses/index'
-  get 'shipping_addresses/destroy'
-  get 'shipping_addresses/create'
-  get 'shipping_addresses/edit'
-  get 'shipping_addresses/update'
-  get 'orders/index'
-  get 'orders/show'
-  get 'orders/purchase_information'
-  get 'orders/select'
-  get 'orders/confirmation'
-  get 'orders/thanks'
   #devise_for :members, controllers: {
    #sessions: 'members/sessions',
    #registrations: 'members/registrations'
   #}
-
 
   namespace :members do
     resource :members, only:[:show,:edit,:update]
@@ -51,12 +30,25 @@ Rails.application.routes.draw do
 
   namespace :admins do
   	get 'homes/top'
-  	get 'order_details/update'
+    resources :products, only:[:new,:create]
+  	get 'orders/index'
+  	get 'orders/show'
+  	get 'members/show'
+  	get 'members/edit'
+    get 'members/index'
+  end
+
+  # devise_for :admins, controllers: {
+  # 	sessions: 'admins/sessions'
+  # }
+
+  get 'order_details/update' do
     resources :genres, only:[:create, :index, :edit, :update]
     resources :products, only:[:index, :new, :create, :show, :edit, :update]
     resources :orders, only:[:index, :show, :update]
     resources :members, only:[:index, :show, :edit, :update]
   end
+
   # devise_for :admins, controllers: {
   	# sessions: 'admins/sessions'
   # }
@@ -75,7 +67,6 @@ Rails.application.routes.draw do
   namespace :users do
     resources :posts
   end
-
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
