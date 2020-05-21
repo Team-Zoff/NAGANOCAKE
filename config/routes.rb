@@ -1,6 +1,25 @@
 Rails.application.routes.draw do
 
 
+  get 'cart_items/index'
+  get 'cart_items/destroy'
+  get 'cart_items/destroy_all'
+  get 'cart_items/update'
+  get 'cart_items/create'
+  get 'cart_items/update'
+  get 'homes/top'
+  get 'homes/about'
+  get 'shipping_addresses/index'
+  get 'shipping_addresses/destroy'
+  get 'shipping_addresses/create'
+  get 'shipping_addresses/edit'
+  get 'shipping_addresses/update'
+  get 'orders/index'
+  get 'orders/show'
+  get 'orders/purchase_information'
+  get 'orders/select'
+  get 'orders/confirmation'
+  get 'orders/thanks'
   #devise_for :members, controllers: {
    #sessions: 'members/sessions',
    #registrations: 'members/registrations'
