@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 2020_05_20_073337) do
     t.integer "sale_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
 
   create_table "shipping_addresses", force: :cascade do |t|
     t.integer "member_id"
