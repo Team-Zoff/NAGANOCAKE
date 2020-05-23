@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 devise_for :members, skip: :all
   devise_scope :member do
@@ -17,20 +18,40 @@ devise_for :members, skip: :all
     resources :withdrawal do
       patch :toggle_status
     end
+=======
+
+
+  #devise_for :members, controllers: {
+   #sessions: 'members/sessions',
+   #registrations: 'members/registrations'
+  #}
+
+
+  namespace :members do
+    resource :members, only:[:show,:edit,:update]
+>>>>>>> 8340c29cd657043a66a481076081fa09c83a88a1
     get 'members/withdrawal'
     resource :orders, only:[:index,:show]
     get 'orders/purchase_information'
     get 'orders/confirmation'
     get 'orders/thanks'
     post 'orders/select'
+<<<<<<< HEAD
     resources :shipping_addresses,only:[:index,:show,:edit,:create,:update,:destroy]
+=======
+    resources :shipping_addresses,only:[:index,:edit,:create,:update,:destroy]
+>>>>>>> 8340c29cd657043a66a481076081fa09c83a88a1
     resources :cart_items,only:[:index,:show,:edit,:create,:update,:destroy]
     delete 'members/destroy_all'
     resources :products,only:[:index,:show]
   end
 
+<<<<<<< HEAD
 =======
 >>>>>>> b72dd2bc23254e452e99fd3e1e292e39e617a80c
+=======
+
+>>>>>>> 8340c29cd657043a66a481076081fa09c83a88a1
   devise_for :admins, skip: :all
   devise_scope :admins do
     get 'admins/sign_in' => 'admins/sessions#new', as: 'new_admin_session'

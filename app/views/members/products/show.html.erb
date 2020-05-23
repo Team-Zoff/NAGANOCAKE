@@ -1,20 +1,22 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-3">
-      <h2>あやちゃん担当</h2>
-      <p>ジャンル検索ページ<br>(ここの箇所は部分テンプレートです。)</p>
+      <%= render partial: 'layouts/genres_sidebar' %>
     </div>
     <div class="col-xs-9 ml-5">
-      <div class="img-show">
+      <div class="img">
+        <%= attachment_image_tag(@products, :product_image, :fill, 100, 100) %>
       </div>
       <div class="products-show">
-        <h2>商品名</h2>
-        <p>商品内容</p>
-        <p>価格</p>
+        <h2><%= @products.product_name %></h2>
+        <p>商品の説明です。商品の説明です。</p>
+        <p><%= @products.price_excluding_tax %></p>
       </div>
       <div class="form-show">
-        <!-- 個数選べる
-        カートにいれるボタン -->
+        <%= form_for(@cart_items, url:members_cart_items_path) do |f| %>
+         <%= f.select :number_of_products, [1,2,3,4,5,6,7,8,9,10] %>
+        <%= f.submit 'カートにいれる', class: 'btn btn-info ' %>
+        <% end %>
       </div>
     </div>
   </div>
