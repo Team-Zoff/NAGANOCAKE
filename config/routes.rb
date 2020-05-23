@@ -9,13 +9,14 @@ Rails.application.routes.draw do
   end
 
   devise_for :members, skip: :all
-  devise_scope :members do
+  devise_scope :member do
     get '/members/sign_in' => 'members/sessions#new', as: 'new_member_session'
     post '/members/sign_in' => 'members/sessions#create', as: 'member_session'
     delete '/members/sign_out' => 'members/sessions#destroy', as: 'destroy_member_session'
     get '/members/sign_up' => 'members/registrations#new', as: 'new_member_registration'
     post '/members/sign_up' => 'members/registrations#create', as: 'member_registration'
     get '/members/' => 'members/passwords#edit', as: 'edit_member_password'
+
     patch '/members/' => 'members/passwords#update', as: 'member_password'
   end
 
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
     resources :products, only:[:index, :new, :create, :show, :edit, :update]
     resources :orders, only:[:index, :show, :update]
     resources :members, only:[:index, :show, :edit, :update]
+
   end
 
   namespace :members do
