@@ -9,6 +9,7 @@ class Admins::GenresController < ApplicationController
 		 genre = genre.new(genre_params)
 	 if  genre.save
 	 	 redirect_to request.referer
-	else redirect_to action: :new
+	else
+		redirect_to action: :new
 	end
 end
