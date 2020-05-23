@@ -8,7 +8,7 @@ class Member < ApplicationRecord
   has_many :shipping_addresses,dependent: :destroy
   has_many :cart_items,dependent: :destroy
   has_many :orders,dependent: :destroy
-  
+
   enum deleted_status:{"退会": 0,"有効":1}
   	validates :last_name, presence: true
   	validates :first_name, presence: true

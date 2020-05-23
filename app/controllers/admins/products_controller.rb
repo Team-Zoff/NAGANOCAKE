@@ -2,17 +2,24 @@ class Admins::ProductsController < ApplicationController
 
 	def new
 		@product = Product.new
-
+		@genres = Genre.all
 	end
 
 	def create
 		product = Product.new(product_params)
-		product.save
+	    if product.save
+	    	flash[:notice] = "Product was successfully created."
+	    	redirect_to action: :new
+	    else
+	    	@product = Product.new
+	    	render :new
+	    end
 	end
 
-	    private
+	private
+
     def product_params
-        params.require(:genre).permit(:name,:)
+        params.require(:product).permit(:product_image,:product_name,:description,:genre_id,:price_excluding_tax,:sale_status)
     end
 
 end
