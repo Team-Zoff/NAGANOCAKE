@@ -15,7 +15,7 @@ protected
     if resource_or_scope.is_a?(Admin)
       admin_homes_top_path
     else
-      root_path
+      members_member_path
     end
   end
 
@@ -28,4 +28,3 @@ protected
     end
   end
 end
-

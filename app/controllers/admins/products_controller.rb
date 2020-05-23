@@ -10,9 +10,9 @@ class Admins::ProductsController < ApplicationController
 		product.save
 	end
 
-	    private
+	private
     def product_params
-        params.require(:genre).permit(:name,:)
+        params.require(:genre).permit(:product_name,:description,:price_excluding_tax,:sale_status)
     end
 
 end

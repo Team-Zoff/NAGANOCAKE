@@ -38,4 +38,6 @@ class Member < ApplicationRecord
 
   	validates :address, presence: true
 
+    validates :password, length: {minimum: 6}
+
 end

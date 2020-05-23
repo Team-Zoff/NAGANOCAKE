@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
 
-
-  #devise_for :members, controllers: {
-   #sessions: 'members/sessions',
-   #registrations: 'members/registrations'
-  #}
-
+devise_for :members, skip: :all
+  devise_scope :member do
+    get '/members/sign_in' => 'members/sessions#new', as: 'new_member_session'
+    post '/members/sign_in' => 'members/sessions#create', as: 'member_session'
+    delete '/members/sign_out' => 'members/sessions#destroy', as: 'destroy_member_session'
+    get '/members/sign_up' => 'members/registrations#new', as: 'new_member_registration'
+    post '/members/sign_up' => 'members/registrations#create', as: 'member_registration'
+    get '/members/' => 'members/passwords#edit', as: 'edit_member_password'
+    patch '/members/passwords' => 'members/passwords#update', as: 'member_password'
+  end
 
   namespace :members do
-    resource :members, only:[:show,:edit,:update]
+    resource :member, only:[:show,:edit,:update]
     get 'members/withdrawal'
     resource :orders, only:[:index,:show]
     get 'orders/purchase_information'
@@ -38,21 +42,6 @@ Rails.application.routes.draw do
     resources :orders, only:[:index, :show, :update]
     resources :members, only:[:index, :show, :edit, :update]
   end
-  # devise_for :admins, controllers: {
-  	# sessions: 'admins/sessions'
-  # }
-
-  devise_for :members, skip: :all
-  devise_scope :members do
-    get '/members/sign_in' => 'members/sessions#new', as: 'new_member_session'
-    post '/members/sign_in' => 'members/sessions#create', as: 'member_session'
-    delete '/members/sign_out' => 'members/sessions#destroy', as: 'destroy_member_session'
-    get '/members/sign_up' => 'members/registrations#new', as: 'new_member_registration'
-    post '/members/sign_up' => 'members/registrations#create', as: 'member_registration'
-    get '/members/' => 'members/passwords#edit', as: 'edit_member_password'
-    patch '/members/passwords' => 'members/passwords#update', as: 'member_password'
-  end
-
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
