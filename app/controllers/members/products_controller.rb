@@ -8,5 +8,5 @@ class Members::ProductsController < ApplicationController
     @products = Products.find(params[:id])
     @cart_items = CartItems.new
   end
-
+  
 end

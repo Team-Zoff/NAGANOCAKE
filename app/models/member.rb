@@ -9,9 +9,17 @@ class Member < ApplicationRecord
   has_many :cart_items,dependent: :destroy
   has_many :orders,dependent: :destroy
 
-  enum deleted_status:{"退会": 0,"有効":1}
+  enum deleted_status:{ 退会: 0, 有効: 1}
   	validates :last_name, presence: true
   	validates :first_name, presence: true
+
+  def toggle_deleted_status!
+    if 有効?
+      退会!
+    else
+      有効!
+    end
+  end
 
   	validates :last_name_kana, presence: true,
                  format: {
@@ -37,5 +45,7 @@ class Member < ApplicationRecord
                           }
 
   	validates :address, presence: true
+
+    validates :password, length: {minimum: 6}
 
 end
