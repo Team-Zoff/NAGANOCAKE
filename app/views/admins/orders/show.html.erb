@@ -10,23 +10,23 @@
 	<div class="row">
 		<label class="col-md-2">購入者</label>
 		<div class="col-md-10">
-			<%#= link_to @orderer.member_id.first_name, admins_orders_show_path %>
+			<%#= link_to @order.member.first_name + @order.member.last_name, admins_orders_show_path %>
 		</div>
 		<label class="col-md-2">配送先</label>
 		<div class="col-10">
-			<%#= @orderer.postal_code %>
-			<%#= @orderer.address %>
-			<%#= @orderer.address_name %>
+			<%#= @order.postal_code + @order.address + @order.address_name %>
 		</div>
 		<label class="col-md-2">支払方法</label>
 		<div class="col-10">
-			<%#= @orderer.method_of_payment %>
+			<%#= @order.method_of_payment %>
 		</div>
 		<label class="col-md-2">支払いステータス</label>
 		<div class="col-5 row">
-			<%#= form_for @orderer do |f| %>
+			<%#= form_for(@order) do |order| %>
 			<select class="custom-select col-5" id="inlineFormCustomSelect">
-     		    <option selected>Choose...</option>
+     		    <option selected>
+     		    	<%= order.order_status %>
+     		    </option>
     		    <option value="1">
     		    	<%#= f.option :order_status, :入金待ち %>入金待ち
     		    </option>
@@ -66,34 +66,36 @@
 					</tr>
 				</thead>
 				<tbody>
-					<%#　@order_products.each do |order| %>
+					<%#　@order_details.each do |order_detail| %>
 					<tr>
-						<td><%#= order.product_id.product_name %></td>
-						<td><%#= order.price %></td>
-						<td><%#= order.purchase_quantity %></td>
-						<td><%#= order.production_status %></td>
+						<td><%#= order_detail.product.product_name %></td>
+						<td><%#= order_detail.price %></td>
+						<td><%#= order_detail.purchase_quantity %></td>
+						<td><%#= order_detail.production_status %></td>
 						<td><div class="form-row align-items-center">
 						   		 <div class="col-auto my-1">
 						     		 <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-						     		 <%#　@order_products.each do |order| %>
 						     		 <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-						     		    <option selected>Choose...</option>
+						     		 	<%= form_for(order_detail) %>
+						     		    <option selected><%= order_detail.production_status %></option>
 						    		    <option value="1">
-						    		    	<%#= f.option :order_status, :着手不可 %>着手不可
+						    		    	<%#= f.option :production_status, :着手不可 %>着手不可
 						    		    </option>
 						   	 		    <option value="2">
-						   	 		    	<%#= f.option :order_status, :製作待ち %>製作待ち
+						   	 		    	<%#= f.option :production_status, :製作待ち %>製作待ち
 						   	 		    </option>
 						     		    <option value="3">
-						     		    	<%#= f.option :order_status, :製作中 %>製作中
+						     		    	<%#= f.option :production_status, :製作中 %>製作中
 						     		    </option>
 						     		    <option value="4">
-						     		    	<%#= f.option :order_status, :製作完了 %>製作完了
+						     		    	<%#= f.option :production_status, :製作完了 %>製作完了
 						     		    </option>
+						     		    <% end %>
 					      		</select>
 							</div></td>
 						<td> <button type="submit" class="btn btn-secondary">更新</button></td>
 					</tr>
+					<% end %>
 				</tbody>
 			</table>
 
@@ -101,7 +103,7 @@
 		<div class="row col-3 align-items-center py-5 mx-5">
 			<div class="col-5 text-right">商品合計</div>
 			<div class="col-6">
-				<%#= @order_products.count %>
+				<%#= @order.confirmed_purchase_price %>
 			</div>
 			<div class="col-5 text-right">送料</div>
 			<div class="col-6">
@@ -109,7 +111,7 @@
 			</div>
 			<div class="col-5 text-right">請求金額合計</div>
 			<div class="col-6">
-				<%#= @order.confirmed_purchase_price %>
+				<%#= @order.shipping_free + @order.confirmed_purchase_price %>
 			</div>
 	    </div>
 </div>
