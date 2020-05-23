@@ -13,6 +13,9 @@ devise_for :members, skip: :all
 
   namespace :members do
     resource :member, only:[:show,:edit,:update]
+    resources :withdrawal do
+      patch :toggle_status
+    end
     get 'members/withdrawal'
     resource :orders, only:[:index,:show]
     get 'orders/purchase_information'
