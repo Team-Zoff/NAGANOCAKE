@@ -10,7 +10,7 @@
 	<div class="row">
 		<label class="col-md-2">購入者</label>
 		<div class="col-md-10">
-			<%= link_to @orderer.member_id.first_name, admins_orders_show_path %>
+			<%#= link_to @orderer.member_id.first_name, admins_orders_show_path %>
 		</div>
 		<label class="col-md-2">配送先</label>
 		<div class="col-10">
@@ -101,15 +101,15 @@
 		<div class="row col-3 align-items-center py-5 mx-5">
 			<div class="col-5 text-right">商品合計</div>
 			<div class="col-6">
-				<%= @order_products.count %>
+				<%#= @order_products.count %>
 			</div>
 			<div class="col-5 text-right">送料</div>
 			<div class="col-6">
-				<%= @order.shipping_free %>
+				<%#= @order.shipping_free %>
 			</div>
 			<div class="col-5 text-right">請求金額合計</div>
 			<div class="col-6">
-				<%= @order.confirmed_purchase_price %>
+				<%#= @order.confirmed_purchase_price %>
 			</div>
 	    </div>
 </div>
