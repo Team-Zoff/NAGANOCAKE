@@ -9,19 +9,41 @@
 <div class="container">
 	<div class="row">
 		<label class="col-md-2">購入者</label>
-		<div class="col-md-10"></div>
+		<div class="col-md-10">
+			<%#= link_to @order.member.first_name + @order.member.last_name, admins_orders_show_path %>
+		</div>
 		<label class="col-md-2">配送先</label>
-		<div class="col-10"></div>
+		<div class="col-10">
+			<%#= @order.postal_code + @order.address + @order.address_name %>
+		</div>
 		<label class="col-md-2">支払方法</label>
-		<div class="col-10"></div>
+		<div class="col-10">
+			<%#= @order.method_of_payment %>
+		</div>
 		<label class="col-md-2">支払いステータス</label>
 		<div class="col-5 row">
+			<%#= form_for(@order) do |order| %>
 			<select class="custom-select col-5" id="inlineFormCustomSelect">
-     		    <option selected>Choose...</option>
-    		    <option value="1">One</option>
-   	 		    <option value="2">Two</option>
-     		    <option value="3">Three</option>
+     		    <option selected>
+     		    	<%= order.order_status %>
+     		    </option>
+    		    <option value="1">
+    		    	<%#= f.option :order_status, :入金待ち %>入金待ち
+    		    </option>
+   	 		    <option value="2">
+   	 		    	<%#= f.option :order_status, :入金確認 %>入金確認
+   	 		    </option>
+     		    <option value="3">
+     		    	<%#= f.option :order_status, :製作中 %>製作中
+     		    </option>
+     		    <option value="4">
+     		    	<%#= f.option :order_status, :発送準備中 %>発送準備中
+     		    </option>
+     		    <option value="5">
+     		    	<%#= f.option :order_status, :発送済み %>発送済み
+     		    </option>
       		</select>
+      		<%# end %>
       		<button type="submit" class="btn btn-secondary mx-2">更新</button>
 		</div>
 		<div class="col-5"></div>
@@ -44,35 +66,53 @@
 					</tr>
 				</thead>
 				<tbody>
-					<%# 商品詳細　注文商品一覧表示.each do %>
+					<%#　@order_details.each do |order_detail| %>
 					<tr>
-						<td>aaa</td>
-						<td>aaa</td>
-						<td>aaa</td>
-						<td>aaa</td>
+						<td><%#= order_detail.product.product_name %></td>
+						<td><%#= order_detail.price %></td>
+						<td><%#= order_detail.purchase_quantity %></td>
+						<td><%#= order_detail.production_status %></td>
 						<td><div class="form-row align-items-center">
 						   		 <div class="col-auto my-1">
 						     		 <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
 						     		 <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-						     		    <option selected>Choose...</option>
-						    		    <option value="1">One</option>
-						   	 		    <option value="2">Two</option>
-						     		    <option value="3">Three</option>
-						      		</select>
+						     		 	<%= form_for(order_detail) %>
+						     		    <option selected><%= order_detail.production_status %></option>
+						    		    <option value="1">
+						    		    	<%#= f.option :production_status, :着手不可 %>着手不可
+						    		    </option>
+						   	 		    <option value="2">
+						   	 		    	<%#= f.option :production_status, :製作待ち %>製作待ち
+						   	 		    </option>
+						     		    <option value="3">
+						     		    	<%#= f.option :production_status, :製作中 %>製作中
+						     		    </option>
+						     		    <option value="4">
+						     		    	<%#= f.option :production_status, :製作完了 %>製作完了
+						     		    </option>
+						     		    <% end %>
+					      		</select>
 							</div></td>
 						<td> <button type="submit" class="btn btn-secondary">更新</button></td>
 					</tr>
+					<% end %>
 				</tbody>
 			</table>
 
 		</div>
 		<div class="row col-3 align-items-center py-5 mx-5">
 			<div class="col-5 text-right">商品合計</div>
-			<div class="col-6">６点後でやる</div>
+			<div class="col-6">
+				<%#= @order.confirmed_purchase_price %>
+			</div>
 			<div class="col-5 text-right">送料</div>
-			<div class="col-6">800円後でやる</div>
+			<div class="col-6">
+				<%#= @order.shipping_free %>
+			</div>
 			<div class="col-5 text-right">請求金額合計</div>
-			<div class="col-6">12,000円後でやる</div>
+			<div class="col-6">
+				<%#= @order.shipping_free + @order.confirmed_purchase_price %>
+			</div>
 	    </div>
 </div>
 

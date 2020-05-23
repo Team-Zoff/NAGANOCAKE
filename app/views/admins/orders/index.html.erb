@@ -21,8 +21,8 @@
 			<% @orders.each do |order| %>
 		<tr>
 			<td><%= link_to order.created_at, admins_orders_show_path %></td>
-			<td><%= order.member_id.last_name %></td>
-			<td><%#= order.注文詳細モデルから引っ張る %></td>
+			<td><%= order.member.first_name + order.member.last_name %></td>
+			<td><%= order.order_detail.purchase_quantity %></td>
 			<td><%= order.order_status %></td>
 		</tr>
 		<% end %>
