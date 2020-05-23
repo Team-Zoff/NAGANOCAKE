@@ -1,21 +1,21 @@
 class Admins::OrdersController < ApplicationController
 	class Admins::OrdersController < ApplicationController
 	def index
-        @path = Rails.application.routes.recognize_path(request.referer)
-          if @path[:controller] == "application"
-		     @orders = Order.all
-		     #ヘッダーから遷移してきた時
-		 elsif @path[:controller] == "admins/members"
-		 	@order_member = Order.find(params[:id])
-		 	@orders = @order_member.all
-		 	#会員詳細から遷移してきた時
-		 else @path[:controller] == "admins/homes"
-		 	@orders_today = Order.where('created_at > ?', 1.day)
-		 	@orders = @orders_today.all
-		 end
+		if params[:page_id] == 1
+			@orders = Order.all
+		elsif params[:page_id] == 2
+			@orders = Order.where('created_at > ?', 1.day)
+		else
+			@orders = Order.all
+			#該当顧客のデータ　あとで作ります
+		end
+
+		# link_to hogehoge_path(page_id: 1)
+		# link_to hogehoge_path, page_id: 1
 	end
 	def show
-		#@order_member = Order.find(params[:id])
+		# @order = Order.find(current_member)
+		# @order_products = Order_detail.order_id
 	end
 end
 end

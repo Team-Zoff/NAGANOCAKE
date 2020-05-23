@@ -13,5 +13,4 @@ class Product < ApplicationRecord
     validates :price_excluding_tax, presence: true
     validates :sale_status, presence: true
 
-
 end
