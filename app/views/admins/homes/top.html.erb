@@ -8,7 +8,7 @@
     <div class="row" style="margin-top:50px;">
       <div class="col-5 text-right">
         <h5>本日の注文件数
- 	      <ins><%= link_to @number_of_orders, admins_orders_index_path, class:"text-secondary" %></ins> 件
+ 	      <ins><%= link_to @number_of_orders, admins_orders_path(page_id: 2), class:"text-secondary" %></ins> 件
        </h5>
       </div>
     </div>
