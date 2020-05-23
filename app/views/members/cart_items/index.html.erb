@@ -1,0 +1,49 @@
+<%# 計算処理 %>
+<% total = 0 %>
+<% @cart_items.each do |cart_items| %>
+ <% products_price = cart_items.products.price_excluding_tax * 1.10 %>
+ <% products_number = cart_items.number_of_products %>
+  <% subtotal = products_price *  products_number %>
+  <% total = total + subtotal %>
+<% end %>
+
+<%# view処理 %>
+<div class="row">
+  <h2>ショッピングカート</h2>
+  <%= link_to 'カートを空にする',members_cart_item_path(@cart_items.id),,method: :delete,class: 'btn btn-primary' %>
+  <table>
+    <thead>
+      <tr>
+        <th>商品</th><th>単価(税込み)</th><th>数量</th><th>小計</th><th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cart_items.each do |cart_items| %>
+      <tr>
+        <td>
+          <%= cart_items.products.product_name %>
+        </td>
+        <td>
+          <%= products_price = cart_items.products.price_excluding_tax * 1.10 %>
+        </td>
+        <td>
+          <%= products_number = cart_items.number_of_products %>
+        </td>
+        <td>
+          <%= subtotal = products_price *  products_number %>
+        </td>
+        <td>
+          <%= link_to '削除する',members_cart_item_path(cart_items.product_id),,method: :delete,class: 'btn btn-primary' %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="row">
+  <%= link_to '買い物を続ける',members_products_path,,method: :delete,class: 'btn btn-primary' %>
+  <%= "合計金額#{total}"%>
+</div>
+<div>
+  <%= link_to '情報入力に進む',members_orders_purchase_information_path %>
+</div>

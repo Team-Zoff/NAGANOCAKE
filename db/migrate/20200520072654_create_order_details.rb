@@ -5,7 +5,8 @@ class CreateOrderDetails < ActiveRecord::Migration[5.2]
       t.integer :product_id
       t.integer :price
       t.integer :purchase_quantity
-      t.integer :production_status
+      t.integer :production_status,　default: 0
+      # enumのデフォルト値
 
       t.timestamps
     end
