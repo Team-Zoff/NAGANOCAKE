@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   # }
 
   devise_for :members, skip: :all
-  devise_scope :members do
+  devise_scope :member do
     get '/members/sign_in' => 'members/sessions#new', as: 'new_member_session'
     post '/members/sign_in' => 'members/sessions#create', as: 'member_session'
     delete '/members/sign_out' => 'members/sessions#destroy', as: 'destroy_member_session'

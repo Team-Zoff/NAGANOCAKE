@@ -1,4 +1,5 @@
 class Admins::OrdersController < ApplicationController
+	class Admins::OrdersController < ApplicationController
 	def index
         @path = Rails.application.routes.recognize_path(request.referer)
           if @path[:controller] == "application"
@@ -16,4 +17,5 @@ class Admins::OrdersController < ApplicationController
 	def show
 		#@order_member = Order.find(params[:id])
 	end
+end
 end
