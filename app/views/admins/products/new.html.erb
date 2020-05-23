@@ -1,13 +1,15 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-4">
-			<%= notice %>
+			<% if flash[:notice] %>
+				<p><%= flash[:notice] %></p>
+			<% end %>
 			<h2>新規登録</h2>
 		</div>
 	</div>
 
-	<div class="row">
-		<%= form_for(@product, url:admins_products_path) do |f| %>
+	<%= form_for(@product, url:admins_products_path) do |f| %>
+		<div class="row">
 			<div class="col-md-4">
 				<%= f.attachment_field :product_image %>
 			</div>
@@ -16,16 +18,24 @@
 				<div class="row">
 				    <span class="col-md-4"><%= f.label :product_name,"商品名" %></span>
 					<span class="col-md-8"><%= f.text_field :product_name, class:"form-control", placeholder:"商品名" %></span>
+				</div>
 
+				<div class="row">
 					<span class="col-md-4"><%= f.label :description,"商品説明" %></span>
 					<span class="col-md-8"><%= f.text_field :description, class:"form-control", placeholder:"商品説明" %></span>
+				</div>
 
+				<div class="row">
 					<span class="col-md-4"><%= f.label :genre_id,"ジャンル" %></span>
 					<span class="col-md-8"><%= f.collection_select :genre_id, Genre.all,:id,:name %><br></span>
+				</div>
 
+				<div class="row">
 					<span class="col-md-4"><%= f.label :price_excluding_tax,"税抜き価格" %></span>
 					<span class="col-md-8"><%= f.text_field :price_excluding_tax, class:"form-control", placeholder:"税抜き価格" %></span>
+				</div>
 
+				<div class="row">
 					<span class="col-md-4"><%= f.label :sale_status,"販売ステータス" %></span>
 					<span class="col-md-8"><%= f.select :sale_status, [["販売中",0],["売り切れ",1]]%></span>
 				</div>
@@ -34,7 +44,6 @@
 			<div class="col-md-4">
 				<%= f.submit "新規登録" ,class:"btn-primary btn-sm  mt-20"%>
 			</div>
-
-		<% end %>
-	</div>
+		</div>
+	<% end %>
 </div>
