@@ -1,4 +1,27 @@
 Rails.application.routes.draw do
+
+
+  #devise_for :members, controllers: {
+   #sessions: 'members/sessions',
+   #registrations: 'members/registrations'
+  #}
+
+
+  namespace :members do
+    resource :members, only:[:show,:edit,:update]
+    get 'members/withdrawal'
+    resource :orders, only:[:index,:show]
+    get 'orders/purchase_information'
+    get 'orders/confirmation'
+    get 'orders/thanks'
+    post 'orders/select'
+    resources :shipping_addresses,only:[:index,:edit,:create,:update,:destroy]
+    resources :cart_items,only:[:index,:show,:edit,:create,:update,:destroy]
+    delete 'members/destroy_all'
+    resources :products,only:[:index,:show]
+  end
+
+
   devise_for :admins, skip: :all
   devise_scope :admins do
     get 'admins/sign_in' => 'admins/sessions#new', as: 'new_admin_session'
