@@ -1,5 +1,6 @@
 class Members::ShippingAddressesController < ApplicationController
   
+
   def index
     @member = current_member
     @shipping_addresses = @member.shipping_addresses
