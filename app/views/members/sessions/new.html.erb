@@ -32,21 +32,13 @@
     </div>
  </div>
 
-
-<!--  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>-->
+  <div class="actions">
+      <%= f.submit "　　ログイン　　" ,class:"btn-primary btn-sm  mt-20"%>
+  </div><br>
 
   <div class="text-right">
       <%= render "members/shared/links" %>
   </div>
-
-  <div class="actions">
-      <%= f.submit "　　ログイン　　" ,class:"btn-primary btn-sm  mt-20"%>
-  </div><br>
 
   <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
 <div class="row">
