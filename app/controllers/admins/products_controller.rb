@@ -13,7 +13,8 @@ class Admins::ProductsController < ApplicationController
 	 	render action: :new
 	 end
 	end
-
+	def index
+	end
 	    private
     def product_params
         params.require(:product).permit(:product_image,:product_name,:description,:genre_id,:price_excluding_tax,:sale_status)
