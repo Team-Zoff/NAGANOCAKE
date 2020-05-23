@@ -1,4 +1,5 @@
 class Admins::OrdersController < ApplicationController
+	class Admins::OrdersController < ApplicationController
 	def index
 		if params[:page_id] == 1
 			@orders = Order.all
@@ -16,4 +17,5 @@ class Admins::OrdersController < ApplicationController
 		# @order = Order.find(current_member)
 		# @order_products = Order_detail.order_id
 	end
+end
 end
