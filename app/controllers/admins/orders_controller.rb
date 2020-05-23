@@ -13,6 +13,7 @@ class Admins::OrdersController < ApplicationController
 		# link_to hogehoge_path, page_id: 1
 	end
 	def show
-		#@order_member = Order.find(params[:id])
+		# @order = Order.find(current_member)
+		# @order_products = Order_detail.order_id
 	end
 end
