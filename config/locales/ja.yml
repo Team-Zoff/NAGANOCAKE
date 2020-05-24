@@ -13,3 +13,24 @@ ja:
         password: パスワード
         remember_me: ""
 
+  enum:
+    member:
+        deleted_status:
+            Invalid: "退会"
+            Validity: "有効"
+    order:
+        method_of_payment:
+            bank_payment: "銀行決済"
+            credit_payment: "クレジットカード決済"
+        order_status:
+            unpaid: "入金待ち"
+            paid: "入金確認"
+            producing: "製作中"
+            preparing: "発送準備中"
+            shipped: "発送済み"
+    order_detail:
+        production_status:
+            not_ready: "着手不可"
+            ready: "製作待ち"
+            doing: "製作中"
+            done: "制作完了"

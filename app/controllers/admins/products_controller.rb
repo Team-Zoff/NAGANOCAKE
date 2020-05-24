@@ -24,7 +24,6 @@ class Admins::ProductsController < ApplicationController
 	    end
 	end
 
-
 	def edit
 		@product = Product.find(params[:id])
 	end
@@ -44,4 +43,5 @@ class Admins::ProductsController < ApplicationController
     def product_params
         params.require(:product).permit(:product_image,:product_name,:description,:genre_id,:price_excluding_tax,:sale_status)
 　  end
+
 end

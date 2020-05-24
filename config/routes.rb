@@ -14,7 +14,7 @@ devise_for :member, skip: :all
 
   namespace :members do
     resource :member, only:[:show,:edit,:update]
-    get 'members/withdrawal' => 'members#withdrawal',as: 'members_withdrawal'
+    get 'members/withdrawal' => 'members#withdrawal',as: 'withdrawal'
     get 'homes/top' => 'homes#top',as: '/'
     resource :orders, only:[:index,:show]
     get 'orders/purchase_information'
@@ -42,8 +42,8 @@ devise_for :member, skip: :all
     resources :products, only:[:index, :new, :create, :show, :edit, :update]
     resources :orders, only:[:index, :show, :update]
     resources :members, only:[:index, :show, :edit, :update]
-    get 'homes/top' => 'admins/homes#top',as: '/'
-    patch 'order/show' => 'admins/order_detail#update',as: 'order_status'
+    get 'homes/top' => 'homes#top',as: '/'
+    patch 'order/show' => 'order_detail#update',as: 'order_status'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

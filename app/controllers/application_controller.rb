@@ -26,5 +26,9 @@ before_action :configure_permitted_parameters, if: :devise_controller?
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
 
   end
+<<<<<<< HEAD
+end
+=======
 
 end
+>>>>>>> 958645bfd3f7522d69be440411d6b8dbcfeeb0bf

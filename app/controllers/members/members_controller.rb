@@ -9,6 +9,8 @@ class Members::MembersController < ApplicationController
 	end
 
 	def update
+		if @member.save
+			
 	end
 
 	def withdrawal
