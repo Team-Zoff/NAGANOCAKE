@@ -4,11 +4,12 @@
       <%= render partial: 'layouts/genres_sidebar' %>
     </div>
     <div class="col-xs-9 ml-5">
-      <h2><%= @products.genres.name %><%= " (全#{@products.count}件)" %></h2>
-      <% @products.each do |products| %>
-      <%= attachment_image_tag(products, :product_image, :fill, 100, 100) %>
-      <%= products.product_name %>
-      <%= "¥#{products.price_excluding_tax}" %>
+      <h2>商品一覧<%= "(全#{@products.count}件)" %></h2>
+        <% @products.each do |product| %>
+        <%= attachment_image_tag(product, :product_image, :fill, 100, 100) %>
+        <%= product.product_name %>
+        <%= "¥#{product.price_excluding_tax}" %>
+        <% end %>
     </div>
   </div>
 </div>
