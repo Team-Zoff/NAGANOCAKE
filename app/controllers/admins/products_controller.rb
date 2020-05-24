@@ -30,7 +30,14 @@ class Admins::ProductsController < ApplicationController
 	end
 
 	def update
-
+		product = Product.find(params[:id])
+		if product.update
+			flash[:notice] = "Product was successfully created."
+	    	redirect_to action: :new
+	    else
+	    	@product = Pruduct.find(params[:id])
+	    	render :edit
+	    end
 	end
 
 	private
