@@ -10,12 +10,3 @@ Admin.create!(
 	email: 'zoff@zoff.com',
 	password: 'zoffzoff'
 	)
-
-# テスト用
-Member.create!(
-	first_name: "鈴木",
-	last_name:"スズキ",
-	email: "b@b",
-	password: "bbbbbb",
-	deleted_status: 1
-	)
