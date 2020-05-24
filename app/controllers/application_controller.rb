@@ -3,7 +3,7 @@ before_action :configure_permitted_parameters, if: :devise_controller?
   # ログイン後のリダイレクト先
   def after_sign_in_path_for(resource)
     if resource.is_a?(Admin)
-      admins_homes_top_path
+      admins_path
     else
       members_member_path
     end

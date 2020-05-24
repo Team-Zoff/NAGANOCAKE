@@ -44,8 +44,8 @@ devise_for :members, skip: :all
     resources :products, only:[:index, :new, :create, :show, :edit, :update]
     resources :orders, only:[:index, :show, :update]
     resources :members, only:[:index, :show, :edit, :update]
-    get 'homes/top' => 'admins/homes#top',as: '/'
-    patch 'order/show' => 'admins/order_detail#update',as: 'order_status'
+    get 'homes/top' => 'homes#top',as: '/'
+    patch 'order/show' => 'rder_detail#update',as: 'order_status'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
