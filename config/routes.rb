@@ -26,8 +26,8 @@ devise_for :member, skip: :all
     delete 'members/destroy_all'
     resources :products, only:[:index,:show]
   end
-
-
+  
+  
   devise_for :admins, skip: :all
   devise_scope :admin do
     get 'admins/sign_in' => 'admins/sessions#new', as: 'new_admin_session'
