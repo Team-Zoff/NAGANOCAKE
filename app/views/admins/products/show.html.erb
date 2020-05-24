@@ -1,0 +1,48 @@
+<div class="container">
+	<div class="container" style="margin:4vw 50px 0;">
+		<div class="row">
+    		<div class="col-2 text-center">
+      			<h5 class="text-light bg-info">商品詳細</h5>
+			</div>
+		</div>
+  	</div>
+</div>
+
+<div class="container" style="margin-top:50px;">
+	<div class="row">
+		<div class="col-md-4">
+			<%= attachment_image_tag(@product, :product_image, :fill, 300, 250) %>
+		</div>
+
+		<div class="col-md-5">
+			<div class="row">
+			    <span class="col-md-4">商品名</span>
+				<span class="col-md-8"><%= @product.product_name %></span>
+			</div><br>
+
+			<div class="row">
+				<span class="col-md-4">商品説明</span>
+				<span class="col-md-8"><%= @product.description %></span>
+			</div><br>
+
+			<div class="row">
+				<span class="col-md-4">ジャンル</span>
+				<span class="col-md-8"><%= @product.genre_id %><br></span>
+			</div><br>
+
+			<div class="row">
+				<span class="col-md-4">税抜価格</span>
+				<span class="col-md-8"><%= @product.price_excluding_tax %></span>
+			</div><br>
+
+			<div class="row">
+				<span class="col-md-6">販売ステータス</span>
+				<span class="col-md-6"><%= @product.sale_status %></span>
+			</div><br>
+		</div>
+
+		<div class="col-md-12 text-right">
+			<%= link_to "編集する",edit_admins_product_path(@product) ,class:"btn-primary btn-sm  mt-20"%>
+		</div>
+	</div>
+</div>
