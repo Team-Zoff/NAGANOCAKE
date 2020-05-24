@@ -1,7 +1,7 @@
 class Members::ProductsController < ApplicationController
   def index
+  	@products = Product.all
     @genres = Genre.all
-    @products = @genres.products
   end
 
   def show
