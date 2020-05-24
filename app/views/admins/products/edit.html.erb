@@ -1,18 +1,16 @@
-<div class="container">
-	<div class="container" style="margin:4vw 50px 0;">
-		<div class="row">
-    		<div class="col-2 text-center">
-      			<h5 class="text-light bg-info">商品編集</h5>
-			</div>
+<div class="container" style="margin:4vw 50px 0;">
+	<div class="row">
+   		<div class="col-2 text-center">
+     		<h5 class="text-light bg-info">商品編集</h5>
 		</div>
-  	</div>
+	</div>
 </div>
 
 <div class="container" style="margin-top:50px;">
 	<%= form_for(@product, url:admins_product_path) do |f| %>
 		<div class="row">
 			<div class="col-md-4">
-				<%= attachment_image_tag(@product, :product_image, :fill, 300, 250) %>
+				<%= attachment_image_tag(@product, :product_image, :size =>'300x230', id: :img_prev) %>
 				<%= f.attachment_field :product_image %>
 			</div>
 
@@ -39,13 +37,31 @@
 
 				<div class="row" style="margin-top:20px">
 					<span class="col-md-5"><%= f.label :sale_status,"販売ステータス" %></span>
-					<span class="col-md-7"><%= f.select :sale_status, [["販売中",0],["売り切れ",1]] %></span>
+					<span class="col-md-7"><%= f.select :sale_status, [["販売中","sale"],["売り切れ","notsale"]] %></span>
 				</div><br>
 			</div>
 
 			<div class="col-md-12 text-right">
-				<%= f.submit "保存" ,class:"btn-primary btn-sm  mt-20"%>
+				<%= f.submit "　保存　" ,class:"btn-primary btn-sm  mt-20"%>
 			</div>
 		</div>
 	<% end %>
 </div>
+
+<!--画像投稿のプレビュー表示-->
+<script type="text/javascript">
+  $(function() {
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+    $('#img_prev').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#product_product_image").change(function(){
+        readURL(this);
+    });
+  });
+</script>

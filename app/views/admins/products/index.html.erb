@@ -2,7 +2,10 @@
   <div class="row">
     <div class="col-2"></div>
     <div class="col-2 text-center">
-      <h5 class="text-light bg-info">商品一覧</h5>
+    	<% if flash[:notice] %>
+			<p><%= flash[:notice] %></p>
+		<% end %>
+     	<h5 class="text-light bg-info">商品一覧</h5>
 	</div>
   </div>
 </div>
@@ -20,12 +23,12 @@
 		</thead>
 		<tbody>
 			<% @products.each do |product| %>
-			<tr>
-				<td><%= product.id %></td>
-				<td><%= link_to product.product_name ,admins_product_path(product) %></td>
-				<td><%= product.price_excluding_tax %></td>
-				<td><%= product.sale_status %></td>
-			</tr>
+				<tr>
+					<td><%= product.id %></td>
+					<td><%= link_to product.product_name ,admins_product_path(product) %></td>
+					<td><%= product.price_excluding_tax %></td>
+					<td><%= product.sale_status %></td>
+				</tr>
 			<% end %>
 		</tbody>
 	</table>

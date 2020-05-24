@@ -16,14 +16,13 @@ class Admins::ProductsController < ApplicationController
 	def create
 		product = Product.new(product_params)
 	    if product.save
-	    	flash[:notice] = "Product was successfully created."
-	    	redirect_to action: :new
+	    	flash[:notice] = "商品登録完了しました！"
+	    	redirect_to admins_product_path(product)
 	    else
 	    	@product = Product.new
 	    	render :new
 	    end
 	end
-
 
 	def edit
 		@product = Product.find(params[:id])
@@ -31,9 +30,9 @@ class Admins::ProductsController < ApplicationController
 
 	def update
 		product = Product.find(params[:id])
-		if product.update
-			flash[:notice] = "Product was successfully created."
-	    	redirect_to action: :new
+		if product.update(product_params)
+			flash[:notice] = "商品情報変更成功しました！"
+	    	redirect_to action: :show
 	    else
 	    	@product = Pruduct.find(params[:id])
 	    	render :edit
@@ -43,5 +42,5 @@ class Admins::ProductsController < ApplicationController
 	private
     def product_params
         params.require(:product).permit(:product_image,:product_name,:description,:genre_id,:price_excluding_tax,:sale_status)
-　  end
+    end
 end
