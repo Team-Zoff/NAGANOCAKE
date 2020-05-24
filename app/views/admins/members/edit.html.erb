@@ -75,22 +75,22 @@
 			<div class="col-4 row">
 				<div class="col">
 					<div class="form-check">
-						<%= f.radio_button :deleted_status, :有効 %>
+						<%= f.radio_button :deleted_status, "Validity", cheaked:@deleted_status_Validity  %>
 						<%= f.label :deleted_status, "有効" %>
 					</div>
 				</div>
 				<div class="col">
 				    <div class="form-check">
-						<%= f.radio_button :deleted_status, :退会 %>
+						<%= f.radio_button :deleted_status, "Invalid", cheaked:@deleted_status_Invalid %>
 						<%= f.label :deleted_status, "退会済み" %>
       				</div>
 				</div>
 			</div>
 		</div>
-		<% end %>
 	<div class="row mt-3">
 		<div class="col">
-			<%= link_to "変更を保存する", admins_member_path, class:"btn btn-secondary" %>
+			<%= f.submit "変更を保存する", class:"btn link_font_color" %>
+			<% end %>
    		</div>
 	</div>
 </div>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-devise_for :member, skip: :all
+devise_for :members, skip: :all
   devise_scope :member do
     get '/members/sign_in' => 'members/sessions#new', as: 'new_member_session'
     post '/members/sign_in' => 'members/sessions#create', as: 'member_session'
@@ -11,6 +11,7 @@ devise_for :member, skip: :all
     patch '/members/passwords' => 'members/passwords#update', as: 'member_password'
     get '/members/passwords/new' => 'members/passwords#new',as: 'member_forgot_password'
   end
+
 
   namespace :members do
     resource :member, only:[:show,:edit,:update]
@@ -26,6 +27,7 @@ devise_for :member, skip: :all
     delete 'members/destroy_all'
     resources :products, only:[:index,:show]
   end
+
 
   devise_for :admins, skip: :all
   devise_scope :admin do

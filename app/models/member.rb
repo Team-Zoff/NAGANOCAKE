@@ -24,9 +24,9 @@ class Member < ApplicationRecord
     super && Validity?
   end
 
-  def inactive_message
-    Invalidity? super: :withdrawn
-  end
+  # def inactive_message
+  #   Invalid? super: :withdrawn
+  # end
 
   	validates :last_name_kana, presence: true,
                  format: {
@@ -52,7 +52,5 @@ class Member < ApplicationRecord
                           }
 
   	validates :address, presence: true
-
-    validates :password, length: {minimum: 6}
 
 end

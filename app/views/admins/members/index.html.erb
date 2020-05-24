@@ -22,9 +22,9 @@
 			<% @members.each do |member| %>
 			<tr>
 				<td><%= member.id %></td>
-				<td><%= link_to "#{member.first_name}" "#{member.last_name}", admins_member_path(member.id) %></td>
+				<td><%= link_to "#{member.last_name}" "#{member.first_name}", admins_member_path(member.id), class:"link_font_color" %></td>
 				<td><%= member.email %></td>
-				<td><%= member.deleted_status %></td>
+				<td><%= member.deleted_status_i18n %></td>
 			</tr>
 			<% end %>
 		</tbody>
