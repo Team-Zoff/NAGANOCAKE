@@ -20,6 +20,14 @@ class Member < ApplicationRecord
     end
   end
 
+  def active_for_authentication?
+    super && Validity?
+  end
+
+  # def inactive_message
+  #   Invalid? super: :withdrawn
+  # end
+
   	validates :last_name_kana, presence: true,
                  format: {
                    with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,
@@ -44,7 +52,5 @@ class Member < ApplicationRecord
                           }
 
   	validates :address, presence: true
-
-    validates :password, length: {minimum: 6}
 
 end

@@ -16,7 +16,7 @@ class Admins::ProductsController < ApplicationController
 		@product = Product.new(product_params)
 	    if @product.save
 	    	flash[:notice] = "Product was successfully created."
-	    	redirect_to action: :new
+	    	redirect_to admins_products_path
 	    else
 	    	@product = Product.new
 	    	render :new
@@ -28,10 +28,10 @@ class Admins::ProductsController < ApplicationController
 	end
 
 	def update
-		product = Product.find(params[:id])
-		if product.update
+		@product = Product.find(params[:id])
+		if @product.update(product_params)
 			flash[:notice] = "Product was successfully created."
-	    	redirect_to action: :new
+	    	redirect_to admins_products_path
 	    else
 	    	@product = Pruduct.find(params[:id])
 	    	render :edit
@@ -40,6 +40,6 @@ class Admins::ProductsController < ApplicationController
 
 	private
     def product_params
-        params.require(:product).permit(:product_image,:product_name,:description,:genre_id,:price_excluding_tax,:sale_status)
+        params.require(:product).permit(:product_image,:product_name,:description,:genre_id,:price_excluding_tax, :sale_status)
     end
 end

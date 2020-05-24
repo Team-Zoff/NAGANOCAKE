@@ -24,7 +24,6 @@ before_action :configure_permitted_parameters, if: :devise_controller?
     added_attrs = [:first_name,:last_name,:first_name_kana,:last_name_kana,:postal_code,:telephone,:address]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
-
   end
 
 end
