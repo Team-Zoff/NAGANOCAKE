@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 #product_sale_status {
 	height:38px;
 	width:100px;
@@ -10,4 +11,8 @@
 #product_genre_id {
 	height:38px;
 	width:150px;
+}
+
+.product_new_icon{
+	color: gray;
 }
