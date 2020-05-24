@@ -4,20 +4,19 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-
   has_many :shipping_addresses,dependent: :destroy
   has_many :cart_items,dependent: :destroy
   has_many :orders,dependent: :destroy
 
-  enum deleted_status:{ 退会: 0, 有効: 1}
+  enum deleted_status:{ Invalid: 0, Validity: 1}
   	validates :last_name, presence: true
   	validates :first_name, presence: true
 
   def toggle_deleted_status!
-    if 有効?
-      退会!
+    if Validity?
+      Invalid!
     else
-      有効!
+      Validity!
     end
   end
 
