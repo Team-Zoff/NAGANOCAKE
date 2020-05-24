@@ -2,9 +2,12 @@
     <a class="navbar-brand" href="#">NAGANOCAKE</a>
 
   <!-- memberなのでidはnavbar_mとしています -->
-    <div class="collapse navbar-collapse" id="navbar_m">
+  <div class="collapse navbar-collapse" id="navbar_m">
+  <% if member_signed_in? %>
+      <ul class="navbar-nav mr-auto">
+        <a>ようこそ、<%= current_member.last_name_kana %> <%= current_member.first_name_kana %>さん</a>
+      </ul>
       <ul class="navbar-nav ml-auto">
-      <% if member_signed_in? %>
         <li class="nav-item mr-4">
           <%= link_to "商品一覧","商品一覧ページのリンク",class: "btn btn-nav text-light", style: "background-color: #5c4834;" %>
         </li>
@@ -14,7 +17,9 @@
         <li class="nav-item mr-3">
           <%= link_to "ログアウト", destroy_member_session_path, method: :delete,class: "btn btn-nav text-light", style: "background-color: #5c4834;"%>
         </li>
+      </ul>
       <% else %>
+        <ul class="navbar-nav ml-auto">
         <li class="nav-item mr-4">
           <%= link_to "商品一覧","商品一覧ページのリンク",class: "btn btn-nav text-light", style: "background-color: #5c4834;" %>
         </li>
@@ -24,6 +29,7 @@
         <li class="nav-item mr-3">
           <%= link_to "ログイン", new_member_session_path,class: "btn btn-nav text-light", style: "background-color: #5c4834;"%>
         </li>
+        </ul>
       <% end %>
     </div>
   </nav>

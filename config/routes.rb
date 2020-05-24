@@ -14,7 +14,7 @@ devise_for :members, skip: :all
 
   namespace :members do
     resource :member, only:[:show,:edit,:update]
-    get 'members/withdrawal' => 'members#withdrawal',as: 'members_withdrawal'
+    get 'members/withdrawal' => 'members#withdrawal',as: 'withdrawal'
     get 'homes/top' => 'homes#top',as: '/'
     resource :orders, only:[:index,:show]
     get 'orders/purchase_information'

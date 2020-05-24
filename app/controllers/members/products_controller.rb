@@ -1,12 +1,12 @@
 class Members::ProductsController < ApplicationController
   def index
-    @genres = Genres.find(params[:genres_id])
+    @genres = Genre.all
     @products = @genres.products
   end
 
   def show
-    @products = Products.find(params[:id])
-    @cart_items = CartItems.new
+    @products = Product.find(params[:id])
+    @cart_items = CartItem.new
   end
-  
+
 end
