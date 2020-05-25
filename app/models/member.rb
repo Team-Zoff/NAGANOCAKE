@@ -12,21 +12,13 @@ class Member < ApplicationRecord
   	validates :last_name, presence: true
   	validates :first_name, presence: true
 
-  def toggle_deleted_status!
-    if Validity?
-      Invalid!
-    else
-      Validity!
-    end
-  end
-
   def active_for_authentication?
     super && Validity?
   end
 
-  def inactive_message
-    Invalidity? super: :withdrawn
-  end
+  # def inactive_message
+  #   Invalid? super: :withdrawn
+  # end
 
   	validates :last_name_kana, presence: true,
                  format: {
@@ -52,7 +44,5 @@ class Member < ApplicationRecord
                           }
 
   	validates :address, presence: true
-
-    validates :password, length: {minimum: 6}
 
 end
