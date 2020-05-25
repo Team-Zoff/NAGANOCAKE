@@ -13,9 +13,10 @@ class Members::OrdersController < ApplicationController
   def purchase_information
   	@order = Order.new
   	@shipping_addresses = ShippingAddress.all
-  	@shipping_address = Shipping_address.find(params[:order][:postal_code])
-  	@order.address = @shipping_address.address
-  	@order.address = @shipping_address.address
+  	# @shipping_address = ShippingAddress.find(params[:order][:postal_code])
+  	# @postal_code = @shipping_address.postal_code
+  	# @address = @shipping_address.address
+  	# @address_name = @shipping_address.address_name
 
   end
 end
