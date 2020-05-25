@@ -17,7 +17,7 @@ devise_for :members, skip: :all
       patch :toggle_status
     end
     get 'members/withdrawal'
-    resource :orders, only:[:index,:show]
+    resources :orders, only:[:index,:show,:create]
     get 'orders/purchase_information'
     get 'orders/confirmation'
     get 'orders/thanks'
