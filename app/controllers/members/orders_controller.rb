@@ -10,6 +10,15 @@ class Members::OrdersController < ApplicationController
     @order_detail = @order.order_detail
   end
 
+  def purchase_information
+  	@order = Order.new
+  	@shipping_addresses = ShippingAddress.all
+  	# @shipping_address = ShippingAddress.find(params[:order][:postal_code])
+  	# @postal_code = @shipping_address.postal_code
+  	# @address = @shipping_address.address
+  	# @address_name = @shipping_address.address_name
+  end
+
   def confirmation
     @order = Order.new(method_of_payment: params[:method_of_payment],address_name: params[:address_name],postal_code: params[:postal_code],address: params[:address])
     @member = current_user
@@ -41,6 +50,5 @@ class Members::OrdersController < ApplicationController
 
   def thanks
   end
-
 
 end
