@@ -14,6 +14,7 @@
       </div>
       <div class="form-show">
         <%= form_for(@cart_items, url:members_cart_items_path) do |f| %>
+         <%= f.hidden_field :product_id, :value => @products.id %>
          <%= f.select :number_of_products, [1,2,3,4,5,6,7,8,9,10] %>
         <%= f.submit 'カートにいれる', class: 'btn btn-info ' %>
         <% end %>
