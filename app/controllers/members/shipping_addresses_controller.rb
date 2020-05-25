@@ -1,4 +1,5 @@
 class Members::ShippingAddressesController < ApplicationController
+
   def index
     @member = current_member
     @shipping_addresses = @member.shipping_addresses
@@ -12,6 +13,7 @@ class Members::ShippingAddressesController < ApplicationController
       redirect_to members_shipping_addresses_path, notice: "successfully created ShippingAddresses!"
     else
       redirect_to members_shipping_addresses_path
+    end
   end
 
   def edit

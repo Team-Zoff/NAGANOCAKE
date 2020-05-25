@@ -12,40 +12,44 @@ devise_for :members, skip: :all
     get '/members/passwords/new' => 'members/passwords#new',as: 'member_forgot_password'
   end
 
-
   namespace :members do
     resource :member, only:[:show,:edit,:update]
     get 'members/withdrawal' => 'members#withdrawal',as: 'withdrawal'
+    patch 'members/withdrawal' => 'members#withdrawal_confirm', as: 'withdrawal_confirm'
     get 'homes/top' => 'homes#top',as: '/'
-    resource :orders, only:[:index,:show]
+    resources :orders, only:[:index,:show]
     get 'orders/purchase_information'
     get 'orders/confirmation'
     get 'orders/thanks'
     post 'orders/select'
     resources :shipping_addresses,only:[:index,:show,:edit,:create,:update,:destroy]
-    resources :cart_items,only:[:index,:show,:edit,:create,:update,:destroy]
-    delete 'members/destroy_all'
+    resources :cart_items,only:[:index,:create,:update,:destroy]
+    delete 'members/cart_items' => 'members/cart_items#destroy_all',as: 'cart_items_destroy'
     resources :products, only:[:index,:show]
   end
 
+    devise_for :admins, skip: :all
+    devise_scope :admin do
+      get 'admins/sign_in' => 'admins/sessions#new', as: 'new_admin_session'
+      post 'admins/sign_in' => 'admins/sessions#create', as: 'admin_session'
 
-  devise_for :admins, skip: :all
-  devise_scope :admin do
-    get 'admins/sign_in' => 'admins/sessions#new', as: 'new_admin_session'
-    post 'admins/sign_in' => 'admins/sessions#create', as: 'admin_session'
-    delete 'admins/sign_out' => 'admins/sessions#destroy', as: 'destroy_admin_session'
-    get 'admins/password/edit' => 'admins/passwords#edit', as: 'edit_admin_password'
-    patch 'admins/password' => 'admins/passwords#update', as: 'admin_password'
-    get 'admins/passwords/new' => 'admins/password#new', as: 'admin_forgot_password'
+    authenticated :admin do
+      delete 'admins/sign_out' => 'admins/sessions#destroy', as: 'destroy_admin_session'
+      get 'admins/password/edit' => 'admins/passwords#edit', as: 'edit_admin_password'
+      patch 'admins/password' => 'admins/passwords#update', as: 'admin_password'
+      get 'admins/passwords/new' => 'admins/password#new', as: 'admin_forgot_password'
+    end
   end
 
-  namespace :admins do
-    resources :genres, only:[:create, :index, :edit, :update]
-    resources :products, only:[:index, :new, :create, :show, :edit, :update]
-    resources :orders, only:[:index, :show, :update]
-    resources :members, only:[:index, :show, :edit, :update]
-    get 'homes/top' => 'homes#top',as: '/'
-    patch 'order/show' => 'order_detail#update',as: 'order_status'
-  end
+    authenticated :admin do
+      namespace :admins do
+      resources :genres, only:[:create, :index, :edit, :update]
+      resources :products, only:[:index, :new, :create, :show, :edit, :update]
+      resources :orders, only:[:index, :show, :update]
+      resources :members, only:[:index, :show, :edit, :update]
+      get 'homes/top' => 'homes#top',as: '/'
+      patch 'order/show' => 'order_detail#update',as: 'order_status'
+    end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  end
 end

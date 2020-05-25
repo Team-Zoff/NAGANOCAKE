@@ -14,6 +14,12 @@
         <li class="nav-item mr-3">
           <%= link_to "注文履歴一覧", admins_orders_path(page_id: 1),  class: "btn text-light", style: "background-color: #5c4834;" %>
         </li>
+        <li class="nav-item mr-3">
+          <%= link_to "ジャンル一覧", admins_genres_path, class: "btn text-light", style: "background-color: #5c4834;" %>
+        </li>
+        <li class="nav-item mr-3">
+          <%= link_to "ログアウト", destroy_admin_session_path,method: :delete, class: "btn text-light", style: "background-color: #5c4834;" %>
+        </li>
         <% else %>
         <li class="nav-item mr-4">
           <%= link_to "商品一覧","商品一覧ページのリンク",class: "btn btn-nav text-light", style: "background-color: #5c4834;" %>

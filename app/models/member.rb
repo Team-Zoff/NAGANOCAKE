@@ -12,14 +12,6 @@ class Member < ApplicationRecord
   	validates :last_name, presence: true
   	validates :first_name, presence: true
 
-  def toggle_deleted_status!
-    if Validity?
-      Invalid!
-    else
-      Validity!
-    end
-  end
-
   def active_for_authentication?
     super && Validity?
   end
