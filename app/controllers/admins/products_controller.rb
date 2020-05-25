@@ -1,45 +1,49 @@
 class Admins::ProductsController < ApplicationController
-	def index
-		@products = Product.all
-	end
+	unless @current_member.is_a?(Admin)
+		redirect_to members_products_path
+	else
+		def index
+			@products = Product.all
+		end
 
-	def show
-		@product = Product.find(params[:id])
-	end
+		def show
+			@product = Product.find(params[:id])
+		end
 
-	def new
-		@product = Product.new
-		@genres = Genre.all
-	end
+		def new
+			@product = Product.new
+			@genres = Genre.all
+		end
 
-	def create
-		product = Product.new(product_params)
-	    if product.save
-	    	flash[:notice] = "商品登録完了しました！"
-	    	redirect_to admins_product_path(product)
-	    else
-	    	@product = Product.new
-	    	render :new
+		def create
+			product = Product.new(product_params)
+		    if product.save
+		    	flash[:notice] = "商品登録完了しました！"
+		    	redirect_to admins_product_path(product)
+		    else
+		    	@product = Product.new
+		    	render :new
+		    end
+		end
+
+		def edit
+			@product = Product.find(params[:id])
+		end
+
+		def update
+			product = Product.find(params[:id])
+			if product.update(product_params)
+				flash[:notice] = "商品情報変更成功しました！"
+		    	redirect_to action: :show
+		    else
+		    	@product = Pruduct.find(params[:id])
+		    	render :edit
+		    end
+		end
+
+		private
+	    def product_params
+	        params.require(:product).permit(:product_image,:product_name,:description,:genre_id,:price_excluding_tax,:sale_status)
 	    end
 	end
-
-	def edit
-		@product = Product.find(params[:id])
-	end
-
-	def update
-		product = Product.find(params[:id])
-		if product.update(product_params)
-			flash[:notice] = "商品情報変更成功しました！"
-	    	redirect_to action: :show
-	    else
-	    	@product = Pruduct.find(params[:id])
-	    	render :edit
-	    end
-	end
-
-	private
-    def product_params
-        params.require(:product).permit(:product_image,:product_name,:description,:genre_id,:price_excluding_tax,:sale_status)
-    end
 end
