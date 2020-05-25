@@ -26,6 +26,7 @@ devise_for :members, skip: :all
     resources :cart_items,only:[:index,:create,:update,:destroy]
     delete 'members/cart_items' => 'members/cart_items#destroy_all',as: 'cart_items_destroy'
     resources :products, only:[:index,:show]
+    resources :genres,only:[:index]
   end
 
     devise_for :admins, skip: :all

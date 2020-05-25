@@ -5,20 +5,20 @@ class Members::CartItemsController < ApplicationController
   end
 
   def create
-    @cart_item.new(cart_item_params)
+    @cart_item = CartItem.new(cart_item_params)
     @cart_item.member_id = current_member.id
     @cart_item.save
-    redirect_back(fallback_location: members_path)
+    redirect_to members_cart_items_path
   end
 
   def update
-    @cart_item = CartItem.find(:cart_item_id)
-    @cart_item(cart_item_params)
+    @cart_item = CartItem.find(cart_item_id)
+    @cart_item.update(cart_item_params)
     redirect_to "index"
   end
 
   def destroy
-    @cart_item = CartItem.find(:cart_item_id)
+    @cart_item = CartItem.find(cart_item_id)
     @CartItem.member == current_member
     @cart_item.destroy
     redirect_back(fallback_location: members_path)
@@ -30,7 +30,7 @@ class Members::CartItemsController < ApplicationController
   end
 
   private
-  def cart_items_params
+  def cart_item_params
     params.require(:cart_item).permit(:member_id,:product_id,:number_of_products)
   end
 
@@ -39,6 +39,6 @@ class Members::CartItemsController < ApplicationController
 		cart_items.each do |item|
 			total += item.subtotal
 		end
-		return total
+		return @total
 	end
 end
