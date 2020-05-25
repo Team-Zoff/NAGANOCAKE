@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
-    <h3 class="bg-info text-white rounded p-3 mt-5">ショッピングカート</h3>
-    <%= link_to "カートを空にする",cart_items_destroy_path,method: :delete,class:"btn btn-danger" %>
+    <h4 class="bg-info text-white rounded p-1 mt-5">ショッピングカート</h4>
+    <%= link_to "カートを空にする",members_cart_items_destroy_path,method: :delete,class:"btn btn-danger ml-auto" %>
       <table class="table">
-        <thead>
+        <thead class="bg-info">
           <tr>
             <th>商品名</th>
             <th>単価(税込)</th>
@@ -12,25 +12,25 @@
             <th></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="table-light">
           <% @cart_items.each do |cart_item| %>
             <tr>
-              <td><%= cart_item.products.product_name %></td>
-              <td><%= cart_item.products.price_excluding_tax * 1.1 %></td>
+              <td><%= cart_item.product.product_name %></td>
+              <td><%= (cart_item.product.price_excluding_tax * 1.1).to_i %></td>
               <td><%= cart_item.number_of_products %></td>
-          <%= form_for cart_item,url:members_cart_item_path(cart_item_id),method: :patch do |f| %>
+          <%= form_for cart_item,url:members_cart_item_path(cart_item),method: :patch do |f| %>
               <div class="field">
                 <td><%= f.text_field :number_of_products, class:"col-1"%><%= f.submit class:"btn btn-primary" %></td>
               </div>
           <% end %>
               <td><%= cart_item.subtotal %></td>
-              <td><%= link_to "削除",members_cart_item_path(cart_item_id),method: :delete,class:"btn btn-danger" %></td>
+              <td><%= link_to "削除",members_cart_item_path(cart_item),method: :delete,class:"btn btn-danger" %></td>
             </tr>
           <% end %>
        </tbody>
        </table>
        <table class="table">
            <tr>
-             <th>合計</th><td><%= CartItem.total %></td>
+             <th>合計</th><td><%= @total %></td>
            </tr>
        </table>

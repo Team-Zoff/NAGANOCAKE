@@ -1,19 +1,18 @@
-<div class="container">
+<div class="container mx-5 mt-5">
   <div class="row">
-    <div class="col-xs-3">
-      <%= render partial: 'layouts/genres_sidebar' %>
-    </div>
+      <%= render partial: 'layouts/genres_sidebar',class:"col-4" %>
     <div class="col-xs-9 ml-5">
       <div class="img">
-        <%= attachment_image_tag(@products, :product_image, :fill, 100, 100) %>
+        <%= attachment_image_tag(@products, :product_image, size: "300x200") %>
       </div>
       <div class="products-show">
         <h2><%= @products.product_name %></h2>
-        <p>商品の説明です。商品の説明です。</p>
-        <p><%= @products.price_excluding_tax %></p>
+        <p><%= @products.description %></p>
+        <p>￥ <%= (@products.price_excluding_tax * 1.1).to_i %></p>
       </div>
       <div class="form-show">
-        <%= form_for(@cart_items, url:members_cart_items_path) do |f| %>
+        <%= form_for(@cart_item, url:members_cart_items_path,method: :post) do |f| %>
+         <%= f.hidden_field :product_id, :value => @products.id %>
          <%= f.select :number_of_products, [1,2,3,4,5,6,7,8,9,10] %>
         <%= f.submit 'カートにいれる', class: 'btn btn-info ' %>
         <% end %>
