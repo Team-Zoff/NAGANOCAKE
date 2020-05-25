@@ -9,9 +9,20 @@ class Members::MembersController < ApplicationController
 	end
 
 	def update
+		if @member.save
+		else
+		end
 	end
 
 	def withdrawal
+		@member = current_member
+	end
+
+	def withdrawal_confirm
+		@member = current_member
+		@member.deleted_status = 0
+		@member.save!
+		redirect_to members_path
 	end
 
 	private

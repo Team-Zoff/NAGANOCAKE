@@ -1,20 +1,27 @@
 <nav class="navbar navbar-expand-md navbar-dark" style="background-color:#ce3c63;">
     <a class="navbar-brand" href="#">NAGANOCAKE</a>
-    <button class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbar_m"
-            aria-controls="navbar_m"
-            aria-expanded="false"
-            aria-label="ナビゲーションの切替">
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
   <!-- memberなのでidはnavbar_mとしています -->
-    <div class="collapse navbar-collapse" id="navbar_m">
+  <div class="collapse navbar-collapse" id="navbar_m">
+  <% if member_signed_in? %>
+      <ul class="navbar-nav mr-auto">
+        <a>ようこそ、<%= current_member.last_name_kana %> <%= current_member.first_name_kana %>さん</a>
+      </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item mr-4">
           <%= link_to "商品一覧","商品一覧ページのリンク",class: "btn btn-nav text-light", style: "background-color: #5c4834;" %>
+        </li>
+        <li class="nav-item mr-4">
+          <%= link_to "注文履歴","注文履歴一覧のページ",class: "btn btn-nav text-light", style: "background-color: #5c4834;"%>
+        </li>
+        <li class="nav-item mr-3">
+          <%= link_to "ログアウト", destroy_member_session_path, method: :delete,class: "btn btn-nav text-light", style: "background-color: #5c4834;"%>
+        </li>
+      </ul>
+      <% else %>
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item mr-4">
+          <%= link_to "商品一覧", members_products_path,class: "btn btn-nav text-light", style: "background-color: #5c4834;" %>
         </li>
         <li class="nav-item mr-4">
           <%= link_to "新規登録", new_member_registration_path,class: "btn btn-nav text-light", style: "background-color: #5c4834;"%>
@@ -22,13 +29,7 @@
         <li class="nav-item mr-3">
           <%= link_to "ログイン", new_member_session_path,class: "btn btn-nav text-light", style: "background-color: #5c4834;"%>
         </li>
-        <li class="nav-item dropdown">
-          <div class="dropdown-menu" aria-labelledby="dropdown">
-            <%= link_to "商品一覧","商品一覧ページのリンク" %>
-            <%= link_to "新規登録","新規登録ページのリンク" %>
-            <%= link_to "ログイン","ログインページのリンク" %>
-          </div>
-        </li>
-      </ul>
+        </ul>
+      <% end %>
     </div>
   </nav>

@@ -1,33 +1,44 @@
 class Members::CartItemsController < ApplicationController
   def index
-    @member = current_user
-    @cart_items = @member.cart_items
+    @cart_items = CartItem.all #カートの情報すべて取得
+    @total = total(current_member.cart_items)
   end
 
   def create
-    @cart_items = CartItems.new(cart_items_params)
-    @cart_items.member_id = current_user.id
-    if @cart_items.save
-      redirect_to members_cart_items_path
-    else
-      @products = Products.find(id: @cart_items.product_id)
-      members_product_path(@products)
+    @cart_item.new(cart_item_params)
+    @cart_item.member_id = current_member.id
+    @cart_item.save
+    redirect_back(fallback_location: members_path)
   end
 
   def update
+    @cart_item = CartItem.find(:cart_item_id)
+    @cart_item(cart_item_params)
+    redirect_to "index"
   end
 
   def destroy
-
+    @cart_item = CartItem.find(:cart_item_id)
+    @CartItem.member == current_member
+    @cart_item.destroy
+    redirect_back(fallback_location: members_path)
   end
 
   def destroy_all
-
+    current_member.cart_items.destroy_all
+    redirect_to members_products_path
   end
 
   private
   def cart_items_params
-  	params.require(:cart_items).permit(:number_of_products,:product_id)
+    params.require(:cart_item).permit(:member_id,:product_id,:number_of_products)
   end
 
+  def total(cart_items)
+		total = 0
+		cart_items.each do |item|
+			total += item.subtotal
+		end
+		return total
+	end
 end

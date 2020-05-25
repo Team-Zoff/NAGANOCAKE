@@ -5,6 +5,8 @@ class Product < ApplicationRecord
 
     attachment :product_image
 
+    enum sale_status: {sale: 0, notsale: 1}
+
 	validates :genre_id, presence: true
     validates :product_name, presence: true
     validates :description, presence: true

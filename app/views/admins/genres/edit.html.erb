@@ -1,0 +1,32 @@
+<div class="container" style="margin:4vw 50px 0;">
+	<div class="row">
+    	<div class="col-3 text-center">
+    			<% if flash[:notice] %>
+					<p><%= flash[:notice] %></p>
+				<% end %>
+     		<h5 class="text-light bg-info">ジャンル編集</h5>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="conteiner" style="margin:4vw 50px 0;">
+	<div class="row justify-content-left mt-4">
+		<div class="col-8">
+			<div class="genre_new">
+				<%= form_for(@genre,url: admins_genre_path(@genre)) do |f| %>
+
+				<%= f.label :name,"ジャンル" %>
+				<%= f.text_field :name, autocomplete: "名称" %>
+
+				<%= f.radio_button :valid_invalid, "有効", {checked: true} %>有効
+    			<%= f.radio_button :valid_invalid, "無効", {} %>無効
+
+    			<%= f.submit "変更を保存する", class:"btn-primary",style:"border-radius: 0.5em" %>
+
+    			<% end %>
+    		</div>
+    	</div>
+    </div>
+</div>

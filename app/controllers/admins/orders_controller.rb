@@ -5,7 +5,8 @@ class Admins::OrdersController < ApplicationController
 		elsif params[:page_id] == 2
 			@orders = Order.where('created_at > ?', 1.day)
 		else
-			@orders = Order.find(params[:id])
+			@member = Member.find(params[:id])
+			@orders = @member.orders
 			#該当顧客のデータ　あとで作ります
 		end
 

@@ -11,9 +11,23 @@ Admin.create!(
 	password: 'zoffzoff'
 	)
 
-# テスト用
-Member.create!(
-	email: "b@b",
-	password: "bbbbbb",
-	deleted_status: 1
-	)
+Genre.create!(
+	[
+		{
+			name: 'ケーキ',
+			valid_invalid: 0
+		},
+		{
+			name: 'プリン',
+			valid_invalid: 0
+		},
+		{
+			name: '焼き菓子',
+			valid_invalid: 0
+		},
+		{
+			name: 'キャンディ',
+			valid_invalid: 0
+		}
+	]
+)
