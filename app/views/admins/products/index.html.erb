@@ -2,11 +2,20 @@
   <div class="row">
     <div class="col-2"></div>
     <div class="col-2 text-center">
-      <h5 class="text-light bg-info">商品一覧</h5>
+    	<% if flash[:notice] %>
+			<p><%= flash[:notice] %></p>
+		<% end %>
+     	<h5 class="text-light bg-info">商品一覧</h5>
 	</div>
   </div>
 </div>
-
+<div class="row">
+	<div class="col-9 text-right">
+	<%= link_to new_admins_product_path  do %>
+	  <i class="fas fa-plus-circle fa-2x product_new_icon"></i>
+	<% end %>
+	</div>
+</div>
 <div class="continer">
   <div class="row justify-content-center mt-4">
     <table class="table col-6 text-center">
@@ -20,12 +29,12 @@
 		</thead>
 		<tbody>
 			<% @products.each do |product| %>
-			<tr>
-				<td><%= product.id %></td>
-				<td><%= link_to product.product_name ,admins_product_path(product) %></td>
-				<td><%= product.price_excluding_tax %></td>
-				<td><%= product.sale_status %></td>
-			</tr>
+				<tr>
+					<td><%= product.id %></td>
+					<td><%= link_to product.product_name, admins_product_path(product), class:"link_font_color" %></td>
+					<td><%= product.price_excluding_tax %></td>
+					<td><%= product.sale_status_i18n %></td>
+				</tr>
 			<% end %>
 		</tbody>
 	</table>

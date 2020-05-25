@@ -13,7 +13,7 @@ ja:
         password: パスワード
         remember_me: ""
 
-  enum:
+  enums:
     member:
         deleted_status:
             Invalid: "退会"

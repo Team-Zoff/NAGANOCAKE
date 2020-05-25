@@ -10,11 +10,11 @@
 	<div class="row">
 		<label class="col-md-2">購入者</label>
 		<div class="col-md-10">
-			<%#= link_to @order.member.first_name + @order.member.last_name, admins_orders_show_path %>
+			<%#= link_to "#{@order.member.first_name + @order.member.last_name}", admins_orders_show_path %>
 		</div>
 		<label class="col-md-2">配送先</label>
 		<div class="col-10">
-			<%#= @order.postal_code + @order.address + @order.address_name %>
+			<%#= "#{@order.postal_code + @order.address + @order.address_name}" %>
 		</div>
 		<label class="col-md-2">支払方法</label>
 		<div class="col-10">

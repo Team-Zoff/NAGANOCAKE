@@ -12,21 +12,21 @@
 		<div class="col-2">顧客ID</div>
 		<div class="col">
 			<%= @member.id %>
-			<%= @member.deleted_status %>
+			<%= @member.deleted_status_i18n %>
 		</div>
 	</div>
 	<div class="row mt-2 ml-5">
 		<div class="col-2">氏名</div>
 		<div class="col">
-			<%= @member.first_name %>
 			<%= @member.last_name %>
+			<%= @member.first_name %>
 		</div>
 	</div>
 	<div class="row mt-2 ml-5">
 		<div class="col-2">フリガナ</div>
 		<div class="col">
-			<%= @member.first_name_kana %>
 			<%= @member.last_name_kana %>
+			<%= @member.first_name_kana %>
 		</div>
 	</div>
 	<div class="row mt-2 ml-5">
@@ -55,10 +55,10 @@
 	</div>
 	<div class="row mt-2 ml-5">
 		<div class="col-2">
-			<%= link_to "編集する", edit_admins_member_path, class:"btn btn-secondary" %>
+			<%= link_to "編集する", edit_admins_member_path, class:"btn link_font_color" %>
 		</div>
 		<div class="col">
-			<%= link_to "注文履歴一覧を見る", admins_orders_path, class:"btn btn-secondary" %>
+			<%= link_to "注文履歴一覧を見る", admins_orders_path, class:"link_font_color" %>
 		</div>
 	</div>
 </div>
