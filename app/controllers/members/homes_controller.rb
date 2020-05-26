@@ -1,6 +1,6 @@
 class Members::HomesController < ApplicationController
   def top
-    @products = Products.all
+    @products = Product.all
   end
 
   def about

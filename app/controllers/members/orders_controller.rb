@@ -21,7 +21,13 @@ class Members::OrdersController < ApplicationController
   end
 
   def confirmation
-    @order = Order.new(method_of_payment: params[:method_of_payment],address_name: params[:address_name],postal_code: params[:postal_code],address: params[:address])
+    if params[:addres_status] == 1
+      @order = Order.new(method_of_payment: params[:method_of_payment], address_name: params[:current_user.first_name], postal_code: params[:current_member.postal_code], address: params[:current_member.address])
+    elsif params[:page_id] == 2
+      @order = Order.new(method_of_payment: params[:method_of_payment], address_name: params[:shipping_address.address_name], postal_code: params[:shipping_address.postal_code], address: params[:shipping_address.address])
+    elsif params[:page_id] == 3
+      @order = Order.new(method_of_payment: params[:method_of_payment], address_name: params[:shipping_address.address_name], postal_code: params[:shipping_address.postal_code], address: params[:shipping_address.address])
+    end
 
 
   end
@@ -39,6 +45,7 @@ class Members::OrdersController < ApplicationController
 
     @order = Orders.new(method_of_payment: params[:method_of_payment], address_name: params[:address_name], postal_code: params[:postal_code], address: params[:address])
     @order.member_id = current_user.id
+    @order.order_status = 0 ;
     @order.save
 
     # OrderDetailテーブルに保存
@@ -52,7 +59,7 @@ class Members::OrdersController < ApplicationController
 	end
 
     # cart_items削除処理
-    current_user.cart_items.destroy
+    current_user.cart_items.destroy_all
 
     # thanks Pageに飛びます
     redirect_to members_orders_thanks_path

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+root to: 'members/homes#top'
+
 devise_for :members, skip: :all
   devise_scope :member do
     get '/members/sign_in' => 'members/sessions#new', as: 'new_member_session'
@@ -13,10 +15,11 @@ devise_for :members, skip: :all
   end
 
   namespace :members do
+
     get 'homes/top' => 'homes#top',as: '/'
-    get 'orders/purchase_information' => 'orders#purchase_information', as: "purchase_information"
-    get 'orders/confirmation'
-    get 'orders/thanks'
+    get 'orders/purchase_information' => 'orders#purchase_information',as: 'order_purchase'
+    get 'orders/confirmation' => 'orders#confirmation',as: 'order_confirmation'
+    get 'orders/thanks' => 'orders#thanks',as: 'order_thanks'
     post 'orders/select'
     resources :orders, only:[:index,:show]
     get 'members/withdrawal' => 'members#withdrawal',as: 'withdrawal'

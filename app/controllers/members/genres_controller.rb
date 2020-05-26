@@ -1,4 +1,5 @@
 class Members::GenresController < ApplicationController
-  def index
+  def show
+    @genre = Genre.find(params[:id])
   end
 end
