@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+root to: 'members/homes#top'
+
 devise_for :members, skip: :all
   devise_scope :member do
     get '/members/sign_in' => 'members/sessions#new', as: 'new_member_session'
@@ -16,15 +18,15 @@ devise_for :members, skip: :all
     resource :member, only:[:show,:edit,:update]
     get 'members/withdrawal' => 'members#withdrawal',as: 'withdrawal'
     patch 'members/withdrawal' => 'members#withdrawal_confirm', as: 'withdrawal_confirm'
-    get 'homes/top' => 'homes#top',as: '/'
+    get 'homes/top' => 'members/homes#top',as: '/'
     resources :orders, only:[:index,:show]
-    get 'orders/purchase_information'
-    get 'orders/confirmation'
-    get 'orders/thanks'
+    get 'orders/purchase_information' => 'orders#purchase_information',as: 'order_purchase'
+    get 'orders/confirmation' => 'orders#confirmation',as: 'order_confirmation'
+    get 'orders/thanks' => 'orders#thanks',as: 'order_thanks'
     post 'orders/select'
     resources :shipping_addresses,only:[:index,:show,:edit,:create,:update,:destroy]
     resources :cart_items,only:[:index,:create,:update,:destroy]
-    delete 'members/cart_items' => 'members/cart_items#destroy_all',as: 'cart_items_destroy'
+    delete 'members/cart_items' => 'cart_items#destroy_all',as: 'cart_destroy'
     resources :products, only:[:index,:show]
     resources :genres,only:[:index]
   end
