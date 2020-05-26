@@ -1,13 +1,10 @@
 class Members::OrdersController < ApplicationController
 
   def index
-    @member = current_member
-    @orders = @member.orders
   end
 
   def show
     @order = Order.find(params[:id])
-    @order_detail = @order.order_detail
   end
 
   def purchase_information
@@ -25,7 +22,7 @@ class Members::OrdersController < ApplicationController
     elsif params[:page_id] == 2
       @order = Order.new(method_of_payment: params[:method_of_payment], address_name: params[:shipping_address.address_name], postal_code: params[:shipping_address.postal_code], address: params[:shipping_address.address])
     elsif params[:page_id] == 3
-      @order = Order.new(method_of_payment: params[:method_of_payment], address_name: params[:shipping_address.address_name], postal_code: params[:shipping_address.postal_code], address: params[:shipping_address.address])
+      @order = Order.new(method_of_payment: params[:method_of_payment], address_name: params[:order.address_name], postal_code: params[:order.postal_code], address: params[:order.address])
     end
 
   end
@@ -34,7 +31,6 @@ class Members::OrdersController < ApplicationController
     # orderテーブルに保存
     @order = Orders.new(method_of_payment: params[:method_of_payment], address_name: params[:address_name], postal_code: params[:postal_code], address: params[:address])
     @order.member_id = current_user.id
-    @order.order_status = 0 ;
     @order.save
 
     # OrderDetailテーブルに保存
