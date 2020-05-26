@@ -1,0 +1,100 @@
+<div class="container" style="margin:4vw 50px 0;">
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-2 text-center">
+      <h5 class="text-light bg-info">注文情報入力</h5>
+	</div>
+  </div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col">支払方法</div>
+	</div>
+	<%= form_for(@order, url:members_orders_confirmation_path) do |f| %>
+		<div class="row mt-3">
+			<div class="col">
+				<div class="form-check">
+					<%= f.radio_button :method_of_payment, "credit_payment"  %>
+					<%= f.label :method_of_payment, "クレジットカード" %>
+				</div>
+			</div>
+		</div>
+		<div class="row mt-3">
+			<div class="col">
+				<div class="form-check">
+					<%= f.radio_button :method_of_payment, "bank_payment"  %>
+					<%= f.label :method_of_payment, "銀行" %>
+				</div>
+			</div>
+		</div>
+</div>
+
+<div class="container">
+	<div class="row mt-3">
+		<div class="col">お届け先</div>
+	</div>
+		<div class="row mt-3">
+			<div class="col">
+				<%= radio_button_tag :address_status, "credit_payment" %>
+				<%= f.label :address_status, "ご自身の住所" %>
+				<%= "#{current_member.postal_code + current_member.address + current_member.last_name + current_member.first_name}" %>
+			</div>
+		</div>
+		<div class="row mt-3">
+			<div class="col">
+				<%= f.radio_button :method_of_payment, "credit_payment" %>
+				<%= f.label :method_of_payment, "登録済み住所から選択" %>
+	  			<%#= f.collection_select :full_address, @shipping_addresses, :id, :full_address %>
+	  		    <%#= f.select :postal_code, @shipping_addresses.map { |a| [a.id + a.address + a.postal_code] }%>
+		<select name="order[method_of_payment]" >
+			<% @shipping_addresses.each do |shipping_address| %>
+  				<option value="<%= shipping_address.id %>">
+  					<%= shipping_address.address_name %>
+  					<%= shipping_address.postal_code %>
+  					<%= shipping_address.address %>
+  				</option>
+  			<% end %> -->
+  			</select>
+		</div>
+		</div>
+	</div>
+		<div class="row mt-3">
+			<div class="col">
+				<%= f.radio_button :method_of_payment, "credit_payment" %>
+				<%= f.label :method_of_payment, "新しいお届け先" %>
+			</div>
+		</div>
+		<%= f.fields_for :shipping_address do |fin| %>
+			<div class="row mt-3">
+				<div class="col-3">
+					<%= fin.label :postal_code, "郵便番号", class:"col-form-label" %>
+				</div>
+				<div class="col-5">
+					<%= fin.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class:"form-control", placeholder:"1231234" %>
+				</div>
+			</div>
+			<div class="row mt-3">
+				<div class="col-3">
+					<%= fin.label :address, "住所", class:"col-form-label" %>
+				</div>
+				<div class="col-4">
+					<%= fin.text_field :address, autofocus: true, autocomplete: "address", class:"form-control", placeholder:"日本" %>
+				</div>
+			</div>
+			<div class="row mt-3">
+				<div class="col-3">
+				<%= fin.label :address_name, "宛名", class:"col-form-label" %>
+				</div>
+				<div class="col-4">
+					<%= fin.text_field :address_name, autofocus: true, autocomplete: "address_name", class:"form-control", placeholder:"長野" %>
+				</div>
+			</div>
+		</div>
+		<div class="row mt-3">
+			<div class="col">
+				<%= f.submit "確認画面へ進む", class:"btn link_font_color" %>
+			</div>
+	  <% end %>
+	<% end %>
+</div>
