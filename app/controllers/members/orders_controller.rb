@@ -12,7 +12,8 @@ class Members::OrdersController < ApplicationController
 
   def purchase_information
   	@order = Order.new
-  	@shipping_addresses = ShippingAddress.all
+  	@shipping_addresses = ShippingAddress.where(member_id: current_member.id)
+  	@address_status = params[:address_status]
   	# @shipping_address = ShippingAddress.find(params[:order][:postal_code])
   	# @postal_code = @shipping_address.postal_code
   	# @address = @shipping_address.address
@@ -21,12 +22,21 @@ class Members::OrdersController < ApplicationController
 
   def confirmation
     @order = Order.new(method_of_payment: params[:method_of_payment],address_name: params[:address_name],postal_code: params[:postal_code],address: params[:address])
-    @member = current_user
-    @cart_items = @member.cart_items
+
+
   end
 
   def create
     # orderテーブルに保存
+
+    # if @address_status == 3
+	   #  @address = ShippingAddress.new
+	  	# @address.postal_code = params[:new_postal_code]
+	  	# @address.postal_code.save
+
+	  	# @address.address_name = params[:new_address_name]
+	  	# @address.address_name
+
     @order = Orders.new(method_of_payment: params[:method_of_payment], address_name: params[:address_name], postal_code: params[:postal_code], address: params[:address])
     @order.member_id = current_user.id
     @order.save
@@ -39,7 +49,7 @@ class Members::OrdersController < ApplicationController
     order_detail.price = cart_item.product.price_excluding_tax
     order_detail.purchase_quantity = cart_item.number_of_products
     order_detail.save
-    end
+	end
 
     # cart_items削除処理
     current_user.cart_items.destroy
@@ -51,4 +61,8 @@ class Members::OrdersController < ApplicationController
   def thanks
   end
 
+ #  private
+	# def order_params
+	# 	params.permit(:address_status)
+	# end
 end

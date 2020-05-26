@@ -1,6 +1,6 @@
 <%# viewで必要な計算 %>
 <% total = 0 %>
-<% postage = @order_detail.order.shipping_free %>
+<% postage = @order.shipping_free %>
 <% @order_detail.each do |order_detail| %>
   <% order_detail.product.price_excluding_tax %>
   <% order_detail.purchase_quantity %>

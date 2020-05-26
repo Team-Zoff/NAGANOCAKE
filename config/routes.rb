@@ -13,18 +13,18 @@ devise_for :members, skip: :all
   end
 
   namespace :members do
-    resource :member, only:[:show,:edit,:update]
-    get 'members/withdrawal' => 'members#withdrawal',as: 'withdrawal'
-    patch 'members/withdrawal' => 'members#withdrawal_confirm', as: 'withdrawal_confirm'
     get 'homes/top' => 'homes#top',as: '/'
-    resources :orders, only:[:index,:show]
-    get 'orders/purchase_information'
+    get 'orders/purchase_information' => 'orders#purchase_information', as: "purchase_information"
     get 'orders/confirmation'
     get 'orders/thanks'
     post 'orders/select'
+    resources :orders, only:[:index,:show]
+    get 'members/withdrawal' => 'members#withdrawal',as: 'withdrawal'
+    patch 'members/withdrawal' => 'members#withdrawal_confirm', as: 'withdrawal_confirm'
+    delete 'members/cart_items' => 'members/cart_items#destroy_all',as: 'cart_items_destroy'
+    resource :member, only:[:show,:edit,:update]
     resources :shipping_addresses,only:[:index,:show,:edit,:create,:update,:destroy]
     resources :cart_items,only:[:index,:create,:update,:destroy]
-    delete 'members/cart_items' => 'members/cart_items#destroy_all',as: 'cart_items_destroy'
     resources :products, only:[:index,:show]
     resources :genres,only:[:index]
   end
@@ -44,12 +44,12 @@ devise_for :members, skip: :all
 
     authenticated :admin do
       namespace :admins do
+      get 'homes/top' => 'homes#top',as: '/'
       resources :genres, only:[:create, :index, :edit, :update]
       resources :products, only:[:index, :new, :create, :show, :edit, :update]
+      patch 'order/show' => 'order_detail#update',as: 'order_status'
       resources :orders, only:[:index, :show, :update]
       resources :members, only:[:index, :show, :edit, :update]
-      get 'homes/top' => 'homes#top',as: '/'
-      patch 'order/show' => 'order_detail#update',as: 'order_status'
     end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   end
