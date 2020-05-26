@@ -1,47 +1,46 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 offset-md-2 text-center">
+<div class="container" style="margin-top:50px;">
     <div class="row">
-      <h4 class="col-md-8 text-left">会員の方はこちらからログイン　</h4>
-    </div><br>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-     <div class="row">
-        <div class="col-md-3 text-right">
-          <%= f.label :email ,"メールアドレス" %>
-        </div>
-        <div class="col-md-9">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email",:size=>"60",style:"border-radius: 0.2em"%>
+        <div class="col-md-8 offset-md-2 text-center">
+            <div class="row">
+                <div>
+                    <h5 class="text-light bg-info">パスワードの変更</h5>
+                </div>
+            </div>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="field">
+                <div class="row">
+                    <div class="col-md-3 text-right">
+                        <%= f.label :email ,"メールアドレス" %>
+                    </div>
+                    <div class="col-md-9">
+                        <%= f.email_field :email, autofocus: true, autocomplete: "email",:size=>"50",style:"border-radius: 0.2em"%>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <div class="row">
+                    <div class="col-md-3 text-right">
+                        <%= f.label :password,"パスワード　　" %>
+                    </div>
+                    <div class="col-md-6">
+                        <%= f.password_field :password, autocomplete: "current-password",:size=>"50",style:"border-radius: 0.2em"  %>
+                    </div>
+                </div>
+            </div>
+            <div class="actions">
+                <%= f.submit "　　ログイン　　" ,class:"btn-primary btn-sm  mt-3"%>
+            </div><br>
+            <div class="text-right">
+                <%= render "members/shared/links" %>
+            </div>
+            <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+            <div class="row">
+                <div class="col-md-8 text-left">会員登録がお済みではない方<br>
+                    <%= link_to "こちら", new_registration_path(resource_name) %>から新規登録を行ってください
+                </div>
+                <% end %>
+                <% end %>
+            </div>
         </div>
     </div>
-  </div>
-  <div class="field">
-    <div class="row">
-      <div class="col-md-3 text-right">
-        <%= f.label :password,"パスワード　　" %>
-      </div>
-       <div class="col-md-9"><%= f.password_field :password, autocomplete: "current-password",:size=>"60",style:"border-radius: 0.2em"  %>
-      </div>
-    </div>
- </div>
-
-  <div class="actions">
-      <%= f.submit "　　ログイン　　" ,class:"btn-primary btn-sm  mt-20"%>
-  </div><br>
-
-  <div class="text-right">
-      <%= render "members/shared/links" %>
-  </div>
-
-  <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-<div class="row">
-  <div class="col-md-8 text-left">会員登録がお済みではない方<br>
-  <%= link_to "こちら", new_registration_path(resource_name) %>から新規登録を行ってください
 </div>
-<% end %>
-<% end %>
-</div>
-</div>
-</div>
-
