@@ -1,22 +1,26 @@
-<div class="container">
+<div class="container mx-5 mt-5">
   <div class="row">
-    <div class="col-xs-3">
-      <%= render partial: 'layouts/genres_sidebar' %>
-    </div>
+      <%= render partial: 'layouts/genres_sidebar',class:'col-3' %>
     <div class="col-xs-9 ml-5">
-      <div>
-        <p>ようこそ、NaganoCakeへ!<br>
-        このサイトでは、ケーキ販売のECサイトになります。<br>
-        会員ではない方も商品の閲覧はできますが,<br>
-        購入には会員登録が必要になります。</p>
-      </div>
-      <div>
-        <h2>オススメ商品</h2>
+      <%= image_tag 'naganocake_top.jpg' %>
+      <p class='mx-auto text-center'>ようこそ、NaganoCakeへ!<br>
+      このサイトでは、ケーキ販売のECサイトになります。<br>
+      会員ではない方も商品の閲覧はできますが,<br>
+      購入には会員登録が必要になります。</p>
+    </div>
+      <h2>オススメ商品</h2>
+      <div class='row'>
         <% @products.each do |products| %>
-        <%= attachment_image_tag(products, :product_image, :fill, 100, 100) %>
-        <%= products.product_name %>
-        <%= "¥#{products.price_excluding_tax}" %>
+      <div class='col-4 mt-3 ml-5'>
+        <%= attachment_image_tag(products, :product_image, size: '250x200') %><br>
+        <%= link_to members_product_path(products.id) do %>
+          <%= products.product_name %>
         <% end %>
+        <%= "¥#{products.price_excluding_tax}" %>
+
+      </div>
+      <% end %>
+      </div>
     </div>
   </div>
 </div>
