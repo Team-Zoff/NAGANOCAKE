@@ -1,11 +1,13 @@
 class Members::OrdersController < ApplicationController
 
   def index
+    @orders = Order.all
   end
 
   def show
      @order = Order.find(params[:id])
      @order_detail = @order.order_details
+     @order_shipping_free = 800
      @total = 0
      @order_detail.each do |order|
        @total += (order.product.price_excluding_tax * order.purchase_quantity * 1.1).to_i
@@ -23,16 +25,26 @@ class Members::OrdersController < ApplicationController
   end
 
   def confirmation
-  	@shipping_free = 800
-    if params[:addres_status] == 1
-      @order = Order.new(method_of_payment: params[:credit_payment], address_name: params[:current_user.first_name], postal_code: params[:current_member.postal_code], address: params[:current_member.address])
-    elsif params[:page_id] == 2
-      @order = Order.new(method_of_payment: params[:method_of_payment], address_name: params[:shipping_address.address_name], postal_code: params[:shipping_address.postal_code], address: params[:shipping_address.address])
-    elsif params[:page_id] == 3
-      @order = Order.new(method_of_payment: params[:method_of_payment], address_name: params[:shipping_address.address_name], postal_code: params[:shipping_address.postal_code], address: params[:shipping_address.address])
+    @cart_items = CartItem.all #カートの情報すべて取得
+    @shipping_free = 800
+    @order = Order.new
+    if params[:address_status] == "1"
+      @method_of_payment =  params[:method_of_payment]
+      @order_postal_code = current_member.postal_code
+      @order_address_name = current_member.last_name_kana
+      @order_address = current_member.address
+    elsif params[:address_status] == "2"
+      shipping_address = ShippingAddress.find(params[:id])
+      @method_of_payment =  params[:method_of_payment]
+      @order_postal_code = shipping_address.postal_code
+      @order_address_name = shipping_address.address_name
+      @order_address = shipping_address.address
+    elsif params[:address_status] == "3"
+      @method_of_payment =  params[:method_of_payment]
+      @order_postal_code = params[:new_postal_code]
+      @order_address_name = params[:new_address_name]
+      @order_address = params[:new_address]
     end
-
-
   end
 
   def create
@@ -42,17 +54,19 @@ class Members::OrdersController < ApplicationController
 	  # 	@address.postal_code.save
     # end
 
+
     # orderテーブルに保存
-    @order = Orders.new
+    @order = Order.new
     @order.method_of_payment =  params[:order][:method_of_payment]
     @order.postal_code = params[:order][:postal_code]
     @order.address_name = params[:order][:address_name]
     @order.address = params[:order][:address]
-    @order.member_id = current_user.id
+    @order.member_id = current_member.id
+    # binding.pry
     @order.save
 
     # OrderDetailテーブルに保存
-    current_user.cart_items.each do |cart_item|
+    current_member.cart_items.each do |cart_item|
     order_detail = OrderDetail.new
     order_detail.order_id = @order.id
     order_detail.product_id = cart_item.product_id
@@ -62,10 +76,10 @@ class Members::OrdersController < ApplicationController
 	end
 
     # cart_items削除処理
-    current_user.cart_items.destroy_all
+    current_member.cart_items.destroy_all
 
     # thanks Pageに飛びます
-    redirect_to members_orders_thanks_path
+    redirect_to members_order_thanks_path
   end
 
   def thanks

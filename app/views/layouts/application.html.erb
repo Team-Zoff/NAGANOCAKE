@@ -18,9 +18,9 @@
   <body>
 
     <% if admin_signed_in? %>
-      <%= render '/layouts/navbar_admin' %>
+    <%= render '/layouts/navbar_member' %>
     <% else %>
-      <%= render '/layouts/navbar_member' %>
+    <%= render '/layouts/navbar_admin' %>
     <% end %>
     <%= yield %>
   </body>

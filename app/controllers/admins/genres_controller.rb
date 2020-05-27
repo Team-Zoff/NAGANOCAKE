@@ -5,8 +5,8 @@ class Admins::GenresController < ApplicationController
 	end
 
 	def create
-		@genre = Genre.new
-		if @genre.save(genre_params)
+		@genre = Genre.new(genre_params)
+		if @genre.save
 			flash[:notice] = "ジャンル登録完了しました！"
      	    redirect_to request.referer
 		else
@@ -19,8 +19,8 @@ class Admins::GenresController < ApplicationController
 	end
 
 	def update
-		genre = Genre.find(params[:id])
-		if genre.update(genre_params)
+		@genre = Genre.find(params[:id])
+		if @genre.update(genre_params)
 			flash[:notice] = "ジャンルを更新しました！"
 			redirect_to action: :index
 		else
@@ -31,7 +31,7 @@ class Admins::GenresController < ApplicationController
 
 	    private
 	def genre_params
-        params.permit(:valid_invalid,:name)
+        params.require(:genre).permit(:valid_invalid,:name)
     end
 
 end
