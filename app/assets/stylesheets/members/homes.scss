@@ -3,21 +3,31 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.header {
-	height:300px;
+.top-head {
+    height: 300px;
 }
 
 .naganocake-text-area {
-	height:300px;
-	background-color: #000;
-	opacity: 0.5;
-    color:#fff;
+    height: 300px;
+    width:100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    margin: 0px;
+    vertical-align: middle;
+    position: relative;
 }
+
+p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
 
 .main-pic {
-  background: image-url("naganocake_top.jpg"),image-url("bg-cake.png"),image-url("bg-cake.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+    background: image-url("naganocake_top.jpg");
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
 }
-
