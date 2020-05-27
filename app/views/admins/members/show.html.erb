@@ -57,7 +57,7 @@
 			<%= link_to "編集する", edit_admins_member_path, class:"btn btn-primary btn-sm  mt-20" %>
 		</div>
 		<div class="col mt-3">
-			<%= link_to "注文履歴一覧を見る", admins_orders_path, class:"btn btn-primary btn-sm  mt-20" %>
+			<%= link_to "注文履歴一覧を見る", admins_orders_path(member_id: @member.id), class:"btn btn-primary btn-sm  mt-20" %>
 		</div>
 	</div>
 </div>
