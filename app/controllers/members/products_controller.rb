@@ -2,14 +2,10 @@ class Members::ProductsController < ApplicationController
   def index
   	@products = Product.all
     @genres = Genre.all
-    end
   end
 
   def show
     @genres = Genre.all
-    @genres.each do |genre|
-      @genre = genre
-    end
     @products = Product.find(params[:id])
     @cart_item = CartItem.new
   end
