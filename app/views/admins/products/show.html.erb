@@ -30,8 +30,9 @@
 			</div><br>
 
 			<div class="row">
-				<span class="col-md-5">税抜価格</span>
-				<span class="col-md-7"><%= @product.price_excluding_tax %></span>
+				<span class="col-md-5">税込価格(税抜価格)</span>
+				<span class="col-md-7"><%= @product.price_excluding_tax.to_s(:delimited) %>
+					(<%= (@product.price_excluding_tax*1.1).to_i.to_s(:delimited) %>)円</span>
 			</div><br>
 
 			<div class="row">

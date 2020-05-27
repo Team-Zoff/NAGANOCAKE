@@ -8,6 +8,7 @@ devise_for :members, skip: :all
     post '/members/sign_in' => 'members/sessions#create', as: 'member_session'
     delete '/members/sign_out' => 'members/sessions#destroy', as: 'destroy_member_session'
     get '/members/sign_up' => 'members/registrations#new', as: 'new_member_registration'
+    get '/members/passwords/edit' => 'members/registrations#edit', as: 'password_edit_registrations'
     post '/members/sign_up' => 'members/registrations#create', as: 'member_registration'
     get '/members/' => 'members/passwords#edit', as: 'edit_member_password'
     patch '/members/passwords' => 'members/passwords#update', as: 'member_password'
@@ -15,7 +16,6 @@ devise_for :members, skip: :all
   end
 
   namespace :members do
-
     get 'homes/top' => 'homes#top',as: '/'
     get 'orders/purchase_information' => 'orders#purchase_information',as: 'order_purchase'
     get 'orders/confirmation' => 'orders#confirmation',as: 'order_confirmation'
@@ -25,7 +25,7 @@ devise_for :members, skip: :all
     resources :orders, only:[:index,:show]
     get 'members/withdrawal' => 'members#withdrawal',as: 'withdrawal'
     patch 'members/withdrawal' => 'members#withdrawal_confirm', as: 'withdrawal_confirm'
-    delete 'members/cart_items' => 'members/cart_items#destroy_all',as: 'cart_items_destroy'
+    delete 'members/cart_items' => 'cart_items#destroy_all',as: 'cart_items_destroy'
     resource :member, only:[:show,:edit,:update]
     resources :shipping_addresses,only:[:index,:show,:edit,:create,:update,:destroy]
     resources :cart_items,only:[:index,:create,:update,:destroy]

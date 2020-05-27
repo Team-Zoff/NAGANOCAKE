@@ -2,8 +2,6 @@ class Members::ProductsController < ApplicationController
   def index
   	@products = Product.all
     @genres = Genre.all
-    @genres.each do |genre|
-      @genre = genre
     end
   end
 

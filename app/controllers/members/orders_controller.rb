@@ -1,8 +1,6 @@
 class Members::OrdersController < ApplicationController
 
   def index
-    @member = current_member
-    @orders = @member.orders
   end
 
   def show
@@ -38,19 +36,19 @@ class Members::OrdersController < ApplicationController
   end
 
   def create
-    # orderテーブルに保存
-
+    # shipping_addressに保存
     # if @address_status == 3
-	   #  @address = ShippingAddress.new
-	  	# @address.postal_code = params[:new_postal_code]
-	  	# @address.postal_code.save
+	  #   @address = ShippingAddress.new(method_of_payment: params[:method_of_payment], address_name: params[:address_name], postal_code: params[:postal_code], address: params[:address])
+	  # 	@address.postal_code.save
+    # end
 
-	  	# @address.address_name = params[:new_address_name]
-	  	# @address.address_name
-
-    @order = Orders.new(method_of_payment: params[:method_of_payment], address_name: params[:address_name], postal_code: params[:postal_code], address: params[:address])
+    # orderテーブルに保存
+    @order = Orders.new
+    @order.method_of_payment =  params[:order][:method_of_payment]
+    @order.postal_code = params[:order][:postal_code]
+    @order.address_name = params[:order][:address_name]
+    @order.address = params[:order][:address]
     @order.member_id = current_user.id
-    @order.order_status = 0 ;
     @order.save
 
     # OrderDetailテーブルに保存
