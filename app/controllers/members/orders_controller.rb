@@ -18,29 +18,41 @@ class Members::OrdersController < ApplicationController
   end
 
   def confirmation
-    if params[:addres_status] == 1
-      @order = Order.new(method_of_payment: params[:method_of_payment], address_name: params[:current_user.first_name], postal_code: params[:current_member.postal_code], address: params[:current_member.address])
-    elsif params[:page_id] == 2
-      @order = Order.new(method_of_payment: params[:method_of_payment], address_name: params[:shipping_address.address_name], postal_code: params[:shipping_address.postal_code], address: params[:shipping_address.address])
-    elsif params[:page_id] == 3
-      @order = Order.new(method_of_payment: params[:method_of_payment], address_name: params[:order.address_name], postal_code: params[:order.postal_code], address: params[:order.address])
+    @order = Order.new
+    if params[:order][:address_status] == "1"
+      @method_of_payment =  params[:order][:method_of_payment]
+      @order_postal_code = current_member.postal_code
+      @order_address_name = current_member.last_name_kana
+      @order_address = current_member.address
+    elsif params[:order][:address_status] == "2"
+      shipping_address = ShippingAddress.find(params[:id])
+      @method_of_payment =  params[:order][:method_of_payment]
+      @order_postal_code = shipping_address.postal_code
+      @order_address_name = shipping_address.address_name
+      @order_address = shipping_address.address
+    elsif params[:order][:address_status] == "3"
+      @method_of_payment =  params[:order][:method_of_payment]
+      @order_postal_code = params[:order][:new_postal_code]
+      @order_address_name = params[:order][:new_address_name]
+      @order_address = params[:order][:new_address]
     end
 
 
   end
 
   def create
-    # orderテーブルに保存
-
+    # shipping_addressに保存
     # if @address_status == 3
-	   #  @address = ShippingAddress.new
-	  	# @address.postal_code = params[:new_postal_code]
-	  	# @address.postal_code.save
+	  #   @address = ShippingAddress.new(method_of_payment: params[:method_of_payment], address_name: params[:address_name], postal_code: params[:postal_code], address: params[:address])
+	  # 	@address.postal_code.save
+    # end
 
-	  	# @address.address_name = params[:new_address_name]
-	  	# @address.address_name
-
-    @order = Orders.new(method_of_payment: params[:method_of_payment], address_name: params[:address_name], postal_code: params[:postal_code], address: params[:address])
+    # orderテーブルに保存
+    @order = Orders.new
+    @order.method_of_payment =  params[:order][:method_of_payment]
+    @order.postal_code = params[:order][:postal_code]
+    @order.address_name = params[:order][:address_name]
+    @order.address = params[:order][:address]
     @order.member_id = current_user.id
     @order.save
 
