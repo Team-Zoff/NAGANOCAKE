@@ -30,9 +30,10 @@ devise_for :members, skip: :all
     resources :cart_items,only:[:index,:create,:update,:destroy]
     resources :products, only:[:index,:show]
     resources :genres,only:[:index]
+    get "/searches/search" => "searches#search", as: 'search'
   end
 
-    devise_for :admins, skip: :all
+  devise_for :admins, skip: :all
     devise_scope :admin do
       get 'admins/sign_in' => 'admins/sessions#new', as: 'new_admin_session'
       post 'admins/sign_in' => 'admins/sessions#create', as: 'admin_session'
@@ -45,7 +46,7 @@ devise_for :members, skip: :all
     end
   end
 
-    authenticated :admin do
+  authenticated :admin do
       namespace :admins do
       get 'homes/top' => 'homes#top',as: '/'
       resources :genres, only:[:create, :index, :edit, :update]

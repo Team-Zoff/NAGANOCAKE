@@ -11,7 +11,11 @@ before_action :configure_permitted_parameters, if: :devise_controller?
 
   # ログアウト後のリダイレクト先
   def after_sign_out_path_for(resource)
-      root_path
+    if resource.is_a?(Admin)
+      new_admin_session_path
+    else
+      members_path
+    end
   end
 
   protected
@@ -22,4 +26,3 @@ before_action :configure_permitted_parameters, if: :devise_controller?
   end
 
 end
-
