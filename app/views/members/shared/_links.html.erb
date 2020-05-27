@@ -8,7 +8,7 @@
 
 <%- if controller_name != 'sessions' %>
   <span>すでに登録済みの方</span><br>
-  <span><%= link_to "こちら", new_member_session_path(resource_name) %>からログインしてください。</span><br />
+  <span><%= link_to "こちら", new_session_path(resource_name) %>からログインしてください。</span><br />
 <% end %>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>

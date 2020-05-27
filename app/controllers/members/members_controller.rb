@@ -10,8 +10,11 @@ before_action :authenticate_member!
 	end
 
 	def update
-		if @member.save
+		@member = current_member
+		if @member.update(member_params)
+			redirect_to members_member_path
 		else
+			render edit_members_member_path
 		end
 	end
 
