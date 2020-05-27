@@ -6,8 +6,12 @@ class Members::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
-    @order_detail = @order.order_detail
+     @order = Order.find(params[:id])
+     @order_detail = @order.order_details
+     @total = 0
+     @order_detail.each do |order|
+       @total += (order.product.price_excluding_tax * order.purchase_quantity * 1.1).to_i
+   end
   end
 
   def purchase_information
@@ -21,8 +25,9 @@ class Members::OrdersController < ApplicationController
   end
 
   def confirmation
+  	@shipping_free = 800
     if params[:addres_status] == 1
-      @order = Order.new(method_of_payment: params[:method_of_payment], address_name: params[:current_user.first_name], postal_code: params[:current_member.postal_code], address: params[:current_member.address])
+      @order = Order.new(method_of_payment: params[:credit_payment], address_name: params[:current_user.first_name], postal_code: params[:current_member.postal_code], address: params[:current_member.address])
     elsif params[:page_id] == 2
       @order = Order.new(method_of_payment: params[:method_of_payment], address_name: params[:shipping_address.address_name], postal_code: params[:shipping_address.postal_code], address: params[:shipping_address.address])
     elsif params[:page_id] == 3

@@ -34,13 +34,13 @@
   <table class='table-bordered'>
     <thead>
       <tr>
-        <th>送料</th><th><%= @order.shipping_free%></th>
+        <th>送料</th><th><%= @shipping_free %></th>
       </tr>
       <tr>
         <th>商品合計</th><th><%= total %></th>
       </tr>
       <tr>
-        <th>請求金額</th><th><%= @order.shipping_free + total %></th>
+        <th>請求金額</th><th><%= @shipping_free + total %></th>
       </tr>
     </thead>
 
@@ -54,5 +54,5 @@
  <% f.hidden_field :postal_code, :value => @order.postal_code %>
  <% f.hidden_field :address, :value => @order.address %>
  <% f.hidden_field :address_name, :value => @order.address_name %>
-<%= f.submit "購入確定",,class: btn btn-success %>
+<%= f.submit "購入確定", class:"btn btn-success" %>
 <% end %>
