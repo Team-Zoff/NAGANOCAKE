@@ -16,16 +16,16 @@ devise_for :members, skip: :all
   end
 
   namespace :members do
-
     get 'homes/top' => 'homes#top',as: '/'
     get 'orders/purchase_information' => 'orders#purchase_information',as: 'order_purchase'
     get 'orders/confirmation' => 'orders#confirmation',as: 'order_confirmation'
     get 'orders/thanks' => 'orders#thanks',as: 'order_thanks'
     post 'orders/select'
-    resources :orders, only:[:index,:show,:create]
+    post 'orders/create'
+    resources :orders, only:[:index,:show]
     get 'members/withdrawal' => 'members#withdrawal',as: 'withdrawal'
     patch 'members/withdrawal' => 'members#withdrawal_confirm', as: 'withdrawal_confirm'
-    delete 'members/cart_items' => 'members/cart_items#destroy_all',as: 'cart_items_destroy'
+    delete 'members/cart_items' => 'cart_items#destroy_all',as: 'cart_items_destroy'
     resource :member, only:[:show,:edit,:update]
     resources :shipping_addresses,only:[:index,:show,:edit,:create,:update,:destroy]
     resources :cart_items,only:[:index,:create,:update,:destroy]

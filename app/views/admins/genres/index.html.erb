@@ -1,10 +1,10 @@
-<div class="container" style="margin:4vw 50px 0;">
+<div class="container" style="margin:2vw 50px 0;">
   <div class="row">
     <div class="col-3 text-center">
     	<% if flash[:notice] %>
 			<p><%= flash[:notice] %></p>
 		<% end %>
-     	<h5 class="text-light bg-info">ジャンル一覧・追加</h5>
+     	<h5 class="bg-info text-white rounded p-1 mt-5">ジャンル一覧・追加</h5>
 	</div>
   </div>
 </div>
@@ -41,7 +41,7 @@
 					<% @genres.each do |genre| %>
 						<tr>
 							<td><%= genre.name %></td>
-							<td><%= genre.valid_invalid %></td>
+							<td><%= genre.valid_invalid_i18n %></td>
 							<td><%= link_to "編集する", edit_admins_genre_path(genre), class:"btn-sm btn-primary",style:"border-radius: 0.5em" %></td>
 						</tr>
 					<% end %>
