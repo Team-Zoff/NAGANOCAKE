@@ -5,7 +5,7 @@ before_action :configure_permitted_parameters, if: :devise_controller?
     if resource.is_a?(Admin)
       admins_path
     else
-      members_path
+      root_path
     end
   end
 

@@ -1,0 +1,99 @@
+<div class="container" style="margin:1vw 50px 0;">
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-2 text-center">
+    	<h5 class="bg-info text-white rounded p-1 mt-5">注文情報入力</h5>
+	</div>
+  </div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col">支払方法</div>
+	</div>
+	<%= form_with(url:members_order_confirmation_path, method: :get) do |f| %>
+		<div class="form-check row">
+			<div class="row mt-3">
+				<div class="col">
+					<%= f.radio_button :method_of_payment, "クレジットカード" %>
+					<%= f.label :method_of_payment, "クレジットカード" %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<%= f.radio_button :method_of_payment, "銀行"  %>
+					<%= f.label :method_of_payment, "銀行" %>
+				</div>
+			</div>
+		</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col">お届け先</div>
+	</div>
+	<div class="form-check p-3">
+		<div class="mt-1">
+			<div class="row">
+				<%= f.radio_button :address_status, "1" %>
+				<%= f.label :address_status, "ご自身の住所", class:"col-3"%>
+				<div class="row col-7">
+					<div class="col-12">
+						<%= current_member.postal_code %>
+						<%= current_member.address %>
+			        </div>
+			        <div class="col-12">
+						<%= "#{current_member.last_name} #{current_member.first_name}" %>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<div class="row">
+			<div class="col-3">
+			<%= f.radio_button :address_status, "2" %>
+			<%= f.label :address_status, "登録済み住所から選択" %>
+		    </div>
+      
+			<div class="col-5">
+	  			<%= f.collection_select :address_collection, @shipping_addresses, :id, :full_address, {}, {class: 'form-control'} %>
+	  		</div>
+      
+		</div>
+		<div class="row mt-3">
+			<div class="col">
+					<%= f.radio_button :address_status, "3" %>
+					<%= f.label :address_status, "新しいお届け先" %>
+			</div>
+		</div><%#= text_area_tag 'model[column]' %>
+			<div class="row">
+				<div class="col-3">
+					<%= f.label :postal_code, "郵便番号", class:"col-form-label" %>
+				</div>
+				<div class="col-5">
+					<%= f.text_field :new_postal_code, autofocus: true, autocomplete: "postal_code", class:"form-control", placeholder:"1231234" %>
+				</div>
+			</div>
+			<div class="row mt-2">
+				<div class="col-3">
+					<%= f.label :address, "住所", class:"col-form-label" %>
+				</div>
+				<div class="col-5">
+					<%= f.text_field :new_address, autofocus: true, autocomplete: "address", class:"form-control", placeholder:"日本" %>
+				</div>
+			</div>
+			<div class="row mt-2">
+				<div class="col-3">
+					<%= f.label :address_name, "宛名", class:"col-form-label" %>
+				</div>
+				<div class="col-5">
+					<%= f.text_field :new_address_name, autofocus: true, autocomplete: "address_name", class:"form-control", placeholder:"長野" %>
+				</div>
+			</div>
+		<div class="row mt-2">
+			<div class="col-3">
+				<%= f.submit "確認画面へ進む", class:"btn btn-primary" %>
+			</div>
+		</div>
+	<% end %>
+</div>

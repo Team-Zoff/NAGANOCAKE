@@ -31,3 +31,6 @@ Genre.create!(
 		}
 	]
 )
+
+
+
