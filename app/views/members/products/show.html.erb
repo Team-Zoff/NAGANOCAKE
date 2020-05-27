@@ -1,6 +1,8 @@
 <div class="container mx-5 mt-5">
   <div class="row">
+    <div class="col-4">
       <%= render partial: 'layouts/genres_sidebar',class:"col-4" %>
+    </div>
     <div class="col-xs-9 ml-5">
       <div class="img">
         <%= attachment_image_tag(@products, :product_image, size: "300x200") %>

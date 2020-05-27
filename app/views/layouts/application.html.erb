@@ -16,7 +16,6 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
   <body>
-
     <% if admin_signed_in? %>
       <%= render '/layouts/navbar_admin' %>
     <% else %>
@@ -24,4 +23,12 @@
     <% end %>
     <%= yield %>
   </body>
+
+  <footer class="footer container-fluid mt-3">
+      <p class="text-right p-2">NAGANO CAKE<br>
+      長野県〇〇市〇〇1-2-3</p>
+    <div class="clearfix">
+      <%= image_tag "naganocake_pic.jpg",size:"200x150",class:"rounded float-right" %>
+    </div>
+  </footer>
 </html>

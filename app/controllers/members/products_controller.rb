@@ -1,4 +1,5 @@
 class Members::ProductsController < ApplicationController
+before_action :authenticate_member!, only:[:show]
   def index
   	@products = Product.page(params[:page]).reverse_order
     @genres = Genre.all
