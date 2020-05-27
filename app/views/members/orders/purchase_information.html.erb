@@ -11,17 +11,17 @@
 	<div class="row">
 		<div class="col">支払方法</div>
 	</div>
-	<%= form_with(url:members_order_confirmation_path, method: :get) do |f| %>
+	<%= form_with(url:members_order_confirmation_path, method: :get, local:true) do |f| %>
 		<div class="form-check row">
 			<div class="row mt-3">
 				<div class="col">
-					<%= f.radio_button :method_of_payment, "クレジットカード" %>
+					<%= f.radio_button :method_of_payment, "credit_payment" %>
 					<%= f.label :method_of_payment, "クレジットカード" %>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
-					<%= f.radio_button :method_of_payment, "銀行"  %>
+					<%= f.radio_button :method_of_payment, "bank_payment"  %>
 					<%= f.label :method_of_payment, "銀行" %>
 				</div>
 			</div>
@@ -54,11 +54,11 @@
 			<%= f.radio_button :address_status, "2" %>
 			<%= f.label :address_status, "登録済み住所から選択" %>
 		    </div>
-      
+
 			<div class="col-5">
 	  			<%= f.collection_select :address_collection, @shipping_addresses, :id, :full_address, {}, {class: 'form-control'} %>
 	  		</div>
-      
+
 		</div>
 		<div class="row mt-3">
 			<div class="col">
