@@ -1,0 +1,33 @@
+// Place all the styles related to the members::homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.top-head {
+    height: 300px;
+}
+
+.naganocake-text-area {
+    height: 300px;
+    width:100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    margin: 0px;
+    vertical-align: middle;
+    position: relative;
+}
+
+p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+
+.main-pic {
+    background: image-url("naganocake_top.jpg");
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}

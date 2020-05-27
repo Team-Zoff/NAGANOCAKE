@@ -2,13 +2,13 @@
     <div class="row">
       <div class="col-2"></div>
       <div class="col-2 text-center">
-	       <h5 class="text-light bg-info">管理者画面</h5>
+	       <h5 class="bg-info text-white rounded p-1 mt-5">管理者画面</h5>
       </div>
     </div>
     <div class="row" style="margin-top:50px;">
       <div class="col-5 text-right">
         <h5>本日の注文件数
- 	      <ins><%= link_to @number_of_orders, admins_orders_index_path, class:"text-secondary" %></ins> 件
+ 	      <ins><%= link_to @number_of_orders, admins_orders_path(page_id: 2), class:"link_font_color" %></ins> 件
        </h5>
       </div>
     </div>

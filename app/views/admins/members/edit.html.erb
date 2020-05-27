@@ -1,26 +1,27 @@
-<div class="container" style="margin:4vw 50px 0;">
+<div class="container" style="margin:1vw 50px 0;">
   <div class="row">
-    <div class="col-2"></div>
     <div class="col-2 text-center">
-      <h5 class="text-light bg-info">会員情報の編集</h5>
+      <h5 class="bg-info text-white rounded p-1 mt-5">会員情報の編集</h5>
 	</div>
   </div>
 </div>
 <div class="container mt-3">
-	<form>
+		<%= form_for(@member, url:admins_member_path(@member.id)) do |f| %>
 		<div class="row">
 			<div class="col-2">会員ID</div>
-			<div class="col-3 text-center">1</div>
+			<div class="col-3 text-center">
+				<%= @member.id %>
+			</div>
 		</div>
 		<div class="form-row mt-3">
 			<div class="col-2">
 				<label for="inputName" class="col-form-label">氏名</label>
 			</div>
 			<div class="col-3">
-				<input id="inputName" type="text" class="form-control" placeholder="姓">
+				<%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class:"form-control", placeholder:"姓" %>
 			</div>
 			<div class="col-3">
-				<input type="text" class="form-control" placeholder="名">
+				<%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class:"form-control", placeholder:"名" %>
 			</div>
 		</div>
 		<div class="form-row mt-3">
@@ -28,10 +29,10 @@
 				<label for="inputName" class="col-form-label">フリガナ</label>
 			</div>
 			<div class="col-3">
-				<input id="inputName" type="text" class="form-control" placeholder="セイ">
+				<%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana", class:"form-control", placeholder:"セイ" %>
 			</div>
 			<div class="col-3">
-				<input type="text" class="form-control" placeholder="メイ">
+				<%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", class:"form-control", placeholder:"メイ" %>
 			</div>
 		</div>
 		<div class="form-row mt-3">
@@ -39,7 +40,7 @@
 				<label for="inputText" class="col-form-label">郵便番号</label>
 			</div>
 			<div class="col-3">
-				<input type="text" class="form-control" placeholder="1231234">
+				<%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class:"form-control", placeholder:"1231234" %>
 			</div>
 		</div>
 		<div class="form-row mt-3">
@@ -47,7 +48,7 @@
 				<label for="inputText" class="col-form-label">住所</label>
 			</div>
 			<div class="col-3">
-				<input type="text" class="form-control" placeholder="日本">
+				<%= f.text_field :address, autofocus: true, autocomplete: "address", class:"form-control", placeholder:"日本" %>
 			</div>
 		</div>
 		<div class="form-row mt-3">
@@ -55,7 +56,7 @@
 				<label for="inputText" class="col-form-label">電話番号</label>
 			</div>
 			<div class="col-3">
-				<input type="text" class="form-control" placeholder="12312341234">
+				<%= f.text_field :telephone, autofocus: true, autocomplete: "telephone", class:"form-control", placeholder:"12312341234" %>
 			</div>
 		</div>
 		<div class="form-row mt-3">
@@ -63,7 +64,7 @@
 				<label for="inputEmail3" class="col-form-label">メールアドレス</label>
 			</div>
 			<div class="col-3">
-				<input type="text" class="form-control" placeholder="zoff@zoff">
+				<%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder:"zoff@zoff" %>
 			</div>
 		</div>
 		<div class="form-row mt-3">
@@ -73,22 +74,22 @@
 			<div class="col-4 row">
 				<div class="col">
 					<div class="form-check">
-						<input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-						<label class="form-check-label" for="gridRadios1">有効</label>
+						<%= f.radio_button :deleted_status, "Validity", cheaked:@deleted_status_Validity  %>
+						<%= f.label :deleted_status, "有効" %>
 					</div>
 				</div>
 				<div class="col">
 				    <div class="form-check">
-         				 <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-          				<label class="form-check-label" for="gridRadios2">退会済み</label>
+						<%= f.radio_button :deleted_status, "Invalid", cheaked:@deleted_status_Invalid %>
+						<%= f.label :deleted_status, "退会済み" %>
       				</div>
 				</div>
 			</div>
 		</div>
-	</form>
 	<div class="row mt-3">
-		<div class="col">
-			<%= link_to "変更を保存する", admins_members_show_path, class:"btn btn-secondary" %>
+		<div class="col mt-2">
+			<%= f.submit "変更を保存する", class:"btn btn-primary btn-sm  mt-20" %>
+			<% end %>
    		</div>
 	</div>
 </div>

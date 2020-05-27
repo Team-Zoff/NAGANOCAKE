@@ -1,97 +1,125 @@
-<div class="container">
-
-<div class="row">
-
-<div class="col-md-10 offset-md-1 text-center">
-
-<div class="row">
-
-<h4 class=" col-md-3 text-left">新規会員登録</h4>
-
-</div>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
- <div class="field">
-  <div class="row">
-    <div class="col-md-2 text-left">名前</div>
-    <div class="col-md-2 text-right"><%= f.label :last_name,"(姓)　"%></div>
-    <div class="col-md-3 text-right"><%= f.text_field :last_name, autofocus: true ,style:"border-radius: 0.2em",class:"col-md-12"%></div>
-    <div class="col-md-2 text-right"><%= f.label :first_name,"(名)　"%></div>
-    <div class="col-md-3 text-right"><%= f.text_field :first_name, autofocus: true,style:"border-radius: 0.2em",class:"col-md-12"%></div>
-  </div>
-</div>
-
-  <div class="field">
-  <div class="row">
-    <div class="col-md-2 text-left">フリガナ</div>
-    <div class="col-md-2 text-right"><%= f.label :last_name_kana,"(セイ)" %></div>
-    <div class="col-md-3 text-right"><%= f.text_field :last_name_kana, autofocus: true ,style:"border-radius: 0.2em",class:"col-md-12"%></div>
-    <div class="col-md-2 text-right"><%= f.label :first_name_kana,"(メイ)" %></div>
-    <div class="col-md-3 text-right"><%= f.text_field :first_name_kana, autofocus: true ,style:"border-radius: 0.2em",class:"col-md-12"%></div>
-   </div>
-  </div>
-
-  <div class="field">
-  <div class="row">
-    <div class="col-md-4 text-left"><%= f.label :email,"メールアドレス"%></div>
-    <div class="col-md-3 text-right"><%= f.email_field :email, autofocus: true,style:"border-radius: 0.2em",class:"col-md-12"%></div>
-     <div class="col-md-5"></div>
-  </div>
-  </div>
-
-  <div class="field">
-  <div class="row">
-    <div class="col-md-4 text-left"><%= f.label :postal_code,"郵便番号(ハイフンなし)"%></div>
-    <div class="col-md-3 text-right"><%= f.text_field :postal_code, autofocus: true, autocomplete: "email",style:"border-radius: 0.2em" ,class:"col-md-12"%></div>
-    <div class="col-md-5"></div>
-  </div>
-  </div>
-
-  <div class="field">
+<div class="container mt-5">
     <div class="row">
-    <div class="col-md-4 text-left"><%= f.label :address,"住所"%></div>
-    <div class="col-md-8 text-right input-xlarge"><%= f.text_field :address, autofocus: true, autocomplete: "email",style:"border-radius: 0.2em" ,class:"col-md-12"%></div>
-  </div>
-  </div>
-
-  <div class="field">
-    <div class="row">
-    <div class="col-md-4 text-left"><%= f.label :telephone,"電話番号(ハイフンなし)"%></div>
-    <div class="col-md-3 text-right"><%= f.text_field :telephone, autofocus: true, autocomplete: "email" ,style:"border-radius: 0.2em",class:"col-md-12"%></div>
-    <div class="col-md-5"></div>
-  </div>
-  </div>
-
-  <div class="field">
-    <div class="row">
-    <div class="col-md-4 text-left">
-    <%= f.label :password,"パスワード" %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %>文字以上)</em>
-    <% end %></div>
-    <div class="col-md-3 text-right"><%= f.password_field :password, autocomplete: "new-password",style:"border-radius: 0.2em",class:"col-md-12"%></div>
-    <div class="col-md-5"></div>
-  </div>
-  </div>
-
-  <div class="field">
-    <div class="row">
-    <div class="col-md-4 text-left"><%= f.label :password_confiratiion,"パスワード(確認用)"%></div>
-    <div class="col-md-3 text-right"><%= f.password_field :password_confirmation, autocomplete: "new-password",style:"border-radius: 0.2em",class:"col-md-12" %></div>
-    <div class="col-md-5"></div>
-  </div>
-  </div><br>
-
-  <div class="actions">
-    <%= f.submit "　　新規登録　　" ,class:"btn-success btn-sm  mt-20"%>
-  </div>
-<% end %><br>
-
-<div class="text-left"><%= render "members/shared/links" %></div>
-</div>
-</div>
-<div class="col-md-1">
-</div>
+        <div class="col-md-10 offset-md-1 text-center">
+            <div class="row">
+                <div class="col-2 text-center">
+                    <h5 class="text-light bg-info">新規登録</h5>
+                </div>
+            </div>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+            <div class="field">
+                <div class="row">
+                    <div class="col-md-2 text-left">名前</div>
+                    <div class="col-md-2 text-right">
+                        <%= f.label :last_name,"(姓)　"%>
+                    </div>
+                    <div class="col-md-3 text-right">
+                        <%= f.text_field :last_name, autofocus: true ,style:"border-radius: 0.2em",class:"col-md-12"%>
+                    </div>
+                    <div class="col-md-2 text-right">
+                        <%= f.label :first_name,"(名)　"%>
+                    </div>
+                    <div class="col-md-3 text-right">
+                        <%= f.text_field :first_name, autofocus: true,style:"border-radius: 0.2em",class:"col-md-12"%>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <div class="row">
+                    <div class="col-md-2 text-left">フリガナ</div>
+                    <div class="col-md-2 text-right">
+                        <%= f.label :last_name_kana,"(セイ)" %>
+                    </div>
+                    <div class="col-md-3 text-right">
+                        <%= f.text_field :last_name_kana, autofocus: true ,style:"border-radius: 0.2em",class:"col-md-12"%>
+                    </div>
+                    <div class="col-md-2 text-right">
+                        <%= f.label :first_name_kana,"(メイ)" %>
+                    </div>
+                    <div class="col-md-3 text-right">
+                        <%= f.text_field :first_name_kana, autofocus: true ,style:"border-radius: 0.2em",class:"col-md-12"%>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <div class="row">
+                    <div class="col-md-4 text-left">
+                        <%= f.label :email,"メールアドレス"%>
+                    </div>
+                    <div class="col-md-3 text-right">
+                        <%= f.email_field :email, autofocus: true,style:"border-radius: 0.2em",class:"col-md-12"%>
+                    </div>
+                    <div class="col-md-5"></div>
+                </div>
+            </div>
+            <div class="field">
+                <div class="row">
+                    <div class="col-md-4 text-left">
+                        <%= f.label :postal_code,"郵便番号(ハイフンなし)"%>
+                    </div>
+                    <div class="col-md-3 text-right">
+                        <%= f.text_field :postal_code, autofocus: true, autocomplete: "email",style:"border-radius: 0.2em" ,class:"col-md-12"%>
+                    </div>
+                    <div class="col-md-5"></div>
+                </div>
+            </div>
+            <div class="field">
+                <div class="row">
+                    <div class="col-md-4 text-left">
+                        <%= f.label :address,"住所"%>
+                    </div>
+                    <div class="col-md-8 text-right input-xlarge">
+                        <%= f.text_field :address, autofocus: true, autocomplete: "email",style:"border-radius: 0.2em" ,class:"col-md-12"%>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <div class="row">
+                    <div class="col-md-4 text-left">
+                        <%= f.label :telephone,"電話番号(ハイフンなし)"%>
+                    </div>
+                    <div class="col-md-3 text-right">
+                        <%= f.text_field :telephone, autofocus: true, autocomplete: "email" ,style:"border-radius: 0.2em",class:"col-md-12"%>
+                    </div>
+                    <div class="col-md-5"></div>
+                </div>
+            </div>
+            <div class="field">
+                <div class="row">
+                    <div class="col-md-4 text-left">
+                        <%= f.label :password,"パスワード" %>
+                        <% if @minimum_password_length %>
+                        <em>(
+                            <%= @minimum_password_length %>文字以上)</em>
+                        <% end %>
+                    </div>
+                    <div class="col-md-3 text-right">
+                        <%= f.password_field :password, autocomplete: "new-password",style:"border-radius: 0.2em",class:"col-md-12"%>
+                    </div>
+                    <div class="col-md-5"></div>
+                </div>
+            </div>
+            <div class="field">
+                <div class="row">
+                    <div class="col-md-4 text-left">
+                        <%= f.label :password_confiratiion,"パスワード(確認用)"%>
+                    </div>
+                    <div class="col-md-3 text-right">
+                        <%= f.password_field :password_confirmation, autocomplete: "new-password",style:"border-radius: 0.2em",class:"col-md-12" %>
+                    </div>
+                    <div class="col-md-5"></div>
+                </div>
+            </div><br>
+            <div class="actions">
+                <%= f.submit "　　新規登録　　" ,class:"btn-success btn-sm  mt-20"%>
+            </div>
+            <% end %><br>
+            <div class="text-left">
+                <%= render "members/shared/links" %>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-1">
+    </div>
 </div>

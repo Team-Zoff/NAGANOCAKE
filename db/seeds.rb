@@ -10,3 +10,27 @@ Admin.create!(
 	email: 'zoff@zoff.com',
 	password: 'zoffzoff'
 	)
+
+Genre.create!(
+	[
+		{
+			name: 'ケーキ',
+			valid_invalid: 0
+		},
+		{
+			name: 'プリン',
+			valid_invalid: 0
+		},
+		{
+			name: '焼き菓子',
+			valid_invalid: 0
+		},
+		{
+			name: 'キャンディ',
+			valid_invalid: 0
+		}
+	]
+)
+
+
+
