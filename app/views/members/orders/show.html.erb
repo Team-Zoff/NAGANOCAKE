@@ -1,10 +1,10 @@
 <%# viewで必要な計算 %>
   <% total = 0 %>
   <% tax = 1.10 %>
-  <% postage = @order_detail.order.shipping_free %>
+  <% postage = @order.order_details.shipping_free %>
 
 <%# 合計金額の計算 %>
-  <% @order_detail.each do |order_detail| %>
+  <% @order.order_details.each do |order_detail| %>
     <% subtotal = order_detail.product.price_excluding_tax * order_detail.purchase_quantity %>
     <% total = total + subtotal %>
   <% end %>
@@ -21,20 +21,20 @@
     <table class = 'table-bordered'>
       <thead>
         <tr>
-          <th>注文日</th><th><%= @order_detail.order.created_at %></th>
+          <th>注文日</th><th><%= @order.order_details.created_at %></th>
         </tr>
         <tr>
           <th>配送先</th>
-          <th><%= @order_detail.order.postal_code %><br>
-            <%= @order_detail.order.address %><br>
-            <%= @order_detail.order.address_name %>
+          <th><%= @order.order_details.postal_code %><br>
+            <%= @order.order_details.address %><br>
+            <%= @order.order_details.address_name %>
           </th>
         </tr>
         <tr>
-          <th>支払方法</th><th><%= @order_detail.order.method_of_payment %></th>
+          <th>支払方法</th><th><%= @order.order_details.method_of_payment %></th>
         </tr>
         <tr>
-          <th>ステータス</th><th><%= @order_detail.order.order_status %></th>
+          <th>ステータス</th><th><%= @order.order_details.order_status %></th>
         </tr>
       </thead>
     </table>
@@ -69,7 +69,7 @@
       </thead>
       <tbody>
         <% total = 0 %>
-        <% @order_detail.each do |order_detail| %>
+        <% @order.order_details.each do |order_detail| %>
         <tr>
           <td>
             <%= order_detail.product.name %>

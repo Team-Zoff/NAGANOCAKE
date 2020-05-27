@@ -18,7 +18,7 @@
                 </tr>
             </thead>
             <tbody>
-                <% @orders.each do |orders| %>
+                <% current_member.orders.each do |orders| %>
                 <tr>
                     <td>
                         <%= orders.created_at %>
