@@ -17,7 +17,7 @@
                 </tr>
             </thead>
             <tbody>
-                <% @orders.each do |orders| %>
+                <% current_member.orders.each do |orders| %>
                 <tr style="background-color:#ffffff;">
                     <td>
                         <%= orders.created_at %>
@@ -28,8 +28,8 @@
                         <%= orders.address_name %>
                     </td>
                     <td>
-                        <% orders.order_detail.each do |order_detail|%>
-                        <%= order_detail.product.name %>
+                        <% orders.order_details.each do |order_detail|%>
+                        <%= order_detail.product.product_name %>
                         <% end%>
                     </td>
                     <td>
@@ -39,7 +39,7 @@
                         <%= orders.order_status %>
                     </td>
                     <td>
-                        <%= link_to '表示する',members_orders_path(orders),class: 'btn btn-primary' %>
+                        <%= link_to '表示する',members_order_path(orders.id),class: 'btn btn-primary' %>
                     </td>
                 </tr>
                 <% end %>

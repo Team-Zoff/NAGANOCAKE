@@ -2,7 +2,6 @@ class Members::ProductsController < ApplicationController
   def index
   	@products = Product.all
     @genres = Genre.all
-    end
   end
 
   def show
