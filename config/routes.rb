@@ -21,6 +21,7 @@ devise_for :members, skip: :all
     get 'orders/confirmation' => 'orders#confirmation',as: 'order_confirmation'
     get 'orders/thanks' => 'orders#thanks',as: 'order_thanks'
     post 'orders/select'
+    post 'orders/create'
     resources :orders, only:[:index,:show]
     get 'members/withdrawal' => 'members#withdrawal',as: 'withdrawal'
     patch 'members/withdrawal' => 'members#withdrawal_confirm', as: 'withdrawal_confirm'

@@ -1,9 +1,7 @@
 <div class="container" style="margin:4vw 50px 0;">
 	<div class="row">
    		<div class="col-2 text-center">
-   			<% if flash[:notice] %>
 				<p><%= flash[:notice] %></p>
-			<% end %>
      	 　　<h5 class="bg-info text-white rounded p-1 mt-5">商品詳細</h5>
      	</div>
 	</div>
@@ -37,12 +35,13 @@
 			</div><br>
 
 			<div class="row">
-				<span class="col-md-6">販売ステータス</span>
-				<span class="col-md-6"><%= @product.sale_status_i18n %></span>
+				<span class="col-md-5">販売ステータス</span>
+				<span class="col-md-7"><%= @product.sale_status_i18n %></span>
 			</div><br>
 		</div>
-
-		<div class="col-md-12 text-right">
+	</div>
+	<div class="row">
+		<div class="col-6 text-right offset-3">
 			<%= link_to "編集する",edit_admins_product_path(@product) ,class:"btn btn-primary btn-sm  mt-20"%>
 		</div>
 	</div>
