@@ -1,6 +1,5 @@
-<nav class="navbar navbar-expand-md navbar-dark" style="background-color:#ce3c63;">
+<nav class="navbar navbar-expand navbar-dark" style="background-color:#ce3c63; margin: 0px;">
     <a class="navbar-brand" href="/">NAGANOCAKE</a>
-
   <!-- memberなのでidはnavbar_mとしています -->
   <div class="collapse navbar-collapse" id="navbar_m">
   <% if member_signed_in? %>
@@ -39,8 +38,7 @@
       <% end %>
     </div>
 </nav>
-<div class="container-fluid" style="background-color:#ce3c63; padding-bottom: 15px;">
-    <% if member_signed_in? %>
-    <%= render '/layouts/search' %>
-    <% end %>
+</div>
+<div class="row" style="background-color:#ce3c63; padding-bottom: 15px;">
+  <%= render '/layouts/search' %>
 </div>
