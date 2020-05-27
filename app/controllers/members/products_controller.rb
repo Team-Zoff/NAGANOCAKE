@@ -1,6 +1,6 @@
 class Members::ProductsController < ApplicationController
   def index
-  	@products = Product.all
+  	@products = Product.page(params[:page]).reverse_order
     @genres = Genre.all
     @genres.each do |genre|
       @genre = genre

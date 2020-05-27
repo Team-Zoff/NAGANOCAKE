@@ -36,5 +36,8 @@
       <% end %>
     </div>
     <div class="row">
+      <% if member_signed_in? %>
+      <%= render '/layouts/search' %>
+      <% end %>
     </div>
   </nav>

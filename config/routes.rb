@@ -18,7 +18,7 @@ devise_for :members, skip: :all
     resource :member, only:[:show,:edit,:update]
     get 'members/withdrawal' => 'members#withdrawal',as: 'withdrawal'
     patch 'members/withdrawal' => 'members#withdrawal_confirm', as: 'withdrawal_confirm'
-    get 'homes/top' => 'members/homes#top',as: '/'
+    get 'homes/top' => 'homes#top',as: '/'
     resources :orders, only:[:index,:show]
     get 'orders/purchase_information' => 'orders#purchase_information',as: 'order_purchase'
     get 'orders/confirmation' => 'orders#confirmation',as: 'order_confirmation'
@@ -29,9 +29,10 @@ devise_for :members, skip: :all
     delete 'members/cart_items' => 'cart_items#destroy_all',as: 'cart_destroy'
     resources :products, only:[:index,:show]
     resources :genres,only:[:index]
+    get "/searches/search" => "searches#search", as: 'search'
   end
 
-    devise_for :admins, skip: :all
+  devise_for :admins, skip: :all
     devise_scope :admin do
       get 'admins/sign_in' => 'admins/sessions#new', as: 'new_admin_session'
       post 'admins/sign_in' => 'admins/sessions#create', as: 'admin_session'
@@ -44,7 +45,7 @@ devise_for :members, skip: :all
     end
   end
 
-    authenticated :admin do
+  authenticated :admin do
       namespace :admins do
       resources :genres, only:[:create, :index, :edit, :update]
       resources :products, only:[:index, :new, :create, :show, :edit, :update]
