@@ -2,7 +2,6 @@ class Members::ProductsController < ApplicationController
   def index
   	@products = Product.page(params[:page]).reverse_order
     @genres = Genre.all
-    end
   end
 
   def show
@@ -15,7 +14,7 @@ class Members::ProductsController < ApplicationController
   end
 
   private
-  def cart_items_params
-    params.permit(:genre_id,:product_name,:product_image_id,:price_excluding_tax)
+  def product_params
+    params.require(:product).permit(:genre_id,:product_name,:product_image_id,:price_excluding_tax)
   end
 end

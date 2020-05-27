@@ -1,17 +1,5 @@
 <div class="container mx-5 mt-5">
     <div class="row">
-<<<<<<< HEAD
-      <% @products.each do |product| %>
-      <div class="col-5 ml-2 mt-3">
-      <%= attachment_image_tag(product, :product_image, size: "300x250") %><br>
-      <%= link_to members_product_path(product) do %>
-        <%= product.product_name %>
-      <% end %>
-      <%= "¥#{product.price_excluding_tax}" %>
-      </div>
-      <% end %>
-      <%= paginate @products,class:"mx-auto" %>
-=======
         <div class="col-3">
             <%= render partial: 'layouts/genres_sidebar',locals: {genres:@genres} %>
         </div>
@@ -30,6 +18,5 @@
                 </div>
             </div>
         </div>
->>>>>>> 09f4fcd814f49a24f274e26b5ec65399830b610c
     </div>
 </div>
