@@ -1,3 +1,23 @@
 // Place all the styles related to the members::homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.header {
+	height:300px;
+}
+
+.naganocake-text-area {
+	height:300px;
+	background-color: #000;
+	opacity: 0.5;
+    color:#fff;
+}
+
+.main-pic {
+  background: image-url("naganocake_top.jpg"),image-url("bg-cake.png"),image-url("bg-cake.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+

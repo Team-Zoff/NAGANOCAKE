@@ -4,11 +4,10 @@
             <h5 class="text-light bg-info">注文履歴一覧</h5>
         </div>
     </div>
-    <div style="margin-top:10px;">
-    <div class="row">
-        <table class="table col-10">
+    <div class="row justify-content-center mt-3">
+        <table class="table">
             <thead>
-                <tr>
+                <tr style="background-color:#f8f8ff;">
                     <th>注文日</th>
                     <th>配送先</th>
                     <th>注文商品</th>
@@ -18,8 +17,8 @@
                 </tr>
             </thead>
             <tbody>
-                <% current_member.orders.each do |orders| %>
-                <tr>
+                <% @orders.each do |orders| %>
+                <tr style="background-color:#ffffff;">
                     <td>
                         <%= orders.created_at %>
                     </td>
@@ -31,6 +30,7 @@
                     <td>
                         <% orders.order_detail.each do |order_detail|%>
                         <%= order_detail.product.name %>
+                        <% end%>
                     </td>
                     <td>
                         <%= orders.confirmed_purchase_price %>
@@ -41,7 +41,6 @@
                     <td>
                         <%= link_to '表示する',members_orders_path(orders),class: 'btn btn-primary' %>
                     </td>
-                    <% end%>
                 </tr>
                 <% end %>
             </tbody>

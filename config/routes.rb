@@ -8,6 +8,7 @@ devise_for :members, skip: :all
     post '/members/sign_in' => 'members/sessions#create', as: 'member_session'
     delete '/members/sign_out' => 'members/sessions#destroy', as: 'destroy_member_session'
     get '/members/sign_up' => 'members/registrations#new', as: 'new_member_registration'
+    get '/members/passwords/edit' => 'members/registrations#edit', as: 'password_edit_registrations'
     post '/members/sign_up' => 'members/registrations#create', as: 'member_registration'
     get '/members/' => 'members/passwords#edit', as: 'edit_member_password'
     patch '/members/passwords' => 'members/passwords#update', as: 'member_password'

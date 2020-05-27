@@ -89,8 +89,9 @@
                 </div>
             </div>
             <div class="field row">
-                <%= f.submit "編集内容を保存する",class:"btn btn-info col-3 mt-3",style:"margin-left:0px;" %>
-                <%= link_to "退会する",members_withdrawal_path,class:"btn btn-warning col-3 offset-6 mt-3",style:"margin-right:0px;" %>
+                <%= f.submit "編集内容を保存する",class:"btn btn-info col-3 mt-3 ml-3" %>
+                <div class="col-5"> </div>
+                <%= link_to "退会する",members_withdrawal_path,class:"btn btn-warning col-3 mt-3", style:"margin-left:35px;" %>
             </div>
             <% end %>
         </div>
