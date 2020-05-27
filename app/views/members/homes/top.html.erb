@@ -5,7 +5,8 @@
                 <p>ようこそ、NaganoCakeへ!<br>
                     このサイトでは、ケーキ販売のECサイトになります。<br>
                     会員ではない方も商品の閲覧はできますが,<br>
-                    購入には<%= link_to "会員登録",new_member_registration_path %>が必要になります。</p>
+                    購入には
+                    <%= link_to "会員登録",new_member_registration_path %>が必要になります。</p>
             </div>
         </div>
     </div>
@@ -27,9 +28,8 @@
                     <%= "¥#{products.price_excluding_tax}" %>
                 </div>
                 <% end %>
-                <%= "¥#{products.price_excluding_tax}" %>
             </div>
-        <% end %>
+        </div>
     </div>
     <div class="row">
         <div class="col-2 offset-10">
