@@ -16,7 +16,15 @@ devise_for :members, skip: :all
   end
 
   namespace :members do
+<<<<<<< HEAD
+    resource :member, only:[:show,:edit,:update]
+    get 'members/withdrawal' => 'members#withdrawal',as: 'withdrawal'
+    patch 'members/withdrawal' => 'members#withdrawal_confirm', as: 'withdrawal_confirm'
     get 'homes/top' => 'homes#top',as: '/'
+    resources :orders, only:[:index,:show]
+=======
+    get 'homes/top' => 'homes#top',as: '/'
+>>>>>>> 09f4fcd814f49a24f274e26b5ec65399830b610c
     get 'orders/purchase_information' => 'orders#purchase_information',as: 'order_purchase'
     get 'orders/confirmation' => 'orders#confirmation',as: 'order_confirmation'
     get 'orders/thanks' => 'orders#thanks',as: 'order_thanks'
@@ -31,9 +39,10 @@ devise_for :members, skip: :all
     resources :cart_items,only:[:index,:create,:update,:destroy]
     resources :products, only:[:index,:show]
     resources :genres,only:[:index]
+    get "/searches/search" => "searches#search", as: 'search'
   end
 
-    devise_for :admins, skip: :all
+  devise_for :admins, skip: :all
     devise_scope :admin do
       get 'admins/sign_in' => 'admins/sessions#new', as: 'new_admin_session'
       post 'admins/sign_in' => 'admins/sessions#create', as: 'admin_session'
@@ -46,7 +55,7 @@ devise_for :members, skip: :all
     end
   end
 
-    authenticated :admin do
+  authenticated :admin do
       namespace :admins do
       get 'homes/top' => 'homes#top',as: '/'
       resources :genres, only:[:create, :index, :edit, :update]
