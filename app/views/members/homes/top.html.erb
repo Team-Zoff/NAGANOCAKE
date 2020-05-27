@@ -4,40 +4,21 @@
             <span class='naganocake-text-area mx-auto d-flex align-items-center justify-content-center'>ようこそ、NaganoCakeへ!<br>
                 このサイトでは、ケーキ販売のECサイトになります。<br>
                 会員ではない方も商品の閲覧はできますが,<br>
-                購入には <%= link_to "会員登録", new_member_registration_path %>が必要になります。</span>
+                購入には<%= link_to "会員登録", new_member_registration_path %>が必要になります。</span>
         </div>
     </div>
 
     <div class="row mt-3">
-        <h2 class="col-3 offset-3">オススメ商品</h2>
-       　 <% @products.each do |products| %>
-    　 <div class='col-4 mt-3 ml-5'>
-        <%= attachment_image_tag(products, :product_image, size: '250x200') %><br>
-          <%= link_to members_product_path(products.id) do %>
-            <%= products.product_name %>
-          <% end %>
-          <%= "¥#{products.price_excluding_tax}" %>
-       </div>
-       <% end %>
-      </div>
-    </div>
-    <div class='row'>
-        <div class="col-3 mt-3">
-            <%= render partial: 'layouts/genres_sidebar',locals: {genres:@genres} %>
-        </div>
-        <div class="col-9">
-            <div class="row">
-                <% @products.each do |products| %>
-                <div class='col-4 mt-3 pl-3'>
-                    <%= attachment_image_tag(products, :product_image, size: '209x167',class: "img-thumbnail") %><br>
-                    <%= link_to members_product_path(products.id) do %>
-                    <%= products.product_name %>
-                    <% end %>
-                    <%= "¥#{products.price_excluding_tax}" %>
-                </div>
+    <h2 class="col-3 offset-3">オススメ商品</h2>
+        <% @products.each do |products| %>
+            <div class='col-4 mt-3 pl-3'>
+                <%= attachment_image_tag(products, :product_image, size: '209x167',class: "img-thumbnail") %><br>
+                <%= link_to members_product_path(products.id) do %>
+                <%= products.product_name %>
                 <% end %>
+                <%= "¥#{products.price_excluding_tax}" %>
             </div>
-        </div>
+        <% end %>
     </div>
     <div class="row">
         <div class="col-2 offset-10">

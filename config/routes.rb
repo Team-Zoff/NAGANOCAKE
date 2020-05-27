@@ -16,15 +16,7 @@ devise_for :members, skip: :all
   end
 
   namespace :members do
-<<<<<<< HEAD
-    resource :member, only:[:show,:edit,:update]
-    get 'members/withdrawal' => 'members#withdrawal',as: 'withdrawal'
-    patch 'members/withdrawal' => 'members#withdrawal_confirm', as: 'withdrawal_confirm'
     get 'homes/top' => 'homes#top',as: '/'
-    resources :orders, only:[:index,:show]
-=======
-    get 'homes/top' => 'homes#top',as: '/'
->>>>>>> 09f4fcd814f49a24f274e26b5ec65399830b610c
     get 'orders/purchase_information' => 'orders#purchase_information',as: 'order_purchase'
     get 'orders/confirmation' => 'orders#confirmation',as: 'order_confirmation'
     get 'orders/thanks' => 'orders#thanks',as: 'order_thanks'
