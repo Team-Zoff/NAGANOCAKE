@@ -1,7 +1,10 @@
-<div class="container" style="margin:4vw 50px 0;">
+<div>
+    <%= notice %>
+</div>
+<div class="container" style="margin:2vw 50px 0;">
     <div class="row">
         <div class="col-3 text-center">
-            <h5 class="text-light bg-info">配送先登録・一覧</h5>
+            <h5 class="bg-info text-white rounded p-1 my-3">配送先登録・一覧</h5>
         </div>
     </div>
     <div class="row">
@@ -21,7 +24,7 @@
     </div>
     <%= form_for(@shipping_address, url:members_shipping_addresses_path) do |f| %>
     <div class="row">
-        <div class="col-9">
+        <div class="row col-9">
             <div class="col-12 px-0 mx-0">
                 <%= f.label :postal_code,"郵便番号(ハイフンなし)", class: "col-4" %>
                 <%= f.text_field :postal_code, class: "col-3.5" %>
@@ -47,14 +50,14 @@
                     <th>郵便番号</th>
                     <th >住所</th>
                     <th>宛名</th>
-                    <th></th>
+                    <th colspan="5"></th>
                 </tr>
             </thead>
             <tbody>
-                <% @shipping_addresses.each do |shippingaddress| %>
+                <% @full_shipping_addresses.each do |shippingaddress| %>
                 <tr style="background-color:#ffffff;">
                     <td>
-                        <%= shippingaddress.postal_code%>
+                        <%= shippingaddress.postal_code %>
                     </td>
                     <td>
                         <%= shippingaddress.address %>
@@ -63,10 +66,10 @@
                         <%= shippingaddress.address_name %>
                     </td>
                     <td>
-                        <%= link_to '編集する',edit_members_shipping_address_path(ShippingAddress),class: 'btn btn-primary'%>
+                        <%= link_to '編集する', edit_members_shipping_address_path(shippingaddress),class:'btn btn-primary'%>
                     </td>
                     <td>
-                        <%= link_to '削除する',members_shipping_address_path(ShippingAddress), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger"%>
+                        <%= link_to '削除する', members_shipping_address_path(shippingaddress), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class:"btn btn-danger" %>
                     </td>
                 </tr>
                 <% end %>

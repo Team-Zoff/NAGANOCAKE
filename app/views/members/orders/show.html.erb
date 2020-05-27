@@ -46,7 +46,7 @@
           </tr>
           <tr>
             <th>ご請求額</th>
-            <td>2000<%= "#{@total + @order.shipping_free}" %>円</td>
+            <td>2000<%= "#{@total + @order_shipping_free}" %>円</td>
         </tr>
        </tbody>
       </table>
@@ -68,10 +68,10 @@
           <% @order_detail.each do |order_detail| %>
           <tr>
             <td>イチゴケーキ
-              <%= order_detail.product_name %>
+              <%= order_detail.product.product_name %>
             </td>
             <td>2000
-              <%= "#{price_excluding_tax * 1.1}" %>円
+              <%= "#{order_detail.product.price_excluding_tax * 1.1}" %>円
             </td>
             <td>2
               <%= order_detail.purchase_quantity %>個
