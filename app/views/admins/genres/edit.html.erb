@@ -16,8 +16,8 @@
 				<%= f.label :name,"ジャンル" %>
 				<%= f.text_field :name, autocomplete: "名称" %>
 
-				<%= f.radio_button :valid_invalid, "有効", {checked: true} %>有効
-    			<%= f.radio_button :valid_invalid, "無効", {} %>無効
+				<%= f.radio_button :valid_invalid, "Validity", {checked: true} %>有効
+    			<%= f.radio_button :valid_invalid, "Invalid", {} %>無効
 
     			<%= f.submit "変更を保存する", class:"btn-primary",style:"border-radius: 0.5em" %>
 

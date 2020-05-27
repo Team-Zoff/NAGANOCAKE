@@ -19,8 +19,8 @@ class Admins::GenresController < ApplicationController
 	end
 
 	def update
-		genre = Genre.find(params[:id])
-		if genre.update(genre_params)
+		@genre = Genre.find(params[:id])
+		if @genre.update(genre_params)
 			flash[:notice] = "ジャンルを更新しました！"
 			redirect_to action: :index
 		else

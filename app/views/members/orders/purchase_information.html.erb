@@ -54,11 +54,11 @@
 			<%= f.radio_button :address_status, "2" %>
 			<%= f.label :address_status, "登録済み住所から選択" %>
 		    </div>
-      
+
 			<div class="col-5">
 	  			<%= f.collection_select :address_collection, @shipping_addresses, :id, :full_address, {}, {class: 'form-control'} %>
 	  		</div>
-      
+
 		</div>
 		<div class="row mt-3">
 			<div class="col">

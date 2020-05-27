@@ -4,18 +4,18 @@
             <%= render partial: 'layouts/genres_sidebar',locals: {genres:@genres} %>
         </div>
         <div class="col-9">
-               <div class="col-5 ml-2 mt-3">
-                <h5 class="mt-3">商品一覧
-                    <%= "(全#{@products.count}件)" %>
-                </h5>
-                    <% @products.each do |product| %>
-                    <%= attachment_image_tag(product, :product_image, size: "300x250") %><br>
-                    <%= link_to members_product_path(product) do %>
-                    <%= product.product_name %>
-                    <% end %>
-                    <%= "¥#{product.price_excluding_tax}" %>
-                    <% end %>
-                </div>
+            <div class="col-5 ml-2 mt-3">
+              <h5 class="mt-3">商品一覧
+                <%= "(全#{@products.count}件)" %>
+              </h5>
+                <% @products.each do |product| %>
+                  <%= attachment_image_tag(product, :product_image, size: "300x250") %><br>
+                  <%= link_to members_product_path(product) do %>
+                  <%= product.product_name %>
+                  <% end %>
+                  <%= "¥#{product.price_excluding_tax}" %>
+                <% end %>
+                <%= paginate @products,class:"mx-auto" %>
             </div>
         </div>
     </div>

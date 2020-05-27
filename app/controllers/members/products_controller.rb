@@ -7,7 +7,7 @@ class Members::ProductsController < ApplicationController
   def show
     @genres = Genre.all
     @genres.each do |genre|
-      @genre = genre
+      @genre = genre.id
     end
     @products = Product.find(params[:id])
     @cart_item = CartItem.new
