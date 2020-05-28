@@ -37,6 +37,7 @@ class Members::OrdersController < ApplicationController
   	@order = Order.new
   	@shipping_addresses = ShippingAddress.where(member_id: current_member.id)
   	@address_status = params[:address_status]
+    
   end
 
   def confirmation
