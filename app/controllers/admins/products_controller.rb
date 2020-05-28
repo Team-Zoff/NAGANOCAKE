@@ -43,3 +43,22 @@ class Admins::ProductsController < ApplicationController
     	params.require(:product).permit(:product_image,:product_name,:description,:genre_id,:price_excluding_tax,:sale_status)
 		end
 end
+
+
+
+<script type="text/javascript">
+  $(function() {
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+    $('#img_prev').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#product_product_image").change(function(){
+        readURL(this);
+    });
+  });
+</script>

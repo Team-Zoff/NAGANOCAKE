@@ -17,25 +17,16 @@
 
   <body>
     <% if admin_signed_in? %>
-<<<<<<< HEAD
-    <%= render '/layouts/navbar_admin' %>
-    <% else %>
-    <%= render '/layouts/navbar_member' %>
-=======
       <%= render '/layouts/navbar_admin' %>
     <% else %>
       <%= render '/layouts/navbar_member' %>
->>>>>>> 33da025ab86fe7640b5af8d30571cadad62e861b
     <% end %>
     <%= yield %>
   </body>
 
   <footer class="footer container-fluid">
-<<<<<<< HEAD
-      <p class="footer p-2",style="position: static;">NAGANO CAKE<br>
-=======
+
       <p class="footer p-2 text-right">NAGANO CAKE<br>
->>>>>>> 33da025ab86fe7640b5af8d30571cadad62e861b
       長野県〇〇市〇〇1-2-3</p>
     <div class="footer clearfix">
       <%= image_tag "naganocake_pic.jpg",size:"200x150",class:"rounded float-right mb-3" %>
