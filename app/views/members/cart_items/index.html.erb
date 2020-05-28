@@ -18,7 +18,8 @@
         <tbody class="table-light">
           <% @cart_items.each do |cart_item| %>
             <tr>
-              <td><%= cart_item.product.product_name %></td>
+              <td><%= attachment_image_tag(cart_item.product,:product_image, size: '120x60',class: "img-thumbnail mr-3") %>
+                <%= cart_item.product.product_name %></td>
               <td><%= (cart_item.product.price_excluding_tax * 1.1).to_i %></td>
               <td><%= cart_item.number_of_products %></td>
           <%= form_for cart_item,url:members_cart_item_path(cart_item),method: :patch do |f| %>
@@ -50,3 +51,4 @@
     </div>
       </div>
     </div>
+  </div>
