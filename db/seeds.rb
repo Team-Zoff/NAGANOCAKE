@@ -32,11 +32,32 @@ Genre.create!(
 	]
 )
 
-Product.create!(
-	genre_id: 1,
-	product_name: 'test',
-	description: 'test',
-	product_image_id: 'test',
-	price_excluding_tax: 50000,
-	sale_status: 0
+Genre.create!(
+	[
+		{
+			name: 'ケーキ',
+			valid_invalid: 0
+		},
+		{
+			name: 'プリン',
+			valid_invalid: 0
+		},
+		{
+			name: '焼き菓子',
+			valid_invalid: 0
+		},
+		{
+			name: 'キャンディ',
+			valid_invalid: 0
+		}
+	]
 )
+
+# Product.create!(
+# 	genre_id: 1,
+# 	product_name: 'test',
+# 	description: 'test',
+# 	product_image_id: 'test',
+# 	price_excluding_tax: 50000,
+# 	sale_status: 0
+# )
