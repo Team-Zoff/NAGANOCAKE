@@ -6,31 +6,31 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Admin.create!(
-# 	email: 'zoff@zoff.com',
-# 	password: 'zoffzoff'
-# 	)
-#
-# Genre.create!(
-# 	[
-# 		{
-# 			name: 'ケーキ',
-# 			valid_invalid: 0
-# 		},
-# 		{
-# 			name: 'プリン',
-# 			valid_invalid: 0
-# 		},
-# 		{
-# 			name: '焼き菓子',
-# 			valid_invalid: 0
-# 		},
-# 		{
-# 			name: 'キャンディ',
-# 			valid_invalid: 0
-# 		}
-# 	]
-# )
+Admin.create!(
+	email: 'zoff@zoff.com',
+	password: 'zoffzoff'
+	)
+
+Genre.create!(
+	[
+		{
+			name: 'ケーキ',
+			valid_invalid: 0
+		},
+		{
+			name: 'プリン',
+			valid_invalid: 0
+		},
+		{
+			name: '焼き菓子',
+			valid_invalid: 0
+		},
+		{
+			name: 'キャンディ',
+			valid_invalid: 0
+		}
+	]
+)
 
 Product.create!(
 	genre_id: 1,
