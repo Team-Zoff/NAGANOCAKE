@@ -1,7 +1,7 @@
 <div class="container" style="margin:4vw 50px 0;">
   <div class="row">
     <div class="col-2 text-center">
-      <h5 class="bg-info text-white rounded p-1 mt-5">新規登録</h5>
+      <h5 class="bg-info text-white rounded p-1 mt-5">商品登録</h5>
 	</div>
   </div>
 </div>
@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="col-md-4">
 				<%= image_tag "bg-cake.png", id: :img_prev , :size =>'300x230' %>
-				<%= f.attachment_field :product_image %>
+				<%= f.attachment_field :product_image,class:"mt-3" %>
 			</div>
 
 			<div class="col-md-5">
