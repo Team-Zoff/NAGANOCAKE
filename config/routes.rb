@@ -30,7 +30,7 @@ devise_for :members, skip: :all
     resources :shipping_addresses,only:[:index,:show,:edit,:create,:update,:destroy]
     resources :cart_items,only:[:index,:create,:update,:destroy]
     resources :products, only:[:index,:show]
-    resources :genres,only:[:index,:show]
+    resources :genres,only:[:show]
     get "/searches/search" => "searches#search", as: 'search'
   end
 

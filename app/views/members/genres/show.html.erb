@@ -1,28 +1,26 @@
 <div class="container mx-5 mt-5">
     <div class="row">
         <div class="col-3">
-            <%= render partial: 'layouts/genres_sidebar',locals: {genres:@genres} %>
+            <%= render 'layouts/genres_sidebar' %>
         </div>
         <div class="col-9">
             <div class="row mt-3">
-                <h5 class="col-auto">
-                    <%= @genre.name %>一覧
-                    <%= "(全#{Product.where(genre_id: @genre.id).count}件)" %>
-                </h5>
+                <h3 class="col-auto">
+                    <%= @genre.name %>
+                    <%= "全#{@products.count}件" %>
+                </h3>
             </div>
             <div class="row">
                 <% @products.each do |products| %>
-                <% if products.sale_status == "sale" && products.genre_id == @genre.id %>
                 <div class='col-4 mt-3 pl-3'>
-                    <%= attachment_image_tag(products, :product_image, size: '220x167',class: "img-thumbnail") %><br>
+                    <%= attachment_image_tag(products, :product_image, size: '209x167',class: "img-thumbnail") %><br>
                     商品名：
                     <%= link_to members_product_path(products.id) do %>
                     <%= products.product_name %>
-                    <% end %><br>
+                    <% end %>
                     税抜価格：
                     <%= "¥#{products.price_excluding_tax}" %>
                 </div>
-                <% end %>
                 <% end %>
             </div>
         </div>
