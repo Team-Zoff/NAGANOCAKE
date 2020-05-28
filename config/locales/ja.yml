@@ -12,6 +12,7 @@ ja:
         email: メールアドレス
         password: パスワード
         remember_me: ""
+    attributes:
       order:
         address: 住所
         postal_code: 郵便番号
