@@ -1,11 +1,18 @@
 <div class="container">
+  <% if @message.present? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      <%= @message %>
+    </div>
+  </div>
+  <% end %>
   <div class="row">
     <h4 class="bg-info text-white rounded p-1 mt-5">ショッピングカート</h4>
     <div class='ml-auto mt-5'>
     <%= link_to "カートを空にする", members_cart_items_destroy_path,method: :delete, class:"btn btn-danger" %>
     </div>
       <table class="table table-bordered mt-3">
-        <thead class="bg-info">
+        <thead class="bg-info text-white">
           <tr>
             <th>商品名</th>
             <th>単価(税込)</th>
@@ -15,7 +22,7 @@
             <th></th>
           </tr>
         </thead>
-        <tbody class="table-light">
+        <tbody class="bg-light">
           <% @cart_items.each do |cart_item| %>
             <tr>
               <td><%= attachment_image_tag(cart_item.product,:product_image, size: '120x60',class: "img-thumbnail mr-3") %>
@@ -51,4 +58,5 @@
     </div>
       </div>
     </div>
-  </div>
+</div>
+
