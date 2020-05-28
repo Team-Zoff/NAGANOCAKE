@@ -1,4 +1,11 @@
 <div class="container">
+  <% if @message.present? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      <%= @message %>
+    </div>
+  </div>
+  <% end %>
   <div class="row">
     <h4 class="bg-info text-white rounded p-1 mt-5">ショッピングカート</h4>
     <div class='ml-auto mt-5'>
@@ -51,4 +58,5 @@
     </div>
       </div>
     </div>
-  </div>
+</div>
+

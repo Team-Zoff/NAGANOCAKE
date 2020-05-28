@@ -12,6 +12,11 @@ ja:
         email: メールアドレス
         password: パスワード
         remember_me: ""
+      order:
+        address: 住所
+        postal_code: 郵便番号
+        address_name: 宛名
+        method_of_payment: 支払い方法
 
   enums:
     member:
