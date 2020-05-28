@@ -19,18 +19,18 @@
           </tr>
           <tr>
             <th>配送先</th>
-            <td>日本<%= @order.postal_code %><br>
+            <td><%= @order.postal_code %><br>
               <%= @order.address %><br>
               <%= @order.address_name %>
             </td>
           </tr>
           <tr>
             <th>支払方法</th>
-            <td>クレカ<%= @order.method_of_payment_i18n %></td>
+            <td><%= @order.method_of_payment_i18n %></td>
           </tr>
           <tr>
             <th>ステータス</th>
-            <td>入金確認<%= @order.order_status %></td>
+            <td><%= @order.order_status %></td>
           </tr>
         </tbody>
       </table>
@@ -38,15 +38,15 @@
         <tbody>
          <tr>
             <th>商品の合計</th>
-            <td>1200<%= @total %>円</td>
+            <td><%= @total %>円</td>
           </tr>
           <tr>
             <th>配送料</th>
-            <td>800<%= @order.shipping_free %>円</td>
+            <td><%= @order.shipping_free %>円</td>
           </tr>
           <tr>
             <th>ご請求額</th>
-            <td>2000<%= "#{@total + @order_shipping_free}" %>円</td>
+            <td><%= "#{@total + @order.shipping_free}" %>円</td>
         </tr>
        </tbody>
       </table>
@@ -67,16 +67,16 @@
         <tbody>
           <% @order_detail.each do |order_detail| %>
           <tr>
-            <td>イチゴケーキ
+            <td>
               <%= order_detail.product.product_name %>
             </td>
-            <td>2000
+            <td>
               <%= "#{order_detail.product.price_excluding_tax * 1.1}" %>円
             </td>
-            <td>2
+            <td>
               <%= order_detail.purchase_quantity %>個
             </td>
-            <td>4000
+            <td>
               <%= subtotal = order_detail.product.price_excluding_tax * order_detail.purchase_quantity %>円
             </td>
           </tr>
