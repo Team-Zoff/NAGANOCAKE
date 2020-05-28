@@ -5,84 +5,86 @@
 	</div>
   </div>
 </div>
-<div class="container">
-	<div class="row">
-		<label class="col-md-2">購入者</label>
-		<div class="col-md-10">
-			<%= link_to "#{@order.member.last_name + @order.member.first_name}", admins_order_path(@order.member.id) %>
-		</div>
-		<label class="col-md-2">配送先</label>
-		<div class="col-10">
-			<%= @order.postal_code + @order.address + @order.address_name %>
-		</div>
-		<label class="col-md-2">支払方法</label>
-		<div class="col-10">
-			<%= @order.method_of_payment_i18n %>
-		</div>
-		<label class="col-md-2">支払いステータス</label>
-		<div class="col-10">
-			<%= form_for(@order, url:admins_order_path(@order.id), method: :patch) do |f| %>
- 		    	<%= f.select :order_status, Order.order_statuses_i18n.invert,{} , {class:'form-control col-2', style:"display: inline-block;"} %>
-      			<%= f.submit "更新", class:"btn btn-secondary mx-2" %>
-			<% end %>
-		</div>
-		<div class="col-5"></div>
+<div class="container mt-2">
+	<table class="col-8 table table-bodered bg-light">
+    <tr>
+		  <th>購入者</th>
+      <td>
+			  <%= link_to "#{@order.member.last_name + @order.member.first_name}", admins_order_path(@order.member.id) %>
+      </td>
+    </tr>
+    <tr>
+      <th>配送先</th>
+		  <td>
+			  <%= @order.postal_code + @order.address + @order.address_name %>
+		  </td>
+    </tr>
+    <tr>
+		  <th>支払方法</th>
+		  <td>
+			  <%= @order.method_of_payment_i18n %>
+		  </td>
+    </tr>
+    <tr>
+		  <th>支払いステータス</th>
+		  <td>
+			   <%= form_for(@order, url:admins_order_path(@order.id), method: :patch) do |f| %>
+ 		       <%= f.select :order_status, Order.order_statuses_i18n.invert,{} , {class:'form-control col-5', style:"display: inline-block;"} %>
+      	   <%= f.submit "更新", class:"btn btn-secondary mx-2" %>
+			   <% end %>
+		  </td>
+    </tr>
+    </table>
+	<div class="col-5"></div>
 		<!-- ↑入り込み防止のcol-5 -->
 	</div>
-</div>
 
 <div class="container mt-5">
-	<div class="row py-5">
-		<div class="col-8 row juitify-content-center">
-			<table class="table", style="table-layout:fixed;">
-				<thead>
-					<tr>
-						<th scope="col", style="width:50px;">商品名</th>
-						<th style="width:50px;">単価(税込)</th>
-						<th style="width:50px;">数量</th>
-						<th style="width:50px;">小計</th>
-						<th style="width:50px;">製作ステータス</th>
-						<th style="width:50px;"></th>
-					</tr>
-				</thead>
-				<tbody>
-					<% @order_details.each do |order_detail| %>
-					<tr>
-						<td><%= order_detail.product.product_name %></td>
-						<td><%= order_detail.price %></td>
-						<td><%= order_detail.purchase_quantity %></td>
-						<td><%= order_detail.production_status %></td>
-						<td class="row align-items-center">
-				   		 <div class="col-auto my-1">
-			     		 	<%= form_for(order_detail, url:admins_order_status_path, method: :patch) do |f| %>
-			     		 	<%= f.select :production_status, OrderDetail.production_statuses_i18n.invert, {
-			     		 	}, {class:'form-control'} %>
-			      		</div>
-						</td>
-						<td><%= f.submit "更新" ,class: "btn btn-secondary" %></td>
-						<% end %>
-					</tr>
-					<% end %>
-				</tbody>
-			</table>
-		</div>
-		<div class="row col-3 align-items-center py-5 mx-5">
-			<div class="col-5 text-right">商品合計</div>
-			<div class="col-6">
-				<%= @order.confirmed_purchase_price %>
-			</div>
-			<div class="col-5 text-right">送料</div>
-			<div class="col-6">
-				<%= @order.shipping_free %>
-			</div>
-			<div class="col-5 text-right">請求金額合計</div>
-			<div class="col-6">
-				<%#= @order.shipping_free + @order.confirmed_purchase_price %>
-			</div>
-	    </div>
-	</div>
+   <table class="table table-bordered bg-light", style="table-layout:fixed;">
+	   <thead>
+		   <tr>
+				 <th scope="col", style="width:50px;">商品名</th>
+				 <th style="width:50px;">単価(税込)</th>
+				 <th style="width:50px;">数量</th>
+				 <th style="width:50px;">小計</th>
+				 <th style="width:50px;">製作ステータス</th>
+				</tr>
+			</thead>
+			<tbody>
+			  <% @order_details.each do |order_detail| %>
+				<tr>
+					<td><%= order_detail.product.product_name %></td>
+					<td><%= order_detail.price %></td>
+					<td><%= order_detail.purchase_quantity %></td>
+					<td><%= order_detail.production_status %></td>
+          <td>
+			     	 <%= form_for(order_detail, url:admins_order_status_path, method: :patch) do |f| %>
+			     	 <%= f.select :production_status, OrderDetail.production_statuses_i18n.invert, {}, {class:'form-control'} %>
+             <%= f.submit "更新" ,class: "btn btn-secondary mt-1" %>
+				     <% end %>
+          </td>
+        </tr>
+			  <% end %>
+			</tbody>
+	  </table>
+		<table class="col-5 table table-bordered bg-light">
+      <tr>
+			  <th style="80px;">商品合計</th>
+			  <td>
+				  <%= @order.confirmed_purchase_price %>
+			  </td>
+      </tr>
+      <tr>
+			  <th style="80px;">送料</th>
+			  <td>
+				  <%= @order.shipping_free %>
+			  </td>
+      </tr>
+      <tr>
+        <th style="80px;">請求金額合計</th>
+			  <td>
+				  <%#= @order.shipping_free + @order.confirmed_purchase_price %>
+			  </td>
+	    </tr>
+   </table>
 </div>
-
-
-
-

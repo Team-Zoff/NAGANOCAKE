@@ -19,7 +19,7 @@ devise_for :members, skip: :all
   namespace :members do
     get 'homes/top' => 'homes#top',as: '/'
     get 'orders/purchase_information' => 'orders#purchase_information',as: 'order_purchase'
-    get 'orders/confirmation' => 'orders#confirmation',as: 'order_confirmation'
+    post 'orders/confirmation' => 'orders#confirmation',as: 'order_confirmation'
     get 'orders/thanks' => 'orders#thanks',as: 'order_thanks'
     post 'orders/select'
     resources :orders, only:[:index,:show,:create]

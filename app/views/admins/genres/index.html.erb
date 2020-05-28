@@ -13,16 +13,16 @@
 <div class="conteiner" style="margin:4vw 50px 0;">
     <div class="row justify-content-left mt-4">
         <div class="col-8">
-            <div class="genre_new">
+            <div class="genre_new row">
                 <%= form_for(@genre,url: admins_genres_path) do |f| %>
-
-                <%= image_tag "bg-cake.png", id: :img_prev , :size =>'30x30' %>
-                <%= f.attachment_field :genre_image %>
-
                 <%= f.label :name,"ジャンル" %>
                 <%= f.text_field :name, autocomplete: "名称" %>
                 <%= f.radio_button :valid_invalid, "Validity", {checked: true} %>有効
-                <%= f.radio_button :valid_invalid, "Invalid", {} %>無効
+                <%= f.radio_button :valid_invalid, "Invalid", {} %>無効<br>
+                <%= f.label :genre_image,"アイコン" %>
+                <%= image_tag "bg-cake.png", id: :img_prev , :size =>'30x30' %>
+                <%= f.attachment_field :genre_image %><br>
+                <p>※拡張子は.pngファイルを選択してください。</p>
                 <%= f.submit "追加", class:"btn-primary",style:"border-radius: 0.5em" %>
                 <% end %>
             </div><br />
@@ -53,3 +53,19 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+$(function() {
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#img_prev').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#genre_genre_image").change(function() {
+        readURL(this);
+    });
+});
+</script>
