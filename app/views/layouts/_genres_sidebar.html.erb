@@ -3,35 +3,14 @@
         <th style="text-align: center;">～ジャンル検索～</th>
     </thead>
     <tbody class="genres_body">
-        <tr>
-            <td style="text-align: center;">
-                <%= image_tag "cake.png", style:"width:30px; height:30px;" %>
-                <%= link_to " ケーキ",members_genres_path(@genre) %>
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align: center;">
-                <%= image_tag "cookie.png", style:"width:30px; height:30px;" %>
-                <%= link_to " 焼き菓子",members_genres_path(@genre) %>
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align: center;">
-                <%= image_tag "pudding.png", style:"width:30px; height:30px;" %>
-                <%= link_to " プリン",members_genres_path(@genre) %>
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align: center;">
-                <%= image_tag "candy.png", style:"width:30px; height:30px;" %>
-                <%= link_to " キャンディ",members_genres_path(@genre) %>
-            </td>
-        </tr>
         <% @genres.each do |genre| %>
         <tr>
+          <% if genre.valid_invalid == "Validity" %>
             <td style="text-align: center;">
-                <%= image_tag "candy.png", style:"width:30px; height:30px;" %>
-                <%= link_to genre.name ,members_genres_path(genre) %></td>
+                <%= image_tag "#{genre.name}.png",style:"width:30px; height:30px;" %>
+                <%= link_to genre.name ,members_genre_path(genre.id) %>
+            </td>
+          <% end %>
         </tr>
         <% end %>
     </tbody>

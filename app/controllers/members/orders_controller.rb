@@ -11,17 +11,13 @@ class Members::OrdersController < ApplicationController
      @total = 0
      @order_detail.each do |order|
        @total += (order.product.price_excluding_tax * order.purchase_quantity * 1.1).to_i
-   end
+     end
   end
 
   def purchase_information
   	@order = Order.new
   	@shipping_addresses = ShippingAddress.where(member_id: current_member.id)
   	@address_status = params[:address_status]
-  	# @shipping_address = ShippingAddress.find(params[:order][:postal_code])
-  	# @postal_code = @shipping_address.postal_code
-  	# @address = @shipping_address.address
-  	# @address_name = @shipping_address.address_name
   end
 
   def confirmation
@@ -48,13 +44,6 @@ class Members::OrdersController < ApplicationController
   end
 
   def create
-    # shipping_addressに保存
-    # if @address_status == 3
-	  #   @address = ShippingAddress.new(method_of_payment: params[:method_of_payment], address_name: params[:address_name], postal_code: params[:postal_code], address: params[:address])
-	  # 	@address.postal_code.save
-    # end
-
-
     # orderテーブルに保存
     @order = Order.new
     @order.method_of_payment =  params[:order][:method_of_payment]
@@ -62,7 +51,6 @@ class Members::OrdersController < ApplicationController
     @order.address_name = params[:order][:address_name]
     @order.address = params[:order][:address]
     @order.member_id = current_member.id
-    # binding.pry
     @order.save
 
     # OrderDetailテーブルに保存
@@ -84,9 +72,4 @@ class Members::OrdersController < ApplicationController
 
   def thanks
   end
-
- #  private
-	# def order_params
-	# 	params.permit(:address_status)
-	# end
 end
