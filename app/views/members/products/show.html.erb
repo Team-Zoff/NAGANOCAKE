@@ -3,30 +3,29 @@
         <div class="col-3">
             <%= render partial: 'layouts/genres_sidebar',locals: {genres:@genres} %>
         </div>
-        <div class="col-xs-9 ml-5">
+        <div class="col-9 px-3 mt-3">
             <div class="row">
                 <div class="img col-6">
-                    <%= attachment_image_tag(@products, :product_image, size: "300x200") %>
+                    <%= attachment_image_tag(@products, :product_image, size: "300x200",class: "img-thumbnail") %>
                 </div>
-                <div class="products-show col-6">
-                    <h2>
+                <div class="col-6 products-show " style="height:220px;">
+                    <h2 class="m-0">
                         <%= @products.product_name %>
                     </h2>
-                    <p>
+                    <p class="pt-2 m-0" style="height:40%;">
                         <%= @products.description %>
                     </p>
-                    <p>￥
-                        <%= (@products.price_excluding_tax * 1.1).to_i %>
+                    <p class="mt-1">
+                        ￥
+                        <%= (@products.price_excluding_tax * 1.1).to_i %>(税込)
                     </p>
-                </div>
-                <div class="col-6">
-                    <div class="form-show">
+                    <p class="mt-1">
                         <%= form_for(@cart_item, url:members_cart_items_path,method: :post) do |f| %>
-                        <%= f.hidden_field :product_id, :value => @products.id %>
+                        個数：<%= f.hidden_field :product_id, :value => @products.id %>
                         <%= f.select :number_of_products, [1,2,3,4,5,6,7,8,9,10] %>
-                        <%= f.submit 'カートにいれる', class: 'btn btn-info ' %>
+                        <%= f.submit 'カートにいれる', class: 'btn-sm btn-info ' %>
                         <% end %>
-                    </div>
+                    </p>
                 </div>
             </div>
         </div>

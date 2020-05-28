@@ -17,15 +17,15 @@
 
   <body>
     <% if admin_signed_in? %>
-    <%= render '/layouts/navbar_member' %>
-    <% else %>
     <%= render '/layouts/navbar_admin' %>
+    <% else %>
+    <%= render '/layouts/navbar_member' %>
     <% end %>
     <%= yield %>
   </body>
 
   <footer class="footer container-fluid">
-      <p class="footer p-2",style:"position: static;">NAGANO CAKE<br>
+      <p class="footer p-2",style="position: static;">NAGANO CAKE<br>
       長野県〇〇市〇〇1-2-3</p>
     <div class="footer clearfix">
       <%= image_tag "naganocake_pic.jpg",size:"200x150",class:"rounded float-right" %>

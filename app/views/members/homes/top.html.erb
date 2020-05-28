@@ -2,7 +2,7 @@
     <div class="row justify-content-center top-head">
         <div class="main-pic col-12 text-center p-0">
             <div class='naganocake-text-area'>
-                <p>ようこそ、NaganoCakeへ!<br>
+                <p class="top-text">ようこそ、NaganoCakeへ!<br>
                     このサイトでは、ケーキ販売のECサイトになります。<br>
                     会員ではない方も商品の閲覧はできますが,<br>
                     購入には
@@ -20,6 +20,7 @@
         <div class="col-9">
             <div class="row">
                 <% @products.each do |products| %>
+
                 <div class='col-4 mt-3 pl-3 d-inline-block'>
                     <%= attachment_image_tag(products, :product_image, size: '220x167',class: "img-thumbnail") %><br>
                     商品名：<%= link_to members_product_path(products.id) do %>
