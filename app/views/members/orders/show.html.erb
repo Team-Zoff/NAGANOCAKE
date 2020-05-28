@@ -47,7 +47,7 @@
         </tr>
         <tr>
           <th class="bg-info text-white text-center">ご請求額</th>
-          <td class="bg-light"><%#= "#{@total + @order_shipping_free}" %>円</td>
+          <td class="bg-light"><%= @total + @order.shipping_free %>円</td>
         </tr>
       </tbody>
     </table>
