@@ -7,7 +7,7 @@ class Members::OrdersController < ApplicationController
   def show
      @order = Order.find(params[:id])
      @order_detail = @order.order_details
-     @order_shipping_free = 800
+     @order.shipping_free = 800
      @total = 0
      @order_detail.each do |order|
        @total += (order.product.price_excluding_tax * order.purchase_quantity * 1.1).to_i
