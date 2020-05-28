@@ -33,7 +33,7 @@ class Admins::ProductsController < ApplicationController
 			flash[:notice] = "商品情報変更成功しました！"
 		 	redirect_to action: :show
 	    else
-	    	@product = Pruduct.find(params[:id])
+	    	@product = Product.find(params[:id])
 	    	render :edit
 	    end
 	end

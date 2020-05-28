@@ -2,8 +2,6 @@ class Members::HomesController < ApplicationController
   def top
     @products = Product.all
     @genres = Genre.all
-  end
-
-  def about
+    #@recommended =
   end
 end

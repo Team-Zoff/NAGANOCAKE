@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
 	belongs_to :genre
+	belongs_to :recommend
 	has_many :cart_items, dependent: :destroy
 	has_many :order_details, dependent: :destroy
 
