@@ -6,6 +6,7 @@
     </div>
 </div>
 <div class="container">
+<<<<<<< HEAD
   <div class="row">
    <h5 class="border-bottom border-info">注文情報</h5>
     <table class="table-bordered col-6">
@@ -24,6 +25,49 @@
         <tr>
           <th>支払方法</th>
           <td><%= @order.method_of_payment_i18n %></td>
+=======
+  <div class="row mt-3">
+   <h5 class="col-6 p-0">注文情報</h5>
+   <h5 class="col-4 p-0 offset-1">請求情報</h5>
+  </div>
+  <div class="row mt-1">
+      <table class="table-bordered col-6">
+        <tbody>
+          <tr>
+            <th>注文日</th>
+            <td>12/31<%= @order.created_at %></td>
+          </tr>
+          <tr>
+            <th>配送先</th>
+            <td><%= @order.postal_code %><br>
+              <%= @order.address %><br>
+              <%= @order.address_name %>
+            </td>
+          </tr>
+          <tr>
+            <th>支払方法</th>
+            <td><%= @order.method_of_payment_i18n %></td>
+          </tr>
+          <tr>
+            <th>ステータス</th>
+            <td><%= @order.order_status %></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class='table-bordered col-4 offset-1'>
+        <tbody>
+         <tr>
+            <th>商品の合計</th>
+            <td><%= @total %>円</td>
+          </tr>
+          <tr>
+            <th>配送料</th>
+            <td><%= @order.shipping_free %>円</td>
+          </tr>
+          <tr>
+            <th>ご請求額</th>
+            <td><%= "#{@total + @order.shipping_free}" %>円</td>
+>>>>>>> ea2fed01e57aac58286c45efd453067a3093bc79
         </tr>
         <tr>
           <th>ステータス</th>
@@ -68,7 +112,11 @@
               <%= order_detail.product.product_name %>
             </td>
             <td>
+<<<<<<< HEAD
               <%= "#{(order_detail.product.price_excluding_tax * 1.1).to_i}" %>円
+=======
+              <%= "#{order_detail.product.price_excluding_tax * 1.1}" %>円
+>>>>>>> ea2fed01e57aac58286c45efd453067a3093bc79
             </td>
             <td>
               <%= order_detail.purchase_quantity %>個
