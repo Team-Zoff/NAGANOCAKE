@@ -8,8 +8,8 @@
 
 <div class="continer">
   <div class="row justify-content-center mt-4">
-    <table class="table col-6">
-    	<thead>
+    <table class="table table-bordered col-6">
+    	<thead class="bg-info text-white">
 			<tr>
 				<th scope="col">会員ID</th>
 				<th>氏名</th>
@@ -17,7 +17,7 @@
 				<th>ステータス</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody class="bg-light">
 			<% @members.each do |member| %>
 			<tr>
 				<td><%= member.id %></td>
