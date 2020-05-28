@@ -5,7 +5,7 @@
     <%= link_to "カートを空にする", members_cart_items_destroy_path,method: :delete, class:"btn btn-danger" %>
     </div>
       <table class="table table-bordered mt-3">
-        <thead class="bg-info">
+        <thead class="bg-info text-white">
           <tr>
             <th>商品名</th>
             <th>単価(税込)</th>
@@ -15,7 +15,7 @@
             <th></th>
           </tr>
         </thead>
-        <tbody class="table-light">
+        <tbody class="bg-light">
           <% @cart_items.each do |cart_item| %>
             <tr>
               <td><%= attachment_image_tag(cart_item.product,:product_image, size: '120x60',class: "img-thumbnail mr-3") %>
