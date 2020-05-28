@@ -12,7 +12,7 @@ class Members::OrdersController < ApplicationController
     end
      @order = Order.find(params[:id])
      @order_detail = @order.order_details
-     @order_shipping_free = 800
+     @order.shipping_free = 800
      @total = 0
      @order_detail.each do |order|
        @total += (order.product.price_excluding_tax * order.purchase_quantity * 1.1).to_i
@@ -69,7 +69,6 @@ class Members::OrdersController < ApplicationController
 
   def create
     @address_status = params[:address_status]
-
     # orderテーブルに保存
     @order = Order.new(order_params)
     @order.member_id = current_member.id
@@ -92,6 +91,7 @@ class Members::OrdersController < ApplicationController
       @shipping_address.save
     end
 
+
     # OrderDetailテーブルに保存
     current_member.cart_items.each do |cart_item|
     order_detail = OrderDetail.new
@@ -113,7 +113,6 @@ class Members::OrdersController < ApplicationController
 
   def thanks
   end
-
 
   private
   def order_params
