@@ -5,39 +5,31 @@
 			<p><%= flash[:notice] %></p>
 		<% end %>
      	<h5 class="bg-info text-white rounded p-1 mt-5">ジャンル一覧・追加</h5>
-	</div>
+  	</div>
   </div>
 </div>
 
 <div class="conteiner" style="margin:4vw 50px 0;">
 	<div class="row justify-content-left mt-4">
 		<div class="col-8">
-
 			<div class="genre_new">
 				<%= form_for(@genre,url: admins_genres_path) do |f| %>
-
-				<%= f.label :name,"ジャンル" %>
-				<%= f.text_field :name, autocomplete: "名称" %>
-
-				<%= f.radio_button :valid_invalid, "Validity", {checked: true} %>有効
-    			<%= f.radio_button :valid_invalid, "Invalid", {} %>無効
-
-    			<%= f.submit "追加", class:"btn-primary",style:"border-radius: 0.5em" %>
-
-    			<% end %>
-
-    		</div><br/>
-
-
-		    <table class="table col-8">
-    			<thead>
+				  <%= f.label :name,"ジャンル" %>
+				  <%= f.text_field :name, autocomplete: "名称" %>
+				  <%= f.radio_button :valid_invalid, "Validity", {checked: true} %>有効
+    		  <%= f.radio_button :valid_invalid, "Invalid", {} %>無効
+    		  <%= f.submit "追加", class:"btn-primary",style:"border-radius: 0.5em" %>
+    		<% end %>
+    	</div><br/>
+		  <table class="table table-bordered col-8">
+    		<thead class="bg-info text-white">
 					<tr>
 						<th>ジャンル</th>
 						<th>状態</th>
 						<th></th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody class="bg-light">
 					<% @genres.each do |genre| %>
 						<tr>
 							<td><%= genre.name %></td>
@@ -47,9 +39,6 @@
 					<% end %>
 				</tbody>
 			</table>
-
 		</div>
 	</div>
 </div>
-
-
