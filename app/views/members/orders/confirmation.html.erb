@@ -1,7 +1,24 @@
+<!-- 計算 -->
 <% total = 0 %>
-<% tax = 1.10 %>
+<% shipping_free = 800 %>
+<% @cart_items.each do |item| %>
+  <% total += (item.product.price_excluding_tax * item.number_of_products * 1.1).to_i %>
+<% end %>
+<% billing_amount = shipping_free + total %>
 
 <div class="container">
+  <% if @order.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      <p>未入力が <%= pluralize(@order.errors.count,'件')%>ありました。</p>
+    </div>
+    <ul>
+    <% @order.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
   <h2 class='mt-5'>注文情報確認</h2>
   <div class="row">
     <div class="col-8">
@@ -18,14 +35,13 @@
               <%= cart_items.product.product_name %>
             </td>
             <td>
-              <%= product_price = cart_items.product.price_excluding_tax * tax %>
+              <%= (cart_items.product.price_excluding_tax * 1.1).to_i %>
             </td>
             <td>
-              <%= product_number = cart_items.number_of_products %>
+              <%= cart_items.number_of_products %>
             </td>
             <td>
-              <%= subtotal = product_price *  product_number %>
-              <% total =  subtotal + total %>
+              <%= cart_items.subtotal  %>
             </td>
           </tr>
           <% end %>
@@ -43,7 +59,7 @@
             <th>商品合計</th><th><%= total %></th>
           </tr>
           <tr>
-            <th>請求金額</th><th><%= shipping_free + total %></th>
+            <th>請求金額</th><th><%= billing_amount %></th>
           </tr>
         </thead>
 
@@ -56,6 +72,8 @@
   </div>
 
   <%= form_for(@order, url: members_orders_path, method: :post) do |f| %>
+    <%= hidden_field_tag :address_status, @address_status %>
+    <%= f.hidden_field :confirmed_purchase_price, :value => billing_amount %>
     <%= f.hidden_field :method_of_payment, :value => @method_of_payment %>
     <%= f.hidden_field :postal_code, :value => @order_postal_code %>
     <%= f.hidden_field :address, :value => @order_address %>

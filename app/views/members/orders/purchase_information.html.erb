@@ -7,11 +7,11 @@
   </div>
 </div>
 
+<%= form_with(url:members_order_confirmation_path, method: :post, local:true) do |f| %>
 <div class="container">
 	<div class="row">
 		<div class="col">支払方法</div>
 	</div>
-	<%= form_with(url:members_order_confirmation_path, method: :get, local:true) do |f| %>
 		<div class="form-check row">
 			<div class="row mt-3">
 				<div class="col">
@@ -95,5 +95,5 @@
 				<%= f.submit "確認画面へ進む", class:"btn btn-primary" %>
 			</div>
 		</div>
-	<% end %>
 </div>
+<% end %>
