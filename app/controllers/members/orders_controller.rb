@@ -47,20 +47,20 @@ class Members::OrdersController < ApplicationController
     # purchase_informationからデータの受け取り
     if params[:address_status] == "1"
       @address_status = "1"
-      @method_of_payment =  params[:method_of_payment]
+      @order.method_of_payment =  params[:method_of_payment]
       @order_postal_code = current_member.postal_code
       @order_address_name = current_member.last_name_kana
       @order_address = current_member.address
     elsif params[:address_status] == "2"
       @address_status = "2"
       shipping_address = ShippingAddress.find(params[:address_collection])
-      @method_of_payment =  params[:method_of_payment]
+      @order.method_of_payment =  params[:method_of_payment]
       @order_postal_code = shipping_address.postal_code
       @order_address_name = shipping_address.address_name
       @order_address = shipping_address.address
     elsif params[:address_status] == "3"
       @address_status = "3"
-      @method_of_payment =  params[:method_of_payment]
+      @order.method_of_payment =  params[:method_of_payment]
       @order_postal_code = params[:new_postal_code]
       @order_address_name = params[:new_address_name]
       @order_address = params[:new_address]
@@ -74,6 +74,7 @@ class Members::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.member_id = current_member.id
     @order.order_status = 0
+    @order.shipping_free = 800
     @order.confirmed_purchase_price = params[:order][:confirmed_purchase_price]
     unless @order.save
       @cart_items = CartItem.all

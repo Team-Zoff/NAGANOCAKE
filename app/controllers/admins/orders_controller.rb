@@ -14,17 +14,10 @@ class Admins::OrdersController < ApplicationController
 
 	end
 	def show
-		# @order_products = @orderer.order_details
-		# @items = Order_detail.new(@order_products.each)
 		@order = Order.find(params[:id])
-		@order_details = @order.order_details.all
-		# @products = []
-		# @order_details.each do |order_detail|
-		# 	@products.push(order_detail.product)
-		# end
-		# @products.each do |product|
-		# 	product.name
-		# end
+		@order_details = @order.order_details
+		
+
 	end
 	def update
 		@order_status = Order.find(params[:id])

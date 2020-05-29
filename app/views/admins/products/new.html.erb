@@ -1,4 +1,17 @@
+
 <div class="container" style="margin:4vw 50px 0;">
+  <% if @product.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      <p>未入力が <%= pluralize(@product.errors.count,'件')%>ありました。</p>
+    </div>
+    <ul>
+      <% @product.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
   <div class="row">
     <div class="col-2 text-center">
       <h5 class="bg-info text-white rounded p-1 mt-5">商品登録</h5>
