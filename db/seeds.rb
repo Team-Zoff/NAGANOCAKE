@@ -94,4 +94,3 @@ Product.create!(
 			product_image_id: 'test',
 			price_excluding_tax: 50000,
 			sale_status: 0
-
