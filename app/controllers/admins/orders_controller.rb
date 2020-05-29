@@ -1,7 +1,7 @@
 class Admins::OrdersController < ApplicationController
 	def index
 		if params[:page_id] == "1"
-			@orders = Order.all
+			@orders = Order.page(params[:page]).reverse_order
 		elsif params[:page_id] == "2"
 			@orders = Order.where('created_at > ?', 1.day)
 		else
@@ -10,6 +10,7 @@ class Admins::OrdersController < ApplicationController
 			#該当顧客のデータ
 		end
 
+@orders = Order.page(params[:page]).reverse_order
 
 	end
 	def show

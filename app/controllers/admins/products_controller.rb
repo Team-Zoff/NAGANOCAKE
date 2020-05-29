@@ -1,6 +1,7 @@
 class Admins::ProductsController < ApplicationController
 	def index
-		@products = Product.all
+		@products = Product.page(params[:page]).reverse_order
+
 	end
 
 	def show
@@ -16,7 +17,7 @@ class Admins::ProductsController < ApplicationController
 		@product = Product.new(product_params)
 	    if @product.save
 	    	flash[:notice] = "商品登録完了しました！"
-	    	redirect_to admins_product_path(product)
+	    	redirect_to admins_product_path(@product)
 	    else
 	    	@product = Product.new
 	    	render :new
