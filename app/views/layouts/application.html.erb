@@ -10,25 +10,26 @@
 
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   </head>
-
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
   <body>
-    <% if admin_signed_in? %>
-      <%= render '/layouts/navbar_admin' %>
-    <% else %>
-      <%= render '/layouts/navbar_member' %>
-    <% end %>
-    <%= yield %>
+    <header>
+      <% if admin_signed_in? %>
+        <%= render '/layouts/navbar_admin' %>
+      <% else %>
+        <%= render '/layouts/navbar_member' %>
+      <% end %>
+    </header>
+    <main style="height: 500px;">
+     <%= yield %>
+    </main>
+    <footer class="footer container-fluid">
+      <p class="p-2 text-right">NAGANO CAKE<br>
+        長野県〇〇市〇〇1-2-3</p>
+      <div class="clearfix">
+       <%= image_tag "naganocake_pic.jpg",size:"200x150",class:"rounded float-right mb-3" %>
+      </div>
+    </footer>
   </body>
-
-  <footer class="footer container-fluid">
-      <p class="footer p-2 text-right">NAGANO CAKE<br>
-      長野県〇〇市〇〇1-2-3</p>
-    <div class="footer clearfix">
-      <%= image_tag "naganocake_pic.jpg",size:"200x150",class:"rounded float-right mb-3" %>
-    </div>
-  </footer>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </html>
