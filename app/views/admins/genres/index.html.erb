@@ -20,23 +20,30 @@
                 <%= f.radio_button :valid_invalid, "Validity", {checked: true} %>有効
                 <%= f.radio_button :valid_invalid, "Invalid", {} %>無効<br>
                 <%= f.label :genre_image,"アイコン" %>
-                <%= image_tag "bg-cake.png", id: :img_prev , :size =>'30x30' %>
+                <%= image_tag "bg-cake.png", id: :img_prev , :size =>'35x35' %>
                 <%= f.attachment_field :genre_image %><br>
-                <p>※拡張子は.pngファイルを選択してください。</p>
-                <%= f.submit "追加", class:"btn-primary",style:"border-radius: 0.5em" %>
+                <p class="m-0">※拡張子は.pngファイルで保存してください。</p>
+                <p>※画像名は[ジャンル名.png]としてください。
+                    <span class="text-right">
+                        <%= f.submit " 追加 ", class:"btn-primary ml-5",style:"border-radius: 0.3em" %>
+                    </span></p>
                 <% end %>
             </div><br />
             <table class="table col-8">
-                <thead>
+                <thead class="bg-info text-white">
                     <tr>
+                    	<th>アイコン</th>
                         <th>ジャンル</th>
                         <th>状態</th>
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
+                 <tbody class="bg-light">
                     <% @genres.each do |genre| %>
                     <tr>
+                    	<td>
+                    		<%= attachment_image_tag(genre, :genre_image, :size =>'35x35', id: :img_prev) %>
+                    	</td>
                         <td>
                             <%= genre.name %>
                         </td>
@@ -44,7 +51,7 @@
                             <%= genre.valid_invalid_i18n %>
                         </td>
                         <td>
-                            <%= link_to "編集する", edit_admins_genre_path(genre), class:"btn-sm btn-primary",style:"border-radius: 0.5em" %>
+                            <%= link_to "編集する", edit_admins_genre_path(genre), class:"btn-sm btn-primary",style:"border-radius: 0.3em" %>
                         </td>
                     </tr>
                     <% end %>

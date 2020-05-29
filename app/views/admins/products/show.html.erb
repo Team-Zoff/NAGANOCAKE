@@ -1,49 +1,56 @@
 <div class="container" style="margin:4vw 50px 0;">
-	<div class="row">
-   		<div class="col-2 text-center">
-				<p><%= flash[:notice] %></p>
-     	 　　<h5 class="bg-info text-white rounded p-1 mt-5">商品詳細</h5>
-     	</div>
+    <div class="row m-0">
+        <div class="col-4 text-left p-0">
+            <span>
+                <%= flash[:notice] %>
+            </span>
+        </div>
+    </div>
+  <div class="row">
+    <div class="col-2 text-center">
+      <h5 class="bg-info text-white rounded p-1">商品詳細</h5>
 	</div>
+  </div>
 </div>
-
+</div>
 <div class="container" style="margin-top:50px;">
-	<div class="row">
-		<div class="col-md-4">
-			<%= attachment_image_tag(@product, :product_image, :size =>'300x230') %>
-		</div>
-
-		<div class="col-md-5">
-			<div class="row">
-			    <span class="col-md-5">商品名</span>
-				<span class="col-md-7"><%= @product.product_name %></span>
-			</div><br>
-
-			<div class="row">
-				<span class="col-md-5">商品説明</span>
-				<span class="col-md-7"><%= @product.description %></span>
-			</div><br>
-
-			<div class="row">
-				<span class="col-md-5">ジャンル</span>
-				<span class="col-md-7"><%= @product.genre.name %><br></span>
-			</div><br>
-
-			<div class="row">
-				<span class="col-md-5">税抜価格(税込価格)</span>
-				<span class="col-md-7"><%= @product.price_excluding_tax.to_s(:delimited) %>
-					(<%= (@product.price_excluding_tax*1.1).to_i.to_s(:delimited) %>)円</span>
-			</div><br>
-
-			<div class="row">
-				<span class="col-md-5">販売ステータス</span>
-				<span class="col-md-7"><%= @product.sale_status_i18n %></span>
-			</div><br>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-12 text-right">
-			<%= link_to "編集する",edit_admins_product_path(@product) ,class:"btn btn-primary btn-sm  mt-20"%>
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-md-4">
+            <%= attachment_image_tag(@product, :product_image, :size =>'300x230') %>
+        </div>
+        <div class="col-md-5">
+            <div class="row">
+                <span class="col-md-5">商品名</span>
+                <span class="col-md-7">
+                    <%= @product.product_name %></span>
+            </div><br>
+            <div class="row">
+                <span class="col-md-5">商品説明</span>
+                <span class="col-md-7">
+                    <%= @product.description %></span>
+            </div><br>
+            <div class="row">
+                <span class="col-md-5">ジャンル</span>
+                <span class="col-md-7">
+                    <%= @product.genre.name %><br></span>
+            </div><br>
+            <div class="row">
+                <span class="col-md-5">税抜価格(税込価格)</span>
+                <span class="col-md-7">
+                    <%= @product.price_excluding_tax.to_s(:delimited) %>
+                    (
+                    <%= (@product.price_excluding_tax*1.1).to_i.to_s(:delimited) %>)円</span>
+            </div><br>
+            <div class="row">
+                <span class="col-md-5">販売ステータス</span>
+                <span class="col-md-7">
+                    <%= @product.sale_status_i18n %></span>
+            </div><br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <%= link_to "編集する",edit_admins_product_path(@product) ,class:"btn btn-primary btn-sm  mt-20"%>
+        </div>
+    </div>
 </div>
