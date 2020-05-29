@@ -19,6 +19,12 @@ ja:
         postal_code: 郵便番号
         address_name: 宛名
         method_of_payment: 支払い方法
+    attributes:
+      product:
+        product_name: 商品名
+        description: 商品説明
+        product_image: 商品画像
+        price_excluding_tax: 商品価格
 
   enums:
     member:
@@ -49,4 +55,3 @@ ja:
        valid_invalid:
            Validity: "有効"
            Invalid: "無効"
-

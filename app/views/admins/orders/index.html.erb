@@ -19,7 +19,7 @@
 			  <tbody class="bg-light">
 				<% @orders.each do |order| %>
 				<tr>
-					<td><%= link_to "#{order.created_at}", admins_order_path(order) %></td>
+					<td><%= link_to "#{order.created_at.to_s(:datetime_jp)}", admins_order_path(order) %></td>
 					<td><%= "#{order.member.first_name + order.member.last_name}" %></td>
 					<td><%= order.order_details.sum(:purchase_quantity) %></td>
 					<td><%= order.order_status_i18n %></td>
@@ -28,9 +28,4 @@
 			</tbody>
 		</table>
 	</div>
-	  <div class="row mt-3">
-  	<div class="col">
-  		<%= paginate @orders %>
-  		</div>
-    </div>
 </div>

@@ -6,7 +6,6 @@ before_action :authenticate_member!
 
 	def edit
 		@member = current_member
-
 	end
 
 	def update
