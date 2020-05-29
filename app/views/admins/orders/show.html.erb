@@ -10,7 +10,8 @@
     <tr>
 		  <th>購入者</th>
       <td>
-			  <%= link_to "#{@order.member.last_name + @order.member.first_name}", admins_member_path(@order.member_id) %>
+
+		<%= link_to "#{@order.member.last_name + @order.member.first_name}", admins_member_path(@order.member_id) %>
       </td>
     </tr>
     <tr>
@@ -58,10 +59,10 @@
 					<td><%= order_detail_price = (order_details.price * tax).to_i  %></td>
 					<td><%= order_details.purchase_quantity %></td>
 					<td><%= order_detail_price * order_details.purchase_quantity %></td>
-          <td>
+       			 	<td>
 			     	 <%= form_for(order_details,url:admins_order_detail_path(order_details.id), method: :PATCH) do |f| %>
 			     	 <%= f.select :production_status, OrderDetail.production_statuses_i18n.invert, {}, {class:'form-control'} %>
-             <%= f.submit "更新" ,class: "btn btn-secondary mt-1" %>
+            		 <%= f.submit "更新" ,class: "btn btn-secondary mt-1" %>
 				     <% end %>
           </td>
         </tr>
@@ -85,6 +86,7 @@
         <th style="80px;">請求金額合計</th>
 			  <td>
 				  <%= @order.shipping_free + @order.confirmed_purchase_price %>
+
 			  </td>
 	    </tr>
    </table>

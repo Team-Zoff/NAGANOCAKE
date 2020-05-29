@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
 	has_many :order_details, dependent: :destroy
 	belongs_to :member
-	
+
 	validates :order_status, presence: true
 	validates :address, presence: true
 	validates :postal_code, presence: true

@@ -25,23 +25,26 @@
       <table class="table">
         <thead class="bg-info">
           <tr>
-            <th>商品名</th><th>単価(税込み)</th><th>数量</th><th>小計</th>
+            <th>商品名</th>
+            <th>単価(税込み)</th>
+            <th>数量</th>
+            <th>小計</th>
           </tr>
         </thead>
         <tbody class="bg-light">
           <% current_member.cart_items.each do |cart_items| %>
           <tr>
-            <td>
-              <%= attachment_image_tag(cart_items.product,:product_image, size: '120x60',class: "img-thumbnail mr-3") %>
+            <td class="text-left">
+              <%= attachment_image_tag(cart_items.product,:product_image, size: '120x60',class: "img-thumbnail mr-5") %>
               <%= cart_items.product.product_name %>
-              </td>
-            <td>
+            </td>
+            <td class="vertical-align: middle;>
               <%= (cart_items.product.price_excluding_tax * 1.1).to_i %> 円
             </td>
-            <td>
+            <td class="vertical-align: middle;>
               <%= cart_items.number_of_products %> 個
             </td>
-            <td>
+            <td class="vertical-align: middle;>
               <%= cart_items.subtotal  %> 円
             </td>
           </tr>
