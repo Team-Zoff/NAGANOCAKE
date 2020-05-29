@@ -311,7 +311,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   listen (>= 3.0.5, < 3.2)
-  pg (= 0.20.0)
+  pg (>= 0.18, < 2.0)
   pry-byebug
   pry-doc
   pry-rails
