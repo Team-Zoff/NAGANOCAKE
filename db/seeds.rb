@@ -28,15 +28,71 @@ Genre.create!(
 		{
 			name: 'キャンディ',
 			valid_invalid: 0
-		}
-	]
-)
 
-# Product.create!(
-# 	genre_id: 1,
-# 	product_name: 'test',
-# 	description: 'test',
-# 	product_image_id: 'test',
-# 	price_excluding_tax: 50000,
-# 	sale_status: 0
-# )
+
+Product.create!(
+	[
+		{
+			genre_id: 1,
+			product_name: 'test',
+			description: 'test',
+			product_image_id: 'test',
+			price_excluding_tax: 50000,
+			sale_status: 0
+		},
+		{
+			genre_id: 1,
+			product_name: 'test',
+			description: 'test',
+			product_image_id: 'test',
+			price_excluding_tax: 50000,
+			sale_status: 0
+		},
+		{
+			genre_id: 1,
+			product_name: 'test',
+			description: 'test',
+			product_image_id: 'test',
+			price_excluding_tax: 50000,
+			sale_status: 0
+		},
+		{
+			genre_id: 1,
+			product_name: 'test',
+			description: 'test',
+			product_image_id: 'test',
+			price_excluding_tax: 50000,
+			sale_status: 0
+		},
+		{
+			genre_id: 1,
+			product_name: 'test',
+			description: 'test',
+			product_image_id: 'test',
+			price_excluding_tax: 50000,
+			sale_status: 0
+		},
+		{
+			genre_id: 1,
+			product_name: 'test',
+			description: 'test',
+			product_image_id: 'test',
+			price_excluding_tax: 50000,
+			sale_status: 0
+		},
+		{
+			genre_id: 1,
+			product_name: 'test',
+			description: 'test',
+			product_image_id: 'test',
+			price_excluding_tax: 50000,
+			sale_status: 0
+		},
+		{
+			genre_id: 1,
+			product_name: 'test',
+			description: 'test',
+			product_image_id: 'test',
+			price_excluding_tax: 50000,
+			sale_status: 0
+

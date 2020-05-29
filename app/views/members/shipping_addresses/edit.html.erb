@@ -4,10 +4,10 @@
 <h2>配送先編集</h2>
 <% if @shipping_address.errors.any? %>
 <div>
-  <h3><%= @shipping_address.errors.count %> errors prohibited this ShippingAddres from being saved:</h3>
+  <h3><%= @shipping_address.errors.count %>個のエラーがあります</h3>
   <ul>
-    <% @shipping_address.errors.full_messages.each do |mssage| %>
-    <li><%= mssage %></li>
+    <% @shipping_address.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
     <% end %>
   </ul>
 </div>
