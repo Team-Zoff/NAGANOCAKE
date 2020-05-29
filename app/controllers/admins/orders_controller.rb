@@ -9,23 +9,13 @@ class Admins::OrdersController < ApplicationController
 			@orders = @member.orders
 			#該当顧客のデータ
 		end
-
-@orders = Order.page(params[:page]).reverse_order
-
 	end
+
 	def show
-		# @order_products = @orderer.order_details
-		# @items = Order_detail.new(@order_products.each)
 		@order = Order.find(params[:id])
 		@order_details = @order.order_details.all
-		# @products = []
-		# @order_details.each do |order_detail|
-		# 	@products.push(order_detail.product)
-		# end
-		# @products.each do |product|
-		# 	product.name
-		# end
 	end
+
 	def update
 		@order_status = Order.find(params[:id])
 		if @order_status.update(order_status)
@@ -37,7 +27,6 @@ class Admins::OrdersController < ApplicationController
 	end
 
 	private
-
 	def order_status
 	    params.require(:order).permit(:order_status)
 	end

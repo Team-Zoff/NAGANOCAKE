@@ -4,7 +4,4 @@ class Members::HomesController < ApplicationController
     @products = @product.order("RANDOM()").limit(3)
     @genres = Genre.all
   end
-
-  def about
-  end
 end

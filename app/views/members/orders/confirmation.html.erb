@@ -36,13 +36,13 @@
               <%= cart_items.product.product_name %>
               </td>
             <td>
-              <%= (cart_items.product.price_excluding_tax * 1.1).to_i %>
+              <%= (cart_items.product.price_excluding_tax * 1.1).to_i %> 円
             </td>
             <td>
-              <%= cart_items.number_of_products %>
+              <%= cart_items.number_of_products %> 個
             </td>
             <td>
-              <%= cart_items.subtotal  %>
+              <%= cart_items.subtotal  %> 円
             </td>
           </tr>
           <% end %>
@@ -52,13 +52,13 @@
     <table class='col-3 table-bordered text-center mt-2'>
         <% shipping_free = 800 %>
           <tr>
-            <th class="bg-info">送料</th><td class="bg-light"><%= shipping_free %></td>
+            <th class="bg-info">送料</th><td class="bg-light"><%= shipping_free %> 円</td>
           </tr>
           <tr>
-            <th class="bg-info">商品合計</th><td class="bg-light"><%= total %></td>
+            <th class="bg-info">商品合計</th><td class="bg-light"><%= total %> 円</td>
           </tr>
           <tr>
-            <th class="bg-info">請求金額</th><td class="bg-light"><%= billing_amount %></td>
+            <th class="bg-info">請求金額</th><td class="bg-light"><%= billing_amount %> 円</td>
           </tr>
     </table>
   </div>

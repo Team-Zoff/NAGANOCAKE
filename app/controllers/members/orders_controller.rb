@@ -1,7 +1,7 @@
 class Members::OrdersController < ApplicationController
 
   def index
-    @orders = Order.all
+    @orders = current_member.orders.all
   end
 
   def show
@@ -23,7 +23,7 @@ class Members::OrdersController < ApplicationController
 
     # カートの中身が空だった場合にcart_items/indexに戻る
     unless CartItem.where(member_id: current_member).exists?
-      @message = "お買い物カートの中身がからの状態です!!"
+      @message = "お買い物カートの中身が空の状態です!!"
       @cart_items = CartItem.all #カートの情報すべて取得
       @total = 0
       @cart_items.each do |item|
@@ -32,7 +32,6 @@ class Members::OrdersController < ApplicationController
       render 'members/cart_items/index'
       return
     end
-    # byebug
 
   	@order = Order.new
   	@shipping_addresses = ShippingAddress.where(member_id: current_member.id)
@@ -42,7 +41,7 @@ class Members::OrdersController < ApplicationController
 
   def confirmation
     @order = Order.new
-    @cart_items = CartItem.all #カートの情報すべて取得
+    @cart_items = current_member.cart_items.all #ログインしているメンバーのカートの情報すべて取得
 
     # purchase_informationからデータの受け取り
     if params[:address_status] == "1"
@@ -51,7 +50,7 @@ class Members::OrdersController < ApplicationController
       @order_postal_code = current_member.postal_code
       @order_address_name = current_member.last_name_kana
       @order_address = current_member.address
-    elsif params[:address_status] == "2"
+    elsif params[:address_status] == "2" && current_member.shipping_addresses.exists?
       @address_status = "2"
       shipping_address = ShippingAddress.find(params[:address_collection])
       @method_of_payment =  params[:method_of_payment]
@@ -64,8 +63,10 @@ class Members::OrdersController < ApplicationController
       @order_postal_code = params[:new_postal_code]
       @order_address_name = params[:new_address_name]
       @order_address = params[:new_address]
+    else
+      flash[:notice] = "支払い方法と配送先をお選びください。"
+      redirect_to members_order_purchase_path
     end
-
   end
 
   def create
