@@ -1,4 +1,5 @@
 <div class="container" style="margin:1vw 50px 0;">
+  <h4 class="text-center mt-5" style="color: red;"><%= flash[:notice] %></h4>
   <div class="row">
     <div class="col-2"></div>
     <div class="col-2 text-center">
@@ -16,13 +17,13 @@
 			<div class="row mt-3">
 				<div class="col">
 					<%= f.radio_button :method_of_payment, "credit_payment" %>
-					<%= f.label :method_of_payment, "クレジットカード" %>
+					<%= f.label :method_of_payment, "クレジットカード払い" %>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<%= f.radio_button :method_of_payment, "bank_payment" %>
-					<%= f.label :method_of_payment, "銀行" %>
+					<%= f.label :method_of_payment, "銀行振込" %>
 				</div>
 			</div>
 		</div>
@@ -63,7 +64,7 @@
 					<%= f.radio_button :address_status, "3" %>
 					<%= f.label :address_status, "新しいお届け先" %>
 			</div>
-		</div><%#= text_area_tag 'model[column]' %>
+		</div>
 			<div class="row">
 				<div class="col-3">
 					<%= f.label :postal_code, "郵便番号", class:"col-form-label" %>

@@ -27,14 +27,14 @@
             <tr>
               <td><%= attachment_image_tag(cart_item.product,:product_image, size: '120x60',class: "img-thumbnail mr-3") %>
                 <%= cart_item.product.product_name %></td>
-              <td><%= (cart_item.product.price_excluding_tax * 1.1).to_i %></td>
-              <td><%= cart_item.number_of_products %></td>
+              <td><%= (cart_item.product.price_excluding_tax * 1.1).to_i %> 円</td>
+              <td><%= cart_item.number_of_products %> 個</td>
           <%= form_for cart_item,url:members_cart_item_path(cart_item),method: :patch do |f| %>
               <div class="field">
                 <td><%= f.text_field :number_of_products, style:"width: 50px;"%><%= f.submit class:"btn btn-primary ml-3" %></td>
               </div>
           <% end %>
-              <td><%= cart_item.subtotal %></td>
+              <td><%= cart_item.subtotal %> 円</td>
               <td><%= link_to "削除",members_cart_item_path(cart_item),method: :delete,class:"btn btn-danger" %></td>
             </tr>
           <% end %>
@@ -47,7 +47,7 @@
          <table class="table table-bordered">
            <tr>
              <th class="bg-info">合計</th>
-             <td class="table-light"><%= @total %></td>
+             <td class="table-light"><%= @total %> 円</td>
            </tr>
          </table>
        </div>
@@ -59,4 +59,3 @@
       </div>
     </div>
 </div>
-
