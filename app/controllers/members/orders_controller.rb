@@ -32,7 +32,6 @@ class Members::OrdersController < ApplicationController
       render 'members/cart_items/index'
       return
     end
-    # byebug
 
   	@order = Order.new
   	@shipping_addresses = ShippingAddress.where(member_id: current_member.id)
