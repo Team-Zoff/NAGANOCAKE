@@ -1,7 +1,7 @@
 class Members::ProductsController < ApplicationController
 before_action :authenticate_member!, only:[:show]
   def index
-  	@products = Product.page(params[:page]).reverse_order
+  	@products = Product.page(params[:page]).per(9)
     @genres = Genre.all
   end
 

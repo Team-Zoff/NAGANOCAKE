@@ -29,7 +29,6 @@ Genre.create!(
 			name: 'キャンディ',
 			valid_invalid: 0
 
-
 Product.create!(
 	[
 		{

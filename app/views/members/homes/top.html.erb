@@ -20,21 +20,22 @@
         <div class="col-9">
             <div class="row">
                 <% @products.each do |products| %>
-
                 <div class='col-4 mt-3 pl-3 d-inline-block'>
                     <%= attachment_image_tag(products, :product_image, size: '220x167',class: "img-thumbnail") %><br>
-                    商品名：<%= link_to members_product_path(products.id) do %>
+                    商品名：
+                    <%= link_to members_product_path(products.id) do %>
                     <%= products.product_name %>
                     <% end %><br>
-                    税抜価格：<%= "¥#{products.price_excluding_tax}" %>
+                    税抜価格：
+                    <%= "¥#{products.price_excluding_tax}" %>
                 </div>
                 <% end %>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-2 offset-10">
-            <%= link_to "もっと見る>", members_products_path %>
+            <div class="row">
+                <div class="col-2 offset-10">
+                    <%= link_to "もっと見る>", members_products_path %>
+                </div>
+            </div>
         </div>
     </div>
 </div>
