@@ -19,7 +19,7 @@ class Admins::ProductsController < ApplicationController
 	    	flash[:notice] = "商品登録完了しました！"
 	    	redirect_to admins_product_path(@product)
 	    else
-	    	@product = Product.new
+				@genres = Genre.all
 	    	render :new
 	    end
 	end
