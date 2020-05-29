@@ -7,7 +7,8 @@
         <tr>
           <% if genre.valid_invalid == "Validity" %>
             <td style="text-align: center;">
-            <%= image_tag "#{genre.name}.png",style:"width:30px; height:30px;" %>
+                <%= attachment_image_tag(genre, :genre_image, style:"width:30px; height:30px;") %>
+
                 <%= link_to genre.name ,members_genre_path(genre.id) %>
             </td>
           <% end %>
@@ -15,3 +16,5 @@
         <% end %>
     </tbody>
 </table>
+
+
