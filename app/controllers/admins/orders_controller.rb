@@ -8,6 +8,7 @@ class Admins::OrdersController < ApplicationController
 			@member = Member.find(params[:member_id])
 			@orders = @member.orders
 		end
+
 	end
 
 	def show

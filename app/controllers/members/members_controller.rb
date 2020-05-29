@@ -13,7 +13,7 @@ before_action :authenticate_member!
 		if @member.update(member_params)
 			redirect_to members_member_path
 		else
-			render edit_members_member_path
+			render :edit
 		end
 	end
 
