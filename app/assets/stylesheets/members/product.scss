@@ -2,10 +2,8 @@
 	height:34.5px;
 	width:60px;
 }
-.page-link{
-	width: 75px;
-	text-align: center;
-
+.pagination {
+  justify-content: center;
 }
 .pagination>li>a {
   border: none;     /*枠線をなくす*/
