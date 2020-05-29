@@ -16,7 +16,7 @@
 		<div class="form-check row">
 			<div class="row mt-3">
 				<div class="col">
-					<%= f.radio_button :method_of_payment, "credit_payment" %>
+				<%= f.radio_button :method_of_payment, "credit_payment", {:checked => true} %>
 					<%= f.label :method_of_payment, "クレジットカード払い" %>
 				</div>
 			</div>

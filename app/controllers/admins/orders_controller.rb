@@ -7,8 +7,7 @@ class Admins::OrdersController < ApplicationController
 		else
 			@member = Member.find(params[:member_id])
 			@orders = @member.orders
-			#該当顧客のデータ
-	end
+		end
 
 	end
 

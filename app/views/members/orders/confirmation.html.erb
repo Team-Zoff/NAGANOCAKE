@@ -37,14 +37,14 @@
             <td class="text-left">
               <%= attachment_image_tag(cart_items.product,:product_image, size: '120x60',class: "img-thumbnail mr-5") %>
               <%= cart_items.product.product_name %>
-            </td>
-            <td class="vertical-align: middle;>
+              </td>
+            <td style="vertical-align: middle;">
               <%= (cart_items.product.price_excluding_tax * 1.1).to_i %> 円
             </td>
-            <td class="vertical-align: middle;>
+            <td style="vertical-align: middle;">
               <%= cart_items.number_of_products %> 個
             </td>
-            <td class="vertical-align: middle;>
+            <td style="vertical-align: middle;"> 円
               <%= cart_items.subtotal  %> 円
             </td>
           </tr>
