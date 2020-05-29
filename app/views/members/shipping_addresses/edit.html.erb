@@ -1,34 +1,42 @@
 <div>
   <%= notice %>
 </div>
-<h2>配送先編集</h2>
-<% if @shipping_address.errors.any? %>
-<div>
-  <h3><%= @shipping_address.errors.count %>個のエラーがあります</h3>
-  <ul>
-    <% @shipping_address.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
+<div class="container " >
+  <div class="row justify-content-center mt-5 mb-5">
+    <div class="col-3 ">
+      <h5 class="bg-info text-white rounded p-1 my-3 text-center">配送先登録・編集</h5>
+    </div>
+  </div>
+  <% if @shipping_address.errors.any? %>
+  <div>
+    <h3><%= @shipping_address.errors.count %>個のエラーがあります</h3>
+    <ul>
+      <% @shipping_address.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+<%= form_for(@shipping_address,url:members_shipping_address_path(@shipping_address.id)) do |f| %>
+<div class="row">
+    <div class="row col-9">
+        <div class="col-12 px-0 mx-0">
+            <%= f.label :postal_code,"郵便番号(ハイフンなし)", class: "col-4" %>
+            <%= f.text_field :postal_code, class: "col-3.5" %>
+        </div>
+        <div class="col-12 px-0 mx-0">
+            <%= f.label :address,"住所", class: "col-4" %>
+            <%= f.text_field :address, class: "col-7" %>
+        </div>
+        <div class="col-12 px-0 mx-0">
+            <%= f.label :address_name,"宛名", class: "col-4" %>
+            <%= f.text_field :address_name, class: "col-3.5" %>
+        </div>
+    </div>
+    <div class="col-auto pl-1 mx-0">
+        <%= f.submit "変更する", class: "btn-sm btn-primary col-auto", style: "margin-top:70px;" %>
+    </div>
 </div>
 <% end %>
-<%= form_for(@shipping_address, url:members_shipping_address_path(@shipping_address.id)) do |f| %>
- <div class="field">
-  <%= f.label :postal_code,"郵便番号(ハイフンなし)" %>
-  <%= f.text_field :postal_code, class: "col-xs-12" %>
 </div>
-
-<div class="field">
-  <%= f.label :address, "住所" %> <!-- ここを変更 -->
-  <%= f.text_area :address, class: "col-xs-12" %>
-</div>
-
-<div class="field">
-  <%= f.label :address_name, "宛先" %> <!-- ここを変更 -->
-  <%= f.text_area :address_name, class: "col-xs-12" %>
-</div>
-
-<div class="actions">
-  <%= f.submit "編集する", class: "btn btn-primary col-xs-12" %>
- </div>
-<% end %>

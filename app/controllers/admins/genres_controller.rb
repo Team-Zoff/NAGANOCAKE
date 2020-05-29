@@ -12,7 +12,7 @@ class Admins::GenresController < ApplicationController
 		else
 			flash[:notice] = "更新に失敗しました。入力を確認してください。"
 			@genre = Genre.new
-			@genres = Genre.all
+			@genres = Genre.page(params[:page]).reverse_order
 			render :index
 		end
 	end

@@ -52,7 +52,8 @@ devise_for :members, skip: :all
       get 'homes/top' => 'homes#top',as: '/'
       resources :genres, only:[:create, :index, :edit, :update]
       resources :products, only:[:index, :new, :create, :show, :edit, :update]
-      patch 'order/show' => 'order_detail#update',as: 'order_status'
+      resources :order_details, only:[:update]
+      # patch 'order/show' => 'order_detail#update',as: 'order_status'
       resources :orders, only:[:index, :show, :update]
       resources :members, only:[:index, :show, :edit, :update]
     end
