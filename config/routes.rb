@@ -9,6 +9,7 @@ devise_for :members, skip: :all
     delete '/members/sign_out' => 'members/sessions#destroy', as: 'destroy_member_session'
     get '/members/sign_up' => 'members/registrations#new', as: 'new_member_registration'
     get '/members/passwords/edit' => 'members/registrations#edit', as: 'password_edit_registrations'
+    patch '/members/passwords/update' => 'members/registrations#update'
     post '/members/sign_up' => 'members/registrations#create', as: 'member_registration'
     get '/members/' => 'members/passwords#edit', as: 'edit_member_password'
     patch '/members/passwords' => 'members/passwords#update', as: 'member_password'
@@ -50,7 +51,10 @@ devise_for :members, skip: :all
       namespace :admins do
       get 'homes/top' => 'homes#top',as: '/'
       resources :genres, only:[:create, :index, :edit, :update]
-      resources :products, only:[:index, :new, :create, :show, :edit, :update]
+      resources :products, only:[:index, :new, :create, :show, :edit, :update],shallow: true do
+        resource :recommends,only: [:create,:destroy]
+        get :recommends,on: :collection
+      end
       patch 'order/show' => 'order_detail#update',as: 'order_status'
       resources :orders, only:[:index, :show, :update]
       resources :members, only:[:index, :show, :edit, :update]

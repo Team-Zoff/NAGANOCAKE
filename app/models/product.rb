@@ -28,4 +28,7 @@ class Product < ApplicationRecord
 		  end
 	end
 
+	def recommend_by?(admin)
+		recommends.where(admin_id: admin.id).exists?
+	end
 end

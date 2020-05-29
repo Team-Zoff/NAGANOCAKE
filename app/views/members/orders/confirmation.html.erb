@@ -49,7 +49,7 @@
         </tbody>
       </table>
     </div>
-    <table class='col-3 table-bordered text-center mt-5'>
+    <table class='col-3 table-bordered text-center mt-2'>
         <% shipping_free = 800 %>
           <tr>
             <th class="bg-info">送料</th><td class="bg-light"><%= shipping_free %></td>
@@ -58,7 +58,7 @@
             <th class="bg-info">商品合計</th><td class="bg-light"><%= total %></td>
           </tr>
           <tr>
-            <th>請求金額</th><th><%= billing_amount %></th>
+            <th class="bg-info">請求金額</th><td class="bg-light"><%= billing_amount %></td>
           </tr>
     </table>
   </div>
@@ -70,15 +70,6 @@
         <h5 class="text-center"><%= @order_postal_code %> <%= @order_address %><br><%= @order_address_name %> 様</h5>
     </div>
   </div>
-  <div class="row ml-2">
-    <%= form_for(@order, url: members_orders_path, method: :post) do |f| %>
-      <%= f.hidden_field :method_of_payment, :value => @method_of_payment %>
-      <%= f.hidden_field :postal_code, :value => @order_postal_code %>
-      <%= f.hidden_field :address, :value => @order_address %>
-      <%= f.hidden_field :address_name, :value => @order_address_name %>
-      <%= f.submit "購入確定",class: 'btn btn-success ml-4' %>
-    <% end %>
-  </div>
 
   <%= form_for(@order, url: members_orders_path, method: :post) do |f| %>
     <%= hidden_field_tag :address_status, @address_status %>
@@ -87,6 +78,6 @@
     <%= f.hidden_field :postal_code, :value => @order_postal_code %>
     <%= f.hidden_field :address, :value => @order_address %>
     <%= f.hidden_field :address_name, :value => @order_address_name %>
-    <%= f.submit "購入確定",class: 'btn btn-success' %>
+    <%= f.submit "購入確定",class: 'btn btn-success ml-4' %>
   <% end %>
 </div>

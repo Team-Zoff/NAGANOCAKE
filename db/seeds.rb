@@ -33,10 +33,70 @@ Genre.create!(
 )
 
 # Product.create!(
-# 	genre_id: 1,
-# 	product_name: 'test',
-# 	description: 'test',
-# 	product_image_id: 'test',
-# 	price_excluding_tax: 50000,
-# 	sale_status: 0
+# 	[
+# 		{
+# 			genre_id: 1,
+# 			product_name: 'test',
+# 			description: 'test',
+# 			product_image_id: 'test',
+# 			price_excluding_tax: 50000,
+# 			sale_status: 0
+# 		},
+# 		{
+# 			genre_id: 1,
+# 			product_name: 'test',
+# 			description: 'test',
+# 			product_image_id: 'test',
+# 			price_excluding_tax: 50000,
+# 			sale_status: 0
+# 		},
+# 		{
+# 			genre_id: 1,
+# 			product_name: 'test',
+# 			description: 'test',
+# 			product_image_id: 'test',
+# 			price_excluding_tax: 50000,
+# 			sale_status: 0
+# 		},
+# 		{
+# 			genre_id: 1,
+# 			product_name: 'test',
+# 			description: 'test',
+# 			product_image_id: 'test',
+# 			price_excluding_tax: 50000,
+# 			sale_status: 0
+# 		},
+# 		{
+# 			genre_id: 1,
+# 			product_name: 'test',
+# 			description: 'test',
+# 			product_image_id: 'test',
+# 			price_excluding_tax: 50000,
+# 			sale_status: 0
+# 		},
+# 		{
+# 			genre_id: 1,
+# 			product_name: 'test',
+# 			description: 'test',
+# 			product_image_id: 'test',
+# 			price_excluding_tax: 50000,
+# 			sale_status: 0
+# 		},
+# 		{
+# 			genre_id: 1,
+# 			product_name: 'test',
+# 			description: 'test',
+# 			product_image_id: 'test',
+# 			price_excluding_tax: 50000,
+# 			sale_status: 0
+# 		},
+# 		{
+# 			genre_id: 1,
+# 			product_name: 'test',
+# 			description: 'test',
+# 			product_image_id: 'test',
+# 			price_excluding_tax: 50000,
+# 			sale_status: 0
+# 		}
+# 	]
 # )

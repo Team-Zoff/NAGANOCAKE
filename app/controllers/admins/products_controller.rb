@@ -30,12 +30,16 @@ class Admins::ProductsController < ApplicationController
 	def update
 		@product = Product.find(params[:id])
 		if @product.update(product_params)
-			flash[:notice] = "商品情報変更成功しました！"
+			flash[:notice] = "商品情報を変更しました！"
 		 	redirect_to action: :show
-	    else
-	    	@product = Product.find(params[:id])
-	    	render :edit
-	    end
+	   else
+	    @product = Product.find(params[:id])
+	    render :edit
+	   end
+	end
+
+	def recommends
+		@recommends = Admin.recommend_product.includes(:admin).recent
 	end
 
 	private

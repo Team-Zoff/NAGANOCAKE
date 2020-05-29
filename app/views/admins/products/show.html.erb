@@ -2,8 +2,19 @@
 	<div class="row">
    		<div class="col-2 text-center">
 				<p><%= flash[:notice] %></p>
-     	 　　<h5 class="bg-info text-white rounded p-1 mt-5">商品詳細</h5>
+     	 	<h5 class="bg-info text-white rounded p-1 mt-5">商品詳細</h5>
      	</div>
+			<div>
+			<% if @product.recommended_by? %>
+    		 <%= link_to admins_recommends_path(@product), method: :delete do %>
+    		 <span class="fas fa-star" aria-hidden="true" style="color: yello;"></span>
+    		 <% end %>
+			<% else %>
+    		<%= link_to admins_recommends_path(@product), method: :post do %>
+    		<span class="fas fa-star" aria-hidden="true"></span>
+    	  <% end %>
+		  <% end %>
+			</div>
 	</div>
 </div>
 
@@ -42,7 +53,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-6 text-rigth offset-3">
+		<div class="col-md-12 text-right">
 			<%= link_to "編集する",edit_admins_product_path(@product) ,class:"btn btn-primary btn-sm  mt-20"%>
 		</div>
 	</div>

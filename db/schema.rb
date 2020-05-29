@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2020_05_28_115820) do
     t.integer "valid_invalid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "genre_image_id"
   end
 
   create_table "members", force: :cascade do |t|
