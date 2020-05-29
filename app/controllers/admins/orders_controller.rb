@@ -7,16 +7,14 @@ class Admins::OrdersController < ApplicationController
 		else
 			@member = Member.find(params[:member_id])
 			@orders = @member.orders
-			#該当顧客のデータ
 		end
-
 	end
+
 	def show
 		@order = Order.find(params[:id])
 		@order_details = @order.order_details
-		
-
 	end
+
 	def update
 		@order_status = Order.find(params[:id])
 		if @order_status.update(order_status)
@@ -28,7 +26,6 @@ class Admins::OrdersController < ApplicationController
 	end
 
 	private
-
 	def order_status
 	    params.require(:order).permit(:order_status)
 	end
