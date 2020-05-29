@@ -14,4 +14,17 @@ class Product < ApplicationRecord
     validates :price_excluding_tax, presence: true
     validates :sale_status, presence: true
 
+		#サーチメソッドの定義。if内でさらに検索条件による分岐
+	def self.search(search, how_search)
+		  if how_search == "1"
+				  Product.where(['product_name LIKE ?', "#{search}"])
+		  elsif how_search == "2"
+				  Product.where(['product_name LIKE ?', "%#{search}%"])
+		  elsif how_search == "3"
+				  Product.where(['product_name LIKE ?', "#{search}%"])
+		  else
+				  Product.where(['product_name LIKE ?', "%#{search}"])
+		  end
+	end
+
 end

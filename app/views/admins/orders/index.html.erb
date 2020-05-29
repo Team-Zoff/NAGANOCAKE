@@ -1,27 +1,27 @@
 <div class="container" style="margin:4vw 50px 0;">
   <div class="row">
-    <div class="col-2 text-center">
+    <div class="col-2 text-center ml-5">
       <h5 class="bg-info text-white rounded p-1 mt-5">注文履歴一覧</h5>
-	</div>
+	  </div>
   </div>
 </div>
 <div class="continer">
 	<div class="row justify-content-center mt-4">
- 		<table class="table col-6">
-	    	<thead>
+ 		<table class="table table-bordered col-6">
+	    	<thead class="bg-info text-white">
+				  <tr>
+					  <th scope="col">購入日時</th>
+					  <th>購入者</th>
+					  <th>注文個数</th>
+					  <th>注文ステータス</th>
+				  </tr>
+			  </thead>
+			  <tbody class="bg-light">
+				<% @orders.each do |order| %>
 				<tr>
-					<th scope="col">購入日時</th>
-					<th>購入者</th>
-					<th>注文個数</th>
-					<th>注文ステータス</th>
-				</tr>
-			</thead>
-			<tbody>
-					<% @orders.each do |order| %>
-				<tr>
-					<td><%= link_to order.created_at, admins_orders_show_path %></td>
+					<td><%= link_to "#{order.created_at}", admins_order_path(order) %></td>
 					<td><%= "#{order.member.first_name + order.member.last_name}" %></td>
-					<td><%= order.order_detail.purchase_quantity %></td>
+					<td><%= order.order_details.sum(:purchase_quantity) %></td>
 					<td><%= order.order_status_i18n %></td>
 				</tr>
 				<% end %>
@@ -29,5 +29,3 @@
 		</table>
 	</div>
 </div>
-
-

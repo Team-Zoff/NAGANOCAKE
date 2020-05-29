@@ -15,6 +15,12 @@
  */
 @import "bootstrap";
 
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 body{
 	background-color:#fbe9b7; /*サイト全体の背景色*/
 	font-family: "Hiragino Sans CNS",
@@ -50,9 +56,25 @@ body{
 .genres_head{
 	color:#5c2534;
 }
+
 .genres_body a{
 	color:#5c2534;
 }
+
 .link_font_color{
 	color: #696969;
+}
+
+.select-number{
+	height:33px;
+}
+
+.footer{
+	margin-top: 30px;
+	background-color:#ce3c63;
+	color: white;
+}
+
+#choice {
+	height:28px;
 }

@@ -26,11 +26,11 @@
 
 			<div class="row">
 				<span class="col-md-5">ジャンル</span>
-				<span class="col-md-7"><%= @product.genre_id %><br></span>
+				<span class="col-md-7"><%= @product.genre.name %><br></span>
 			</div><br>
 
 			<div class="row">
-				<span class="col-md-5">税込価格(税抜価格)</span>
+				<span class="col-md-5">税抜価格(税込価格)</span>
 				<span class="col-md-7"><%= @product.price_excluding_tax.to_s(:delimited) %>
 					(<%= (@product.price_excluding_tax*1.1).to_i.to_s(:delimited) %>)円</span>
 			</div><br>
@@ -42,7 +42,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-6 text-right offset-3">
+		<div class="col-md-12 text-right">
 			<%= link_to "編集する",edit_admins_product_path(@product) ,class:"btn btn-primary btn-sm  mt-20"%>
 		</div>
 	</div>

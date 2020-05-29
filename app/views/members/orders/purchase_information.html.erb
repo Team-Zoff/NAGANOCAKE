@@ -7,21 +7,21 @@
   </div>
 </div>
 
+<%= form_with(url:members_order_confirmation_path, method: :post, local:true) do |f| %>
 <div class="container">
 	<div class="row">
-		<div class="col">支払方法</div>
+		<div class="border-bottom border-info">支払方法</div>
 	</div>
-	<%= form_with(url:members_order_confirmation_path, method: :get) do |f| %>
 		<div class="form-check row">
 			<div class="row mt-3">
 				<div class="col">
-					<%= f.radio_button :method_of_payment, "クレジットカード" %>
+					<%= f.radio_button :method_of_payment, "credit_payment" %>
 					<%= f.label :method_of_payment, "クレジットカード" %>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
-					<%= f.radio_button :method_of_payment, "銀行"  %>
+					<%= f.radio_button :method_of_payment, "bank_payment" %>
 					<%= f.label :method_of_payment, "銀行" %>
 				</div>
 			</div>
@@ -30,11 +30,10 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col">お届け先</div>
+		<div class="mt-3 border-bottom border-info">お届け先</div>
 	</div>
 	<div class="form-check p-3">
-		<div class="mt-1">
-			<div class="row">
+		<div class="row">
 				<%= f.radio_button :address_status, "1" %>
 				<%= f.label :address_status, "ご自身の住所", class:"col-3"%>
 				<div class="row col-7">
@@ -48,17 +47,16 @@
 				</div>
 			</div>
 		</div>
-		</div>
 		<div class="row">
 			<div class="col-3">
 			<%= f.radio_button :address_status, "2" %>
 			<%= f.label :address_status, "登録済み住所から選択" %>
 		    </div>
-      
+
 			<div class="col-5">
 	  			<%= f.collection_select :address_collection, @shipping_addresses, :id, :full_address, {}, {class: 'form-control'} %>
 	  		</div>
-      
+
 		</div>
 		<div class="row mt-3">
 			<div class="col">
@@ -91,9 +89,9 @@
 				</div>
 			</div>
 		<div class="row mt-2">
-			<div class="col-3">
+			<div class="col-3" style="margin-left: 8em;">
 				<%= f.submit "確認画面へ進む", class:"btn btn-primary" %>
 			</div>
 		</div>
-	<% end %>
 </div>
+<% end %>

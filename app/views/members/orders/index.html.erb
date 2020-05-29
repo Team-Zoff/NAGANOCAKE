@@ -1,7 +1,7 @@
 <div class="container" style="margin-top:50px;">
     <div class="row">
         <div>
-            <h5 class="text-light bg-info">注文履歴一覧</h5>
+            <h5 class="text-light bg-info rounded p-1">注文履歴一覧</h5>
         </div>
     </div>
     <div class="row justify-content-center mt-3">
@@ -17,7 +17,7 @@
                 </tr>
             </thead>
             <tbody>
-                <% @orders.each do |orders| %>
+                <% current_member.orders.each do |orders| %>
                 <tr style="background-color:#ffffff;">
                     <td>
                         <%= orders.created_at %>
@@ -28,18 +28,18 @@
                         <%= orders.address_name %>
                     </td>
                     <td>
-                        <% orders.order_detail.each do |order_detail|%>
-                        <%= order_detail.product.name %>
+                        <% orders.order_details.each do |order_detail|%>
+                        <%= order_detail.product.product_name %>
                         <% end%>
                     </td>
                     <td>
                         <%= orders.confirmed_purchase_price %>
                     </td>
                     <td>
-                        <%= orders.order_status %>
+                        <%= orders.order_status_i18n %>
                     </td>
                     <td>
-                        <%= link_to '表示する',members_orders_path(orders),class: 'btn btn-primary' %>
+                        <%= link_to '表示する',members_order_path(orders.id),class: 'btn btn-primary' %>
                     </td>
                 </tr>
                 <% end %>

@@ -9,6 +9,7 @@ devise_for :members, skip: :all
     delete '/members/sign_out' => 'members/sessions#destroy', as: 'destroy_member_session'
     get '/members/sign_up' => 'members/registrations#new', as: 'new_member_registration'
     get '/members/passwords/edit' => 'members/registrations#edit', as: 'password_edit_registrations'
+    patch '/members/passwords/update' => 'members/registrations#update'
     post '/members/sign_up' => 'members/registrations#create', as: 'member_registration'
     get '/members/' => 'members/passwords#edit', as: 'edit_member_password'
     patch '/members/passwords' => 'members/passwords#update', as: 'member_password'
@@ -18,11 +19,10 @@ devise_for :members, skip: :all
   namespace :members do
     get 'homes/top' => 'homes#top',as: '/'
     get 'orders/purchase_information' => 'orders#purchase_information',as: 'order_purchase'
-    get 'orders/confirmation' => 'orders#confirmation',as: 'order_confirmation'
+    post 'orders/confirmation' => 'orders#confirmation',as: 'order_confirmation'
     get 'orders/thanks' => 'orders#thanks',as: 'order_thanks'
     post 'orders/select'
-    post 'orders/create'
-    resources :orders, only:[:index,:show]
+    resources :orders, only:[:index,:show,:create]
     get 'members/withdrawal' => 'members#withdrawal',as: 'withdrawal'
     patch 'members/withdrawal' => 'members#withdrawal_confirm', as: 'withdrawal_confirm'
     delete 'members/cart_items' => 'cart_items#destroy_all',as: 'cart_items_destroy'
@@ -30,10 +30,11 @@ devise_for :members, skip: :all
     resources :shipping_addresses,only:[:index,:show,:edit,:create,:update,:destroy]
     resources :cart_items,only:[:index,:create,:update,:destroy]
     resources :products, only:[:index,:show]
-    resources :genres,only:[:index]
+    resources :genres,only:[:show]
+    get "/searches/search" => "searches#search", as: 'search'
   end
 
-    devise_for :admins, skip: :all
+  devise_for :admins, skip: :all
     devise_scope :admin do
       get 'admins/sign_in' => 'admins/sessions#new', as: 'new_admin_session'
       post 'admins/sign_in' => 'admins/sessions#create', as: 'admin_session'
@@ -46,7 +47,7 @@ devise_for :members, skip: :all
     end
   end
 
-    authenticated :admin do
+  authenticated :admin do
       namespace :admins do
       get 'homes/top' => 'homes#top',as: '/'
       resources :genres, only:[:create, :index, :edit, :update]

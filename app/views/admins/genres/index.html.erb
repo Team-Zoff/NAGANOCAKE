@@ -1,55 +1,71 @@
 <div class="container" style="margin:2vw 50px 0;">
-  <div class="row">
-    <div class="col-3 text-center">
-    	<% if flash[:notice] %>
-			<p><%= flash[:notice] %></p>
-		<% end %>
-     	<h5 class="bg-info text-white rounded p-1 mt-5">ジャンル一覧・追加</h5>
-	</div>
-  </div>
+    <div class="row">
+        <div class="col-3 text-center">
+            <% if flash[:notice] %>
+            <p>
+                <%= flash[:notice] %>
+            </p>
+            <% end %>
+            <h5 class="bg-info text-white rounded p-1 mt-5">ジャンル一覧・追加</h5>
+        </div>
+    </div>
 </div>
-
 <div class="conteiner" style="margin:4vw 50px 0;">
-	<div class="row justify-content-left mt-4">
-		<div class="col-8">
-
-			<div class="genre_new">
-				<%= form_for(@genre,url: admins_genres_path) do |f| %>
-
-				<%= f.label :name,"ジャンル" %>
-				<%= f.text_field :name, autocomplete: "名称" %>
-
-				<%= f.radio_button :valid_invalid, "Validity", {checked: true} %>有効
-    			<%= f.radio_button :valid_invalid, "Invalid", {} %>無効
-
-    			<%= f.submit "追加", class:"btn-primary",style:"border-radius: 0.5em" %>
-
-    			<% end %>
-
-    		</div><br/>
-
-
-		    <table class="table col-8">
-    			<thead>
-					<tr>
-						<th>ジャンル</th>
-						<th>状態</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<% @genres.each do |genre| %>
-						<tr>
-							<td><%= genre.name %></td>
-							<td><%= genre.valid_invalid_i18n %></td>
-							<td><%= link_to "編集する", edit_admins_genre_path(genre), class:"btn-sm btn-primary",style:"border-radius: 0.5em" %></td>
-						</tr>
-					<% end %>
-				</tbody>
-			</table>
-
-		</div>
-	</div>
+    <div class="row justify-content-left mt-4">
+        <div class="col-8">
+            <div class="genre_new row">
+                <%= form_for(@genre,url: admins_genres_path) do |f| %>
+                <%= f.label :name,"ジャンル" %>
+                <%= f.text_field :name, autocomplete: "名称" %>
+                <%= f.radio_button :valid_invalid, "Validity", {checked: true} %>有効
+                <%= f.radio_button :valid_invalid, "Invalid", {} %>無効<br>
+                <%= f.label :genre_image,"アイコン" %>
+                <%= image_tag "bg-cake.png", id: :img_prev , :size =>'30x30' %>
+                <%= f.attachment_field :genre_image %><br>
+                <p>※拡張子は.pngファイルを選択してください。</p>
+                <%= f.submit "追加", class:"btn-primary",style:"border-radius: 0.5em" %>
+                <% end %>
+            </div><br />
+            <table class="table col-8">
+                <thead>
+                    <tr>
+                        <th>ジャンル</th>
+                        <th>状態</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @genres.each do |genre| %>
+                    <tr>
+                        <td>
+                            <%= genre.name %>
+                        </td>
+                        <td>
+                            <%= genre.valid_invalid_i18n %>
+                        </td>
+                        <td>
+                            <%= link_to "編集する", edit_admins_genre_path(genre), class:"btn-sm btn-primary",style:"border-radius: 0.5em" %>
+                        </td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
-
-
+<script type="text/javascript">
+$(function() {
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#img_prev').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#genre_genre_image").change(function() {
+        readURL(this);
+    });
+});
+</script>
