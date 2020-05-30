@@ -9,5 +9,4 @@
  Admin.create!(
  	email: 'zoff@zoff.com',
  	password: 'zoffzoff',
-  timestamps: '2020-05-30 12:00:00'
  	)
