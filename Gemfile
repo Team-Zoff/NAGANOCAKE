@@ -75,7 +75,7 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem "kaminari"
 
-
 group :production do
   gem 'pg','>= 0.18', '< 2.0'
+  gem 'rails_12factor'
 end
