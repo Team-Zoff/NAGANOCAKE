@@ -8,6 +8,6 @@
 
  Admin.create!(
  	email: 'zoff@zoff.com',
- 	password: 'zoffzoff'
+ 	password: 'zoffzoff',
+  timestamp: '2020-05-30 12:00:00'
  	)
-
